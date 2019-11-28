@@ -7,11 +7,11 @@ exports.getAll = (req, res, next) => {
 				"product": null
 			})
 		} else {
-			console.log(rows)
-			
+			//console.log(rows)
 		}
 	})
 };
+
 exports.getOne = (req, res, next) => {
 	var product_name = req.query.product_name;
 	Product.getAllProductsByName(product_name, (rows) => {
@@ -21,8 +21,8 @@ exports.getOne = (req, res, next) => {
 				"user": null
 			})
 		} else {
-			res.render('',{products:rows[0]}) 
-			
+			res.render('',{products:rows[0]})
+
 		}
 	})
 };

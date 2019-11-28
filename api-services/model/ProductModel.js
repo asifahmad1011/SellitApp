@@ -74,8 +74,8 @@ module.exports.getAllProducts = function(callback) {
 	module.exports.getAllProductsByName = function(product_name,callback) {
         Product.findAll({
 			where: {
-				 	  name:product_name
-				 	}			
+        product_name:product_name
+				 	}
 		  })
 		.then(function(related) {
 			//console.log(related[0].role.role);

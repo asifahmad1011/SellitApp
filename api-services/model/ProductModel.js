@@ -87,19 +87,6 @@ module.exports.getAllProducts = function(callback) {
 		  });
   }
 
-  /*module.exports.searchProductsByName = function(product_name,callback){
-    Product.findAll(
-      {
-        where : ["product_name like ?", "%" + product_name + "%"]
-      }
-    ).then(function(related){
-      callback(related);
-    }).catch(function(err){
-      callback(err);
-      console.log(err);
-    });
-  }*/
-
   module.exports.searchProductsByName = function(product_name,callback){
     Product.sequelize.query( "SELECT * FROM products WHERE CONCAT(product_name) LIKE \"%" + product_name + "%\"",
     {type: Product.sequelize.QueryTypes.SELECT}

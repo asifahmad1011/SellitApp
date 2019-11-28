@@ -85,16 +85,28 @@ module.exports.getAllProducts = function(callback) {
 			//console.log(err);
 			callback(err);
 		  });
-	}
+  }
 
-	// models.product.findAll({
-	// 	where: {
-	// 	  category: category
-	// 	},
-	// 	order: [
-	// 		['views', 'DESC']
-	// 	],
-	// 	include: [
-	// 	  {model: models.image, as: 'images'}
-	// 	]
-	//   })
+  /*module.exports.searchProductsByName = function(product_name,callback){
+    Product.findAll(
+      {
+        where : ["product_name like ?", "%" + product_name + "%"]
+      }
+    ).then(function(related){
+      callback(related);
+    }).catch(function(err){
+      callback(err);
+      console.log(err);
+    });
+  }*/
+
+  module.exports.searchProductsByName = function(product_name,callback){
+    Product.sequelize.query( "SELECT * FROM products WHERE CONCAT(product_name) LIKE \"%" + product_name + "%\"",
+    {type: Product.sequelize.QueryTypes.SELECT}
+    ).then(function(related){
+      callback(related);
+    }).catch(function(err){
+      callback(err);
+      console.log(err);
+    });
+  }

@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Sellit-Search app is running!');
+    expect(page.getTitleText()).toEqual('SellitApp is running!');
   });
 
   afterEach(async () => {

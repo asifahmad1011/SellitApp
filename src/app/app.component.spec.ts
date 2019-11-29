@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'realtime-search-engine-rxjs'`, () => {
+  it(`should have as title 'SellitApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('realtime-search-engine-rxjs');
+    expect(app.title).toEqual('SellitApp');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to realtime-search-engine-rxjs!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to SellitApp');
   });
 });

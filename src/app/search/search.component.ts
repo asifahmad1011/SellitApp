@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
 
   public loading: boolean;
   public searchTerm = new Subject<string>();
-  public baseUrl = "http://localhost:3031/api/v1/product/";
+  public baseUrl = "/api/v1/product/";
   public searchResults: any;
   public paginationElements: any;
   public errorMessage: any;

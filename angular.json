@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Sellit-Search": {
+    "SellitApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",

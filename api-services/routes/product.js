@@ -17,7 +17,7 @@ var router = express.Router();
 	});
 });*/
 
-router.post('/:product_name', function(req, res, next) {
+router.get('/:product_name', function(req, res, next) {
   var product_name = req.params.product_name;
 	Product.searchProductsByName(product_name, (rows) => {
 		if (!rows || !rows.length) {

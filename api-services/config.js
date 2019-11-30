@@ -5,7 +5,7 @@ var config = {
       host: '3.134.103.215',
     	user: 'remote',
     	password: 'Remote2019@',
-		database: 'dummy_products',
+		database: 'sell_it',
 		port: 3306
 	}
 }

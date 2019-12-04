@@ -53,3 +53,27 @@ router.post("/", function(req,res,next){
 })
 
 module.exports = router;
+
+
+
+exports.login = (req, res, next) => {
+  var loginKey;
+  var password=req.query.password;
+  if(req.query.username)
+  loginKey=req.query.username;
+  else if(req.query.matric_number)
+  loginKey=req.query.matric_number;
+
+	Users.getUser(loginKey,password, (rows) => {
+		if (!rows || !rows.length) {
+			res.json({
+				"status": "failed",
+				"user": null
+			})
+		} else {
+			res.json({
+				"status": "sucessfull"
+			})
+		}
+	})
+};

@@ -52,11 +52,9 @@ router.post("/", function(req,res,next){
   })
 })
 
-module.exports = router;
 
+router.get('/login', function(req, res, next) {
 
-
-exports.login = (req, res, next) => {
   var loginKey;
   var password=req.query.password;
   if(req.query.username)
@@ -76,4 +74,9 @@ exports.login = (req, res, next) => {
 			})
 		}
 	})
-};
+
+});
+
+module.exports = router;
+
+

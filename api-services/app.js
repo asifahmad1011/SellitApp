@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 var products = require("./routes/product");
 var studentRecords = require("./routes/studentrecord");
+var auths = require("./routes/authentications");
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(function(req,res,next){
 app.use('/api/v1/users', users);
 app.use('/api/v1/product', products);
 app.use('/api/v1/studentrecord', studentRecords);
+app.use("/api/v1/auth", auths);
 
 
 module.exports = app;

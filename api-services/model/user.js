@@ -84,6 +84,7 @@ module.exports.getAllUser = function(callback){
 }
 
 module.exports.getUser = function(loginKey,password,callback){
+  console.log(loginKey + " " +  password);
   User.findAll({
     where: {
       [Op.or]:  [{username: loginKey}, {matrikel_number: loginKey}],
@@ -93,6 +94,7 @@ module.exports.getUser = function(loginKey,password,callback){
     callback(result);
   }).catch(function(err){
     callback(err);
+    console.log(err);
   });
 
 }

@@ -61,8 +61,8 @@ exports.login = (req, res, next) => {
   var password=req.query.password;
   if(req.query.username)
   loginKey=req.query.username;
-  else if(req.query.matric_number)
-  loginKey=req.query.matric_number;
+  else if(req.query.matrikel_number)
+  loginKey=req.query.matrikel_number;
 
 	Users.getUser(loginKey,password, (rows) => {
 		if (!rows || !rows.length) {

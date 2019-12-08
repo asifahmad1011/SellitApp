@@ -23,7 +23,8 @@ router.post('/', function(req, res, next) {
 			})
 		} else {
 			res.json({
-				token
+				token,
+				"status": "sucessfull",
 			})
 		}
 	})

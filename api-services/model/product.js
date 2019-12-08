@@ -1,6 +1,7 @@
 /*user model*/
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
+const Op = Sequelize.Op;
 
 var Product = sequelize.define('products', {
 	product_id: {
@@ -81,7 +82,9 @@ module.exports.getAllProducts = function(callback) {
 module.exports.getAllProductsByName = function(product_name,callback) {
         Product.findAll({
 			where: {
-        	name:product_name
+        	name:{
+				[Op.substring]:product_name
+			}
 				 	}
 		  })
 		.then(function(related) {
@@ -93,17 +96,21 @@ module.exports.getAllProductsByName = function(product_name,callback) {
 			callback(err);
 		  });
   }
-
-// module.exports.searchProductsByName = function(product_name,callback){
-//     Product.sequelize.query( "SELECT * FROM products WHERE CONCAT(product_name) LIKE \"%" + product_name + "%\"",
-//     {type: Product.sequelize.QueryTypes.SELECT}
-//     ).then(function(related){
-//       callback(related);
-//     }).catch(function(err){
-//       callback(err);
-//       console.log(err);
-//     });
-//   }
+  module.exports.getProductById = function(product_id,callback) {
+	Product.findAll({
+		where: {
+			product_id:product_id
+				 }
+	  })
+	.then(function(related) {
+		//console.log(related[0].role.role);
+		callback( related);
+	  })
+	  .catch(function(err) {
+		//console.log(err);
+		callback(err);
+	  });
+}
 
 
   module.exports.addProduct = function(product,callback){

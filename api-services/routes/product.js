@@ -33,6 +33,19 @@ router.get('/:product_name', function(req, res, next) {
 		}
 	});
 });
+router.post('/product_info', function(req, res, next) {
+	var product_id =req.body.product_id;
+	  Product.getProductById(product_id, (rows) => {
+		  if (!rows) {
+			  res.json({
+				  "status": "failed",
+				  "user": null
+			  })
+		  } else {
+		res.json({products: rows});
+		  }
+	  });
+  });
 
 router.get('/', function(req, res, next) {
   Product.getAllProducts( (rows) => {

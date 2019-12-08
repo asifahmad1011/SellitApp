@@ -33,8 +33,9 @@ router.get('/:product_name', function(req, res, next) {
 		}
 	});
 });
-router.post('/product_info', function(req, res, next) {
-	var product_id =req.body.product_id;
+
+router.get('/id/:id', function(req, res, next) {
+  var product_id =req.params.id;
 	  Product.getProductById(product_id, (rows) => {
 		  if (!rows) {
 			  res.json({
@@ -67,7 +68,7 @@ router.post('/add',loginVerification.verifyToken, function(req, res, next) {
 		if(err) {
 		  res.sendStatus(403);
 		} else {
-		  
+
 /////Adding Product
 Product.addProduct({
 	name :data.name,
@@ -82,7 +83,7 @@ Product.addProduct({
 	product_condition : data.product_condition,
 	created_date : data.created_date,
 	modified_date : data.modified_date
-	
+
 }, (rows) => {
 if (!rows) {
 	res.json({
@@ -101,9 +102,9 @@ if (!rows) {
 		}
 	  });
 
-  
-	
-  
+
+
+
   });
 
 

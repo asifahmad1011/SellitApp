@@ -3,59 +3,69 @@ var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 
 var Product = sequelize.define('products', {
+	id: {
+		type: Sequelize.CHAR,
+		allowNull: false
+	},
 	product_id: {
 		type: Sequelize.BIGINT(5),
-		autoIncrement: true,
 		primaryKey: true,
 		unique: true,
 		allowNull: false
 	},
-	product_name: {
-		type: Sequelize.STRING(1000),
+	name: {
+		type: Sequelize.STRING(45),
 		allowNull: false
 	},
-	// slug: {
-	// 	type: Sequelize.STRING(25)
-	// },
+	 slug: {
+		 type: Sequelize.STRING(20),
+		 allowNull: false
+	 },
 	description: {
-		type: Sequelize.TEXT(1000)
+		type: Sequelize.TEXT,
+		allowNull: false
 	},
 	price: {
+		type: Sequelize.STRING(20),
+		allowNull: false
+	},
+	//  img_id: {
+	//  	type: Sequelize.BIGINT(11)
+	//  },
+	// image: {
+	// 	type: Sequelize.STRING(1000)
+	// },
+	 seller_id: {
+		 type: Sequelize.BIGINT(11),
+		 allowNull: false
+	 }
+	 ,
+	 more_details: {
+	 	type: Sequelize.TEXT
+	 },
+	 status: {
+		 type: Sequelize.BIGINT(11),
+		 allowNull: false
+	 }
+	 ,
+	 category_id: {
+		 type: Sequelize.BIGINT(11),
+		 allowNull: false
+	 },
+	 brand_id: {
 		type: Sequelize.BIGINT(11),
 		allowNull: false
 	},
-	// img_id: {
-	// 	type: Sequelize.BIGINT(11)
-	// },
-	image: {
-		type: Sequelize.STRING(1000)
-	},
-	// seller_id: {
-	// 	type: Sequelize.BIGINT(11)
-	// }
-	// ,
-	// more_details: {
-	// 	type: Sequelize.STRING(145)
-	// },
-	// status: {
-	// 	type: Sequelize.BIGINT(1)
-	// }
-	// ,
-	// category_id: {
-	// 	type: Sequelize.BIGINT(11)
-	// },
-	// condition: {
-	// 	type: Sequelize.BIGINT(11)
-	// },
-	// create_date: {
-	// 	type: Sequelize.DATE
-	// },
-	// modified_date: {
-	// 	type: Sequelize.DATE
-	// }
-	year: {
-		type: Sequelize.STRING(20)
-	}
+	  product_condition: {
+	  	type: Sequelize.BIGINT(11)
+	  },
+	  created_date: {
+	 	type: Sequelize.DATE
+	 },
+	 modified_date: {
+	 	type: Sequelize.DATE
+	 },
+	
 
 });
 
@@ -97,3 +107,15 @@ module.exports.searchProductsByName = function(product_name,callback){
       console.log(err);
     });
   }
+
+
+  module.exports.addProduct = function(product,callback){
+
+	Product.build(product).save().then((data) => {
+		console.log(data.dataValues);
+		callback(data.dataValues);
+	}).catch((err) => {
+		callback(err);
+	})
+  }
+  

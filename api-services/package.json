@@ -13,6 +13,7 @@
     "font-awesome": "^4.7.0",
     "mysql2": "^2.0.1",
     "sequelize": "^5.21.2",
-    "uid-safe": "^2.1.5"
+    "uid-safe": "^2.1.5",
+    "uuid": "^3.3.3"
   }
 }

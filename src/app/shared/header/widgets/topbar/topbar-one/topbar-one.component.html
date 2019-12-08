@@ -1,0 +1,33 @@
+<div class="row" >
+    <div class="col-lg-6">
+     
+    </div>
+    <div class="col-lg-6 text-right" *ngIf="!productsService?.catalogMode">
+      <ul class="header-dropdown">
+        
+        <li class="mobile-wishlist">
+          <a [routerLink]="'/home/wishlist'"></a>
+        </li>
+        <li class="onhover-dropdown mobile-account">
+          <i class="fa fa-user" aria-hidden="true"></i> {{ 'my-account' | translate }}
+          <ul class="onhover-show-div">
+            <li>
+              <a [routerLink]="'/pages/login'" data-lng="en">
+                  {{ 'login' | translate }}
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="'/home/nine'" data-lng="es">
+                  {{ 'logout' | translate }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</div>
+
+
+
+
+

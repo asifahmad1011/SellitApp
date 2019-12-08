@@ -1,0 +1,41 @@
+
+<!-- section start -->
+<section class="register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>create account</h3>
+                <div class="theme-card">
+                    <form [formGroup]="register" (ngSubmit)="onFormSubmit(register.value)" class="theme-form">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">First Name</label>
+                                <input type="text" class="form-control" id="fname"  name="first_name" placeholder="First Name" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Last Name</label>
+                                <input type="password" class="form-control" id="lname"  name="last_name"  placeholder="Last Name" required="">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">email</label>
+                                <input type="text" class="form-control" id="email"  name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Password</label>
+                                <input type="password" class="form-control" id="review" name="password" placeholder="Enter your password" required="">
+                            </div>
+                            <button class="btn btn-solid">create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="errorMessage" class="errorMessage">
+        <h2>Error</h2>
+        <p class="error">{{errorMessage}}</p>
+    </div>
+</section>
+<!--Section ends-->

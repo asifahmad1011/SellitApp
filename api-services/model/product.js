@@ -81,7 +81,7 @@ module.exports.getAllProducts = function(callback) {
 module.exports.getAllProductsByName = function(product_name,callback) {
         Product.findAll({
 			where: {
-        product_name:product_name
+        	name:product_name
 				 	}
 		  })
 		.then(function(related) {
@@ -94,16 +94,16 @@ module.exports.getAllProductsByName = function(product_name,callback) {
 		  });
   }
 
-module.exports.searchProductsByName = function(product_name,callback){
-    Product.sequelize.query( "SELECT * FROM products WHERE CONCAT(product_name) LIKE \"%" + product_name + "%\"",
-    {type: Product.sequelize.QueryTypes.SELECT}
-    ).then(function(related){
-      callback(related);
-    }).catch(function(err){
-      callback(err);
-      console.log(err);
-    });
-  }
+// module.exports.searchProductsByName = function(product_name,callback){
+//     Product.sequelize.query( "SELECT * FROM products WHERE CONCAT(product_name) LIKE \"%" + product_name + "%\"",
+//     {type: Product.sequelize.QueryTypes.SELECT}
+//     ).then(function(related){
+//       callback(related);
+//     }).catch(function(err){
+//       callback(err);
+//       console.log(err);
+//     });
+//   }
 
 
   module.exports.addProduct = function(product,callback){

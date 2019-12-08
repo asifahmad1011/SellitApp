@@ -22,8 +22,8 @@ var jwt = require('jsonwebtoken');
 
 router.get('/:product_name', function(req, res, next) {
   var product_name = req.params.product_name;
-	Product.searchProductsByName(product_name, (rows) => {
-		if (!rows || !rows.length) {
+	Product.getAllProductsByName(product_name, (rows) => {
+		if (!rows) {
 			res.json({
 				"status": "failed",
 				"user": null

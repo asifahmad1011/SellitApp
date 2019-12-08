@@ -1,0 +1,62 @@
+<!-- breadcrumb start -->
+<!-- <div class="breadcrumb-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="page-title">
+          <h2>search</h2>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="'/home/nine'">Home</a></li>
+            <li class="breadcrumb-item active">search</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- breadcrumb End -->
+<!-- section start -->
+<section>
+  <form [formGroup]="searchForm">
+      <label>
+         <input type="text" (keyup)="searchTerm.next($event)" formControlName="search" placeholder="Search Here..." />
+      
+         <div *ngIf="loading">
+              <!-- <p class="search-message">Searching</p> -->
+              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+         </div>
+      </label>    
+
+  </form>
+
+  <div *ngIf="searchResults">
+    <div class="results" >
+      <div class="repo" *ngFor="let result of paginationElements | paginate: { itemsPerPage: 12, currentPage: page }">
+          <div class="card-deck">
+              <div class="card">
+              <img loading="lazy" src="../../assets/{{result.image}}"
+                  width="200"
+                  height="auto"
+                  alt="avatar"
+              />
+              <h2>{{result.product_name}}</h2>
+              <p>{{result.description}}</p>
+              <p>Price: {{result.price}}</p>
+          </div>
+          </div> 
+      </div>
+  </div>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+ 
+  <div *ngIf="errorMessage" class="errorMessage">
+      <h2>Error</h2>
+      <p class="error">{{errorMessage}}</p>
+  </div>
+
+
+</section>

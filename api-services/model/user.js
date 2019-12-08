@@ -3,15 +3,10 @@ var sequelize = require('../common/mysql');
 const Op = Sequelize.Op;
 
 var User = sequelize.define("users",{
-    id:{
-      type: Sequelize.CHAR(30),
-      allowNull: false
-    },
     matrikel_number : {
       type: Sequelize.BIGINT(11),
       allowNull : false,
-      primaryKey : true,
-      unique : true
+      primaryKey : true
     },
     first_name : {
       type: Sequelize.STRING(25),
@@ -84,6 +79,7 @@ module.exports.getAllUser = function(callback){
 }
 
 module.exports.getUser = function(loginKey,password,callback){
+  console.log(loginKey + " " +  password);
   User.findAll({
     where: {
       [Op.or]:  [{username: loginKey}, {matrikel_number: loginKey}],
@@ -93,6 +89,7 @@ module.exports.getUser = function(loginKey,password,callback){
     callback(result);
   }).catch(function(err){
     callback(err);
+    console.log(err);
   });
 
 }

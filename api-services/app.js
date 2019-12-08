@@ -2,6 +2,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerDocument = require('./swagger.json');
 
 var users = require('./routes/users');
 var products = require("./routes/product");
@@ -24,6 +27,7 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/product', products);
 app.use('/api/v1/studentrecord', studentRecords);
 app.use("/api/v1/auth", auths);
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 module.exports = app;

@@ -5,21 +5,6 @@ var loginVerification = require('./loginVerification');
 var jwt = require('jsonwebtoken');
 
 
-/* GET users listing. */
-/*router.post('/:product_name', function(req, res, next) {
-  var product_name = req.params.product_name;
-	Product.getAllProductsByName(product_name, (rows) => {
-		if (!rows || !rows.length) {
-			res.json({
-				"status": "failed",
-				"user": null
-			})
-		} else {
-      res.json({products: rows});
-		}
-	});
-});*/
-
 router.get('/:product_name', function(req, res, next) {
   var product_name = req.params.product_name;
 	Product.getAllProductsByName(product_name, (rows) => {

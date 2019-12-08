@@ -28,6 +28,58 @@
     "application/json"
   ],
   "paths": {
+    "/studentrecord": {
+      "get": {
+        "tags": [
+          "Student Archive"
+        ],
+        "summary": "Get all Student Archive from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StudentArchives"
+            }
+          }
+        }
+      }
+    },
+    "/studentrecord/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the student archive record you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Student Archive"
+        ],
+        "summary": "Get Student Archive record By id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StudentArchive"
+            }
+          }
+        }
+      }
+    },
     "/product": {
       "get": {
         "tags": [
@@ -213,6 +265,55 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "StudentArchive": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "modified_date": {
+          "type": "string"
+        }
+      }
+    },
+    "StudentArchives": {
+      "type": "object",
+      "properties": {
+        "studentarchives": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StudentArchive"
           }
         }
       }

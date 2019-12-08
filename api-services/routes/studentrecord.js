@@ -18,4 +18,17 @@ router.get("/:id", function(req,res, next){
   })
 })
 
+router.get("/", function(req,res,next){
+  student.getAllStudentArchive((result) => {
+    if(utili.isEmpty(result)){
+      res.json({
+        "status" : "failed",
+        "user" : null
+      });
+    }else{
+      res.json({student : result});
+    }
+  })
+})
+
 module.exports = router;

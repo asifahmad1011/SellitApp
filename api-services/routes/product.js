@@ -1,7 +1,9 @@
 var express = require('express');
 var Product = require('../model/product');
 var router = express.Router();
-const uuidv4=require('uuid/v4')
+var loginVerification = require('./loginVerification');
+var jwt = require('jsonwebtoken');
+
 
 /* GET users listing. */
 /*router.post('/:product_name', function(req, res, next) {
@@ -45,40 +47,49 @@ router.get('/', function(req, res, next) {
 	})
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/add',loginVerification.verifyToken, function(req, res, next) {
 	var data = req.body;
 
-	console.log(data);
+	jwt.verify(req.token, 'GDSD', (err, authData) => {
+		if(err) {
+		  res.sendStatus(403);
+		} else {
+		  
+/////Adding Product
+Product.addProduct({
+	name :data.name,
+	slug : data.slug,
+	description : data.description,
+	price : data.price,
+	seller_id : data.seller_id,
+	more_details : data.more_details,
+	status : data.status,
+	category_id : data.category_id,
+	brand_id : data.brand_id,
+	product_condition : data.product_condition,
+	created_date : data.created_date,
+	modified_date : data.modified_date
+	
+}, (rows) => {
+if (!rows) {
+	res.json({
+		"status": "failed",
+		"user": null
+	})
+} else {
+	res.json({
+		"status": "sucessfull"
+	})
+}
+  })
+////////
+
+
+		}
+	  });
 
   
-	  Product.addProduct({
-		id : data.id,
-		product_id:uuidv4(),
-        name :data.name,
-        slug : data.slug,
-		description : data.description,
-		price : data.price,
-		seller_id : data.seller_id,
-		more_details : data.more_details,
-        status : data.status,
-        category_id : data.category_id,
-        brand_id : data.brand_id,
-        product_condition : data.product_condition,
-        created_date : data.created_date,
-        modified_date : data.modified_date
-        
-  }, (rows) => {
-	if (!rows) {
-		res.json({
-			"status": "failed",
-			"user": null
-		})
-	} else {
-		res.json({
-			"status": "sucessfull"
-		})
-	}
-	  })
+	
   
   });
 

@@ -3,12 +3,9 @@ var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 
 var Product = sequelize.define('products', {
-	id: {
-		type: Sequelize.CHAR,
-		allowNull: false
-	},
 	product_id: {
 		type: Sequelize.BIGINT(5),
+		autoIncrement: true,
 		primaryKey: true,
 		unique: true,
 		allowNull: false

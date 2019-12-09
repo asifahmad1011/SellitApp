@@ -7,6 +7,7 @@ import { ShopModule } from "./shop/shop.module";
 import { SharedModule } from "./shared/shared.module";
 import { ToastrModule } from 'ngx-toastr';
 import { rootRouterConfig } from './app.routes';
+
 // import { LoginService } from './pages/login/login.service';
 // import ngx-translate and the http loader
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     HttpClientModule,
     NgbModule,
+    NgxPaginationModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,

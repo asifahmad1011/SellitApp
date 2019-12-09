@@ -11,6 +11,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SearchComponent } from './search/search.component';
+import { SellComponent } from './sell/sell.component';
 import { CollectionComponent } from './collection/collection.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ContactComponent } from './contact/contact.component';
@@ -23,6 +24,7 @@ import { MasonaryTwoGridComponent } from './portfolio/masonary-two-grid/masonary
 import { MasonaryThreeGridComponent } from './portfolio/masonary-three-grid/masonary-three-grid.component';
 import { MasonaryFourGridComponent } from './portfolio/masonary-four-grid/masonary-four-grid.component';
 import { MasonaryFullwidthComponent } from './portfolio/masonary-fullwidth/masonary-fullwidth.component';
+
 
 @NgModule({
   imports: [
@@ -52,7 +54,7 @@ import { MasonaryFullwidthComponent } from './portfolio/masonary-fullwidth/mason
     MasonaryThreeGridComponent,
     MasonaryFourGridComponent,
     MasonaryFullwidthComponent,
-
+    SellComponent,
   ]
 })
 export class PagesModule { }

@@ -220,3 +220,14 @@ p {
   font-weight: 600 !important;
   color: #ff0076;
 }
+
+
+.card-deck .card {
+    display: flex;
+    flex: 1 0 0% ;
+    flex-direction: column; 
+    margin-right: 15px ;
+    margin-bottom: 0 ;
+    margin-left: 15px ;
+    margin-bottom: 8px !important;
+}

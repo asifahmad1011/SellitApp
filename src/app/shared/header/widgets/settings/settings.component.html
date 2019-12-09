@@ -9,6 +9,7 @@
   </ul>
 </div>
 <!-- Search -->
+
 <div id="search-overlay" class="search-overlay" *ngIf="show" [ngStyle]="{ 'display': 'block' }">
   <div>
     <span class="closebtn" title="Close Overlay" (click)="closeSearch()">×</span>
@@ -16,12 +17,40 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-12">
-            <form>
+            <form (ngSubmit)="search()">
               <div class="form-group">
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Search a Product">
+                <input type="text" (keyup)="searchTerm.next($event)" formControlName="search" class="form-control" id="exampleInputPassword1" placeholder="Search a Product">
               </div>
-              <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+              <div *ngIf="loading">
+                  <!-- <p class="search-message">Searching</p> -->
+                  <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+             </div>
             </form>
+          <div *ngIf="searchResults">
+             <div class="results" >
+                <div class="repo" *ngFor="let result of paginationElements | paginate: { itemsPerPage: 12, currentPage: page }">
+                   <div class="card-deck">
+                     <div class="card">
+                <img loading="lazy" src="../../assets/{{result.image}}"
+                    width="200"
+                    height="auto"
+                    alt="image"
+                />
+                <h2>{{result.product_name}}</h2>
+                <p>{{result.description}}</p>
+                <p>Price: {{result.price}}</p>
+                  </div>
+               </div> 
+             </div>
+           </div>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+
+    <div *ngIf="errorMessage" class="errorMessage">
+        <h2>Error</h2>
+        <p class="error">{{errorMessage}}</p>
+    </div>
+
           </div>
         </div>
       </div>

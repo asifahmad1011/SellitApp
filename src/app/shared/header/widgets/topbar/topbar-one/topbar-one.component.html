@@ -8,17 +8,23 @@
         <li class="mobile-wishlist">
           <a [routerLink]="'/home/wishlist'"></a>
         </li>
+
+        <li class="mobile-accountt">
+            <i class="fa fa-rocket" aria-hidden="true" [routerLink]="'/pages/search'"></i> 
+            <a [routerLink]="'/pages/sell'">{{ 'SELL'}}</a>
+          </li>
+
         <li class="onhover-dropdown mobile-account">
-          <i class="fa fa-user" aria-hidden="true"></i> {{ 'my-account' | translate }}
+          <i class="fa fa-user" aria-hidden="true"></i> {{ 'My-Account'}}
           <ul class="onhover-show-div">
             <li>
-              <a [routerLink]="'/pages/login'" data-lng="en">
-                  {{ 'login' | translate }}
+              <a [routerLink]="'/pages/login'">
+                  {{ 'login'}}
               </a>
             </li>
             <li>
-              <a [routerLink]="'/home/nine'" data-lng="es">
-                  {{ 'logout' | translate }}
+              <a [routerLink]="'/home/nine'">
+                  {{ 'logout'}}
               </a>
             </li>
           </ul>

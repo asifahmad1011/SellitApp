@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable, observable, of, empty } from 'rxjs';
 import { map } from "rxjs/operators";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class SearchService {
+export class SettingsService {
 
   public baseUrl = "http://localhost:3000/api/v1/product/";
   public searchResults: any;

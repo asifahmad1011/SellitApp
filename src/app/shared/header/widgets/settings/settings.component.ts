@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { Subject, throwError, of } from 'rxjs';
+import { map, debounceTime, distinctUntilChanged, switchMap, catchError, retryWhen, retry } from "rxjs/operators";
+import {SettingsService} from "./settings.service";
 import { CartItem } from '../../../../shared/classes/cart-item';
-import { CartService } from '../../../../shared/services/cart.service';
-import { ProductsService } from '../../../../shared/services/products.service';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 declare var $: any;
 
 @Component({
@@ -11,39 +12,65 @@ declare var $: any;
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingComponent implements OnInit {
 
-  @Input() shoppingCartItems  :   CartItem[] = [];
+    @Input() shoppingCartItems  :   CartItem[] = [];
+    public show  :   boolean = false;
+    public loading: boolean;
+    public searchTerm = new Subject<string>();
+    public baseUrl = "http://localhost:3000/api/v1/product/";
+    public searchResults: any;
+    public paginationElements: any;
+    public errorMessage: any;
+    public page:any;
+    
+    constructor(private searchService: SettingsService) { }
+    
+    public searchForm = new FormGroup({
+      search: new FormControl('', Validators.required),
+    });
+    
+  
+    public search(){
+      this.searchTerm.pipe(
+        map((e: any) => {
+          console.log(e.target.value);
+          return e.target.value
+        }),
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap(term => {
+          this.loading = true;
+          return this.searchService._searchEntries(term)
+        }),
+        catchError((e) => {
+          //handle the error and return it
+          console.log(e)
+          this.loading = false;
+          this.errorMessage = e.message;
+          return throwError(e);
+        }),
+      ).subscribe(v => {
+          this.loading = false;
+          //return the results and pass the to the paginate module
+          this.searchResults = v;
+          this.paginationElements = this.searchResults;
+      })
+    }
 
-  public show  :   boolean = false;
+   
+  
+    ngOnInit() {
+      this.search();
+    }
 
-  constructor(private translate: TranslateService, private cartService: CartService,
-   public productsService: ProductsService) { }
-
-  ngOnInit() { }
-
-  public updateCurrency(curr) {
-    this.productsService.currency = curr;
+    public openSearch() {
+      this.show = true;
+    }
+  
+    public closeSearch() {
+      this.show = false;
+    }
+  
   }
 
-  public changeLanguage(lang){
-    this.translate.use(lang)
-  }
-
-  public openSearch() {
-    this.show = true;
-  }
-
-  public closeSearch() {
-    this.show = false;
-  }
-
-  public getTotal(): Observable<number> {
-    return this.cartService.getTotalAmount();
-  }
-
-  public removeItem(item: CartItem) {
-    this.cartService.removeFromCart(item);
-  }
-
-}

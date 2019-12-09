@@ -1490,7 +1490,7 @@ $theme-deafult__toggle-spacing: floor($theme-deafult__item-height * 0.1);
   }
   .top-header {
     .header-dropdown {
-      .mobile-account, .mobile-wishlist{
+      .mobile-account, .mobile-accountt {
         position: fixed;
         bottom: 20px;
         right: 32%;
@@ -1503,6 +1503,8 @@ $theme-deafult__toggle-spacing: floor($theme-deafult__item-height * 0.1);
           color: $header-font;
           &:before {
             content: "\e602";
+            margin-right: -74px; 
+            // color: #fff;
           }
         }
         .onhover-show-div {
@@ -1516,13 +1518,15 @@ $theme-deafult__toggle-spacing: floor($theme-deafult__item-height * 0.1);
           }
         }
       }
-      .mobile-wishlist {
+      .mobile-accountt {
         right: 64%;
         i {
           font-family: $font-themify;
           color: $header-font !important;
           &:before {
-            content: "\e634";
+            content: "\e75c";
+            margin-right: -82px;
+            // color: #fff;
           }
         }
       }

@@ -15,4 +15,4 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   declarations: [LoginComponent]
 })
-export class SearchModule { }
+export class LoginModule { }

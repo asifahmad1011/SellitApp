@@ -2,6 +2,7 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 const Op = Sequelize.Op;
+var Image = require("../model/image");
 
 var Product = sequelize.define('products', {
   product_id: {
@@ -63,12 +64,16 @@ var Product = sequelize.define('products', {
   modified_date: {
     type: Sequelize.DATE
   },
-
-
 });
 
+Product.hasMany(Image, {foreignKey: "product_id", as : "image"});
+
+module.exports = Product;
+
 module.exports.getAllProducts = function (callback) {
-  Product.findAll()
+  Product.findAll({
+    include: {model: Image, as:"image"}
+  })
     .then(function (related) {
       //console.log(related[0].role.role);
       callback(related);

@@ -14,7 +14,7 @@ export class LoginService {
 
   constructor(private http : HttpClient) {   
   
-    this.Url = 'localhost:3000/api/v1/'; 
+    this.Url = '/api/v1/'; 
     
   
     const headerSettings: {[name: string]: string | string[]; } = {};  
@@ -22,7 +22,7 @@ export class LoginService {
     
   }  
   Login(model : any){  
-    //debugger;  
+    debugger;  
      var a =this.Url;
      console.log(a);  
   return this.http.post<any>(this.Url+'auth',model,{ headers: this.header}); 

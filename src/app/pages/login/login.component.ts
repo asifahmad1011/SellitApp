@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
     
     
   ngOnInit() {    
-    sessionStorage.removeItem('token');    
-    // sessionStorage.clear(); 
+    sessionStorage.removeItem('matrikel_number');    
+    sessionStorage.clear(); 
     console.log("Session:",sessionStorage);   
   }    
   login(){

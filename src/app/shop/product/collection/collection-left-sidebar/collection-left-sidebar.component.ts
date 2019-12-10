@@ -43,12 +43,6 @@ export class CollectionLeftSidebarComponent implements OnInit {
     private productsService: ProductsService) { 
        this.route.params.subscribe(params => {
           const category = params['category'];
-          this.productsService.getProductByCategory(category).subscribe(products => {
-             this.allItems = products  // all products
-             this.products = products.slice(0,8)
-             this.getTags(products)
-             this.getColors(products)
-          })
        });
   }
 

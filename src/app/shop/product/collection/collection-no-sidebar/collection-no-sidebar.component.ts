@@ -36,10 +36,6 @@ export class CollectionNoSidebarComponent implements OnInit {
     private productsService: ProductsService, private paginateService: PaginationService) { 
        this.route.params.subscribe(params => {
           const category = params['category'];
-          this.productsService.getProductByCategory(category).subscribe(products => {
-             this.allProduct = products
-             this.setPage(1);
-          })
        });
   }
 

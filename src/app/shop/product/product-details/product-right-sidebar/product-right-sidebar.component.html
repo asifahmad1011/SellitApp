@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <ngx-slick-carousel class="product-slick" #slickModal="slick-carousel" [config]="slideConfig">
-                  <div ngxSlickItem *ngFor="let image of product.pictures">
+                  <div ngxSlickItem *ngFor="let image of products.image">
                     <div>
                       <img [src]="image" alt="" class="img-fluid">
                     </div>
@@ -48,7 +48,7 @@
                 <div class="row">
                   <div class="col-12 p-0">
                     <ngx-slick-carousel class="slider-nav" #slickModal="slick-carousel" [config]="slideNavConfig">
-                      <div ngxSlickItem *ngFor="let image of product.pictures">
+                      <div ngxSlickItem *ngFor="let image of products.image">
                         <div>
                           <img [src]="image" alt="" class="img-fluid">
                         </div>
@@ -59,11 +59,10 @@
               </div>
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
-                  <h2>{{product.name}}</h2>
-                  <h4 *ngIf="!productsService?.catalogMode"><del>{{product.salePrice | currency:productsService?.currency:'symbol'}}</del><span>{{product.discount}}% off</span></h4>
-                  <h3 *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}}</h3>
+                  <h2>{{products.name}}</h2>
+                  <h4 *ngIf="!productsService?.catalogMode"><del>{{products.price | currency:productsService?.currency:'symbol'}}</del></h4>
+                  <h3 *ngIf="!productsService?.catalogMode">{{products.price | currency:productsService?.currency:'symbol'}}</h3>
                   <ul class="color-variant" *ngIf="!productsService?.catalogMode">
-                    <li [class]="variant.color" (click)="slickModal.slickGoTo(i)" *ngFor="let variant of product.variants let i = index"></li>
                   </ul>
                   <div class="product-description border-product" *ngIf="!productsService?.catalogMode">
   
@@ -72,12 +71,12 @@
                     <h5 class="avalibility" *ngIf="counter > product.stock"><span>Out of Stock</span></h5> -->
                     <div >
                       <h6 class="product-title">product details</h6>
-                      <p>{{product.shortDetails}}</p>
+                      <p>{{products.more_details}}</p>
                     </div>
                   </div>
                   <div class="product-buttons" *ngIf="!productsService?.catalogMode">
-                    <a [routerLink]=""  class="btn btn-solid" [class.disabled]="counter > product.stock">Chat with Seller</a>
-                    <a [routerLink]=""  class="btn btn-solid" [class.disabled]="counter > product.stock">HELP!</a>
+                    <a [routerLink]=""  class="btn btn-solid" >Chat with Seller</a>
+                    <a [routerLink]=""  class="btn btn-solid" >HELP!</a>
                   </div>
 
                   <div class="border-product">
@@ -131,44 +130,14 @@
                 </ul>
                 <div class="tab-content nav-material" id="top-tabContent">
                   <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                    <p>{{product.description}}</p>
+                    <p>{{products.description}}</p>
                   </div>
                   <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                    <p>{{product.shortDetails}}</p>
-                    <div class="single-product-tables">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>Febric</td>
-                            <td>Chiffon</td>
-                          </tr>
-                          <tr>
-                            <td>Color</td>
-                            <td>Red</td>
-                          </tr>
-                          <tr>
-                            <td>Material</td>
-                            <td>Crepe printed</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>Length</td>
-                            <td>50 Inches</td>
-                          </tr>
-                          <tr>
-                            <td>Size</td>
-                            <td>S, M, L .XXL</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    <p>{{products.more_details}}</p>
                   </div>
                   <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                     <div class="mt-3 text-center">
-                      <iframe width="560" height="315" src="https://www.youtube.com/embed/BUWzX78Ye_8" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                      <iframe width="560" height="315" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                   </div>
                   <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">

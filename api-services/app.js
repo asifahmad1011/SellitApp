@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var products = require("./routes/product");
 var studentRecords = require("./routes/studentrecord");
 var auths = require("./routes/authentications");
+var chat = require("./routes/Chat");
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/product', products);
 app.use('/api/v1/studentrecord', studentRecords);
 app.use("/api/v1/auth", auths);
+app.use("/api/v1/chat", chat);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 

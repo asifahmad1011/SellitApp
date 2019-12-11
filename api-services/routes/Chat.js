@@ -2,6 +2,20 @@ var express = require('express');
 var router = express.Router();
 var Chat = require("../controller/ChatController");
 
+router.get('/:matrikel_number', function(req, res, next) {
+    var matrikel_number =req.params.matrikel_number;
+        Chat.getAllCommunications(matrikel_number, (rows) => {
+            if (!rows) {
+                res.json({
+                    "status": "failed",
+                    "user": null
+                })
+            } else {
+          res.json({products: rows});
+            }
+        });
+    });
+  
 router.post('/getAllMessages', function(req, res, next) {
     console.log(req.body);
     var data = req.body;

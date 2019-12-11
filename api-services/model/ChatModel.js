@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
-User=require("../model/user");
+User=require("./UserModel");
 
 
 var Chat = sequelize.define("chat",{

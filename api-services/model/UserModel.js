@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
-const Op = Sequelize.Op;
+
 
 var User = sequelize.define("users",{
     matrikel_number : {
@@ -59,37 +59,4 @@ var User = sequelize.define("users",{
   }
 )
 
-module.exports.createUser  = function(user, callback){
-  User.create(user).then(function(related){
-    callback(related);
-    //console.log(related);
-  }).catch(function(err){
-    callback(err);
-    //console.log(err);
-  })
-}
-
-module.exports.getAllUser = function(callback){
-  User.findAll().then(function(result){
-    callback(result);
-  }).catch(function(err){
-    callback(err);
-  });
-
-}
-
-module.exports.getUser = function(loginKey,password,callback){
-  console.log(loginKey + " " +  password);
-  User.findAll({
-    where: {
-      [Op.or]:  [{username: loginKey}, {matrikel_number: loginKey}],
-      password:password
-    }
-  }).then(function(result){
-    callback(result);
-  }).catch(function(err){
-    callback(err);
-    console.log(err);
-  });
-
-}
+module.exports=User;

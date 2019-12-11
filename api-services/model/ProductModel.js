@@ -2,6 +2,8 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 const Op = Sequelize.Op;
+var Image = require("./ImageModel");
+
 
 var Product = sequelize.define('products', {
   product_id: {
@@ -67,5 +69,7 @@ var Product = sequelize.define('products', {
 
 });
 
+
+Product.hasMany(Image, {foreignKey: "product_id", as : "image"});
 module.exports = Product;
 

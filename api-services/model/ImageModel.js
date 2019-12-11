@@ -1,8 +1,6 @@
 /*user model*/
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
-const Op = Sequelize.Op;
-var productmodel = require("../model/product");
 
 var Image = sequelize.define('images', {
   image_id: {

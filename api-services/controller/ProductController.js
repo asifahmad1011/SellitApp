@@ -1,9 +1,12 @@
 var Product = require('../model/ProductModel');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+var Image=require("../model/ImageModel")
 
 module.exports.getAllProducts = function (callback) {
-	Product.findAll()
+	Product.findAll({
+		include: {model: Image, as:"image"}
+	  })
 	  .then(function (related) {
 		//console.log(related[0].role.role);
 		callback(related);

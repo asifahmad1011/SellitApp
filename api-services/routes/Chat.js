@@ -11,7 +11,7 @@ router.get('/:matrikel_number', function(req, res, next) {
                     "user": null
                 })
             } else {
-          res.json({products: rows});
+          res.json({rows});
             }
         });
     });

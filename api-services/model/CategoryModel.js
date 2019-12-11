@@ -1,29 +1,24 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 
-
-var Chat = sequelize.define("chat",{
-    chat_id : {
+var Category = sequelize.define("category",{
+    category_id : {
       type: Sequelize.BIGINT(11),
       autoIncrement: true,
       allowNull : false,
       primaryKey : true
     },
-    product_id : {
+    parent_id : {
       type: Sequelize.BIGINT(11)
     },
-    sender_id : {
-        type: Sequelize.BIGINT(11),
+    name : {
+      type: Sequelize.STRING(20),
       allowNull : false,
     },
-    receiver_id : {
-        type: Sequelize.BIGINT(11),
-      allowNull : false,
-    },
-    message : {
-      type: Sequelize.TEXT,
-      allowNull : false,
-    },
+    description : {
+        type: Sequelize.TEXT,
+        allowNull : false,
+      },
     created_date : {
       type: Sequelize.DATE,
       allowNull : false,
@@ -34,5 +29,5 @@ var Chat = sequelize.define("chat",{
     },
   }
 )
-module.exports=Chat;
+module.exports=Category;
 

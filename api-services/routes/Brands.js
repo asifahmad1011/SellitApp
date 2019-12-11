@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var Category = require("../controller/CategoryController");
+var Brand = require("../controller/BrandController");
 
 router.get('/', function (req, res, next) {
-    Category.getAllCategories((rows) => {
+    Brand.getAllBrands((rows) => {
         if (!rows || !rows.length) {
             res.json({
                 "status": "failed",
-                "category": null
+                "brand": null
             })
         } else {
             res.json({ rows });

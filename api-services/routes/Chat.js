@@ -8,7 +8,7 @@ router.get('/:matrikel_number', function(req, res, next) {
             if (!rows) {
                 res.json({
                     "status": "failed",
-                    "user": null
+                    "cahat": null
                 })
             } else {
           res.json({rows});
@@ -25,7 +25,7 @@ router.post('/getAllMessages', function(req, res, next) {
           if (!rows || !rows.length) {
               res.json({
                   "status": "failed",
-                  "user": null
+                  "message": null
               })
           } else {
               res.json({

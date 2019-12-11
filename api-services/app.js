@@ -12,6 +12,7 @@ var studentRecords = require("./routes/Studentrecord");
 var auths = require("./routes/Authentications");
 var chat = require("./routes/Chat");
 var category = require("./routes/Category");
+var brand = require("./routes/Brands");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/v1/studentrecord', studentRecords);
 app.use("/api/v1/auth", auths);
 app.use("/api/v1/chat", chat);
 app.use("/api/v1/category", category);
+app.use("/api/v1/brand", brand);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;

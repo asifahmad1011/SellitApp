@@ -12,62 +12,33 @@ export class AboutUsComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Testimonial Carousel
-  public testimonial = [{
-     image: 'assets/images/avtar.jpg',
-     name: 'Mark jkcno',
-     designation: 'Designer',
-     description: 'you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings.',
-   }, {
-     image: 'assets/images/2.jpg',
-     name: 'Adegoke Yusuff',
-     designation: 'Content Writer',
-     description: 'you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings.',
-   }, {
-     image: 'assets/images/avtar.jpg',
-     name: 'John Shipmen',
-     designation: 'Lead Developer',
-     description: 'you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings.',
-  }]
-
-  // Teastimonial Slick slider config
-  public testimonialSliderConfig = {
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    responsive: [
-        {
-            breakpoint: 991,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ]
-  };
-
   // Team 
   public team = [{
-     image: 'assets/images/team/1.jpg',
-     name: 'Mark jkcno',
-     designation: 'Designer'
+     image: 'assets/images/team/',
+     name: 'Damilare Oyebanji',
+     designation: 'Group Lead & Backend Developer'
    }, {
      image: 'assets/images/team/2.jpg',
-     name: 'Adegoke Yusuff',
-     designation: 'Content Writer'
+     name: 'Parvin',
+     designation: 'Backend Developer'
    }, {
      image: 'assets/images/team/3.jpg',
-     name: 'John Shipmen',
-     designation: 'Lead Developer'
+     name: 'Saksham Bhatnagar',
+     designation: 'Frontend Developer'
    }, {
      image: 'assets/images/team/4.jpg',
-     name: 'Hileri Keol',
-     designation: 'CEO & Founder at Company'
+     name: 'Lakshmi Ramesh',
+     designation: 'Database Engineer'
    }, {
-     image: 'assets/images/team/3.jpg',
-     name: 'John Shipmen',
-     designation: 'Lead Developer'
-  }]
+     image: 'assets/images/team/5.jpg',
+     name: 'Sheila Adjei',
+     designation: 'Frontend Developer'
+  }, {
+    image: 'assets/images/team/6.jpg',
+    name: 'Asif Ahmad',
+    designation: 'Frontend Developer'
+ },
+]
 
   // Team Slick slider config
   public teamSliderConfig = {

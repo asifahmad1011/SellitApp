@@ -1,0 +1,46 @@
+import { Injectable } from "@angular/core";
+import { Adapter } from './adapter';
+
+export class Product {
+  constructor(
+  public product_id: number,
+  public name: string,
+  public slug: string,
+  public description: string,
+  public price: number,
+  public seller_id: number,
+  public more_details: string,
+  public status: number,
+  public category_id: number,
+  public brand_id: number,
+  public product_condition: number,
+  public pictures: string,
+  public created_date: Date
+  ) {}
+ }
+
+@Injectable({
+  providedIn: 'root'
+})
+
+// Product
+export class ProductAdapter implements Adapter<Product> {
+
+adapt(item: any): Product {
+  return new Product(
+  item.product_id,
+  item.name,
+  item.slug,
+  item.description,
+  item.price,
+  item.seller_id,
+  item.more_details,
+  item.status,
+  item.category_id,
+  item.brand_id,
+  item.product_condition,
+  item.images,
+  new Date(item.created_date),
+  ); 
+}
+}

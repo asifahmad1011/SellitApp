@@ -25,7 +25,6 @@ import { ProductBoxVerticalComponent } from './product/product-box-vertical/prod
 import { ProductBoxMetroComponent } from './product/product-box-metro/product-box-metro.component';
 import { CollectionLeftSidebarComponent } from './product/collection/collection-left-sidebar/collection-left-sidebar.component';
 import { CollectionRightSidebarComponent } from './product/collection/collection-right-sidebar/collection-right-sidebar.component';
-import { CollectionNoSidebarComponent } from './product/collection/collection-no-sidebar/collection-no-sidebar.component';
 import { BrandComponent } from './product/collection/filter/brand/brand.component';
 import { PriceComponent } from './product/collection/filter/price/price.component';
 import { ProductRightSidebarComponent } from './product/product-details/product-right-sidebar/product-right-sidebar.component';
@@ -83,7 +82,6 @@ import { ColorComponent } from './product/collection/filter/color/color.componen
     ProductBoxMetroComponent,
     CollectionLeftSidebarComponent,
     CollectionRightSidebarComponent,
-    CollectionNoSidebarComponent,
     BrandComponent,
     PriceComponent,
     ColorComponent,

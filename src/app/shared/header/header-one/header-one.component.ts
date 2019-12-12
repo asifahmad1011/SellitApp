@@ -5,6 +5,7 @@ import { WINDOW } from '../../services/windows.service';
 import { CartItem } from '../../classes/cart-item';
 import { CartService } from '../../services/cart.service';
 import { Observable, of } from 'rxjs';
+import { NgxPaginationModule } from 'ngx-pagination';
 declare var $: any;
 
 @Component({

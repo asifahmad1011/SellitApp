@@ -15,20 +15,17 @@ export class CollectionBannerNineComponent implements OnInit {
   // Collection banner
   public category = [{
     image: 'assets/images/electronics/5.jpg',
-    save: '10% off',
-    title: 'speaker',
-    link: '/home/left-sidebar/collection/electronics'
+    title: 'Speakers',
+    link: '/home/nine'
   }, {
     image: 'assets/images/electronics/6.jpg',
-    save: '10% off',
-    title: 'earplug',
-    link: '/home/left-sidebar/collection/electronics'
+    title: 'Laptops',
+    link: '/home/nine'
   },
   {
     image: 'assets/images/electronics/7.jpg',
-    save: '10% off',
-    title: 'best deal',
-    link: '/home/left-sidebar/collection/electronics'
+    title: 'Bikes',
+    link: '/home/nine'
   }]
 
 }

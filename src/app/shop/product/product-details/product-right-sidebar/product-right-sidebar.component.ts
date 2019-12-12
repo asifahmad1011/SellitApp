@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Product } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
-import { WishlistService } from '../../../../shared/services/wishlist.service';
-import { CartService } from '../../../../shared/services/cart.service';
 import { Observable, of } from 'rxjs';
 import * as $ from 'jquery';
 
@@ -19,18 +17,34 @@ export class ProductRightSidebarComponent implements OnInit {
   public counter            :   number = 1; 
   public selectedSize       :   any = '';
   
+
+//she
+  selectedProduct;
+  image = "src\assets\apple-watch-premium-design-vs-pebble-time-round-classic-design.jpg";
+  
   //Get Product By Id
-  constructor(private route: ActivatedRoute, private router: Router,
-    public productsService: ProductsService, private wishlistService: WishlistService,
-    private cartService: CartService) {
-      this.route.params.subscribe(params => {
-        const id = +params['id'];
-        this.productsService.getProduct(id).subscribe(product => this.product = product)
-      });
-  }
+  // constructor(private route: ActivatedRoute, private router: Router,
+  //   public productsService: ProductsService, private wishlistService: WishlistService,
+  //   private cartService: CartService) {
+  //     this.route.params.subscribe(params => {
+  //       const id = +params['id'];
+  //       this.productsService.getProduct(id).subscribe(product => this.product = product)
+  //     });
+  // }
+
+  //she
+  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe(product => this.products = product);
+  //she
+    this.activeRoute.params.subscribe(p => {
+      var productId = p['id'];
+
+      this.productsService.getProductById(productId).subscribe(res => {
+        this.selectedProduct = res;
+      });
+
+    })
   }
 
   public slideConfig = {
@@ -67,7 +81,7 @@ export class ProductRightSidebarComponent implements OnInit {
 
  
 
-  // Add to cart
+  /*/ Add to cart
   public addToCart(product: Product, quantity) {
     if (quantity == 0) return false;
     this.cartService.addToCart(product, parseInt(quantity));
@@ -88,6 +102,6 @@ export class ProductRightSidebarComponent implements OnInit {
   // Change size variant
   public changeSizeVariant(variant) {
      this.selectedSize = variant;
-  }
+  }*/
 
 }

@@ -27,10 +27,12 @@
                 <div class="row">
                   <div class="col mega-box" *ngFor="let childrenItem of menuItem.children">
                     <div class="link-section">
+                      
                       <div class="menu-title">
                         <h5>{{childrenItem.title | translate}}</h5>
                       </div>
                       <div class="menu-content">
+                          
                         <!-- 3nd Level Mega Menu -->
                         <ul>
                           <li *ngFor="let childrenSubItem of childrenItem.children">

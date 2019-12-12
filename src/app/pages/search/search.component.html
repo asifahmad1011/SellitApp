@@ -1,37 +1,18 @@
-<!-- breadcrumb start -->
-<!-- <div class="breadcrumb-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="page-title">
-          <h2>search</h2>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <nav aria-label="breadcrumb" class="theme-breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/home/nine'">Home</a></li>
-            <li class="breadcrumb-item active">search</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- breadcrumb End -->
-<!-- section start -->
-<section>
-  <form [formGroup]="searchForm">
-      <label>
-         <input type="text" (keyup)="searchTerm.next($event)" formControlName="search" placeholder="Search Here..." />
-      
-         <div *ngIf="loading">
-              <!-- <p class="search-message">Searching</p> -->
-              <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-         </div>
-      </label>    
 
-  </form>
+<section class="search-block">
+   
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                      <form [formGroup]="searchForm" class="form-header">
+                        <div class="form-group">
+                          <input type="text" (keyup)="searchTerm.next($event)"  class="form-control" formControlName="search" id="exampleInputPassword1" placeholder="Search Here...">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
 
   <div *ngIf="searchResults">
     <div class="results" >
@@ -41,9 +22,9 @@
               <img loading="lazy" src="../../assets/{{result.image}}"
                   width="200"
                   height="auto"
-                  alt="avatar"
+                  alt="image"
               />
-              <h2>{{result.product_name}}</h2>
+              <h4><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.product_name}}</a></h4>
               <p>{{result.description}}</p>
               <p>Price: {{result.price}}</p>
           </div>

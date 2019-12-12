@@ -16,7 +16,7 @@ module.exports.getAllProducts = function (callback) {
 		callback(err);
 	  });
   }
-  
+
   module.exports.getAllProductsByName = function (product_name, callback) {
 	Product.findAll({
 	  where: {
@@ -35,7 +35,12 @@ module.exports.getAllProducts = function (callback) {
 	  });
   }
   module.exports.getProductById = function (product_id, callback) {
-	Product.findByPk(product_id)
+	Product.findAll({
+	  where: {
+      product_id: product_id
+    },
+    include: {model: Image, as:"image"}
+	})
 	  .then(function (related) {
 		//console.log(related[0].role.role);
 		callback(related);
@@ -45,10 +50,10 @@ module.exports.getAllProducts = function (callback) {
 		callback(err);
 	  });
   }
-  
-  
+
+
   module.exports.addProduct = function (product, callback) {
-  
+
 	Product.build(product).save().then((data) => {
 	  console.log(data.dataValues);
 	  callback(data.dataValues);
@@ -56,5 +61,5 @@ module.exports.getAllProducts = function (callback) {
 	  callback(err);
 	})
   }
-  
-  
+
+

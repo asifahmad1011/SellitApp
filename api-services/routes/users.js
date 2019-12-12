@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Users = require("../model/user");
+var Users = require("../controller/UserController");
 var utili = require("../utility/utility");
 
 /* GET users listing. */
@@ -23,7 +23,6 @@ router.post("/", function(req,res,next){
   console.log(data);
   Users.createUser(
         {
-        id : data.id,
         matrikel_number : data.matrikel_number,
         first_name : data.first_name,
         last_name : data.last_name,

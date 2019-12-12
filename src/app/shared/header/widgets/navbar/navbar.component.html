@@ -37,9 +37,9 @@
                         <ul>
                           <li *ngFor="let childrenSubItem of childrenItem.children">
                             <!-- Link -->
-                            <!-- <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]" *ngIf="childrenSubItem.type === 'link'">
+                            <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]" *ngIf="childrenSubItem.type === 'link'">
                                {{childrenSubItem.title | translate}}
-                            </a> -->
+                            </a>
                           </li>
                         </ul>
                       </div>

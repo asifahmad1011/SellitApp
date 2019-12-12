@@ -11,7 +11,7 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   model : any={};   
-  public baseUrl = "/api/v1/"; 
+  public baseUrl = "http://localhost:3000/api/v1/"; 
     
   errorMessage:string;    
   constructor(private router:Router,private LoginService:LoginService) { }    

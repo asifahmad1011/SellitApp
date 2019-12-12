@@ -1,4 +1,3 @@
-
 <!-- section start -->
 <section class="register-page section-b-space">
     <div class="container">
@@ -6,25 +5,25 @@
             <div class="col-lg-12">
                 <h3>create account</h3>
                 <div class="theme-card">
-                    <form [formGroup]="register" (ngSubmit)="onFormSubmit(register.value)" class="theme-form">
+                    <form [formGroup]="registerForm" class="theme-form" (ngSubmit)="Register()">
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">First Name</label>
-                                <input type="text" class="form-control" id="fname"  name="first_name" placeholder="First Name" required="">
+                                <label for="email">Matrikulation Number</label>
+                                <input type="text" formControlName="matrikel_number" class="form-control" name="matrikel_number" id="matrikNumber" [(ngModel)]="model.matrikel_number" placeholder="Matrikulation Number" required="" />
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Last Name</label>
-                                <input type="password" class="form-control" id="lname"  name="last_name"  placeholder="Last Name" required="">
+                                <label for="review">User Name</label>
+                                <input type="text" class="form-control" formControlName="username" name="username" [(ngModel)]="model.username" id="userName" placeholder="User Name" required="" />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">email</label>
-                                <input type="text" class="form-control" id="email"  name="email" placeholder="Email" required="">
+                                <label for="review">Password</label>
+                                <input type="password" class="form-control" formControlName="password" name="password" [(ngModel)]="model.password" id="review" placeholder="Enter password" required="" />
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Password</label>
-                                <input type="password" class="form-control" id="review" name="password" placeholder="Enter your password" required="">
+                                <label for="review">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" [(ngModel)]="model.confirmPassword" id="review" placeholder="Confirm password" required="" />
                             </div>
                             <button class="btn btn-solid">create Account</button>
                         </div>
@@ -32,10 +31,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div *ngIf="errorMessage" class="errorMessage">
-        <h2>Error</h2>
-        <p class="error">{{errorMessage}}</p>
     </div>
 </section>
 <!--Section ends-->

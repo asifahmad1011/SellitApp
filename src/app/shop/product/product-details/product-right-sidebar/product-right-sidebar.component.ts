@@ -20,7 +20,7 @@ export class ProductRightSidebarComponent implements OnInit {
 
 //she
   selectedProduct;
-  image = "src\assets\apple-watch-premium-design-vs-pebble-time-round-classic-design.jpg";
+  image = "";
   
   //Get Product By Id
   // constructor(private route: ActivatedRoute, private router: Router,
@@ -41,6 +41,7 @@ export class ProductRightSidebarComponent implements OnInit {
       var productId = p['id'];
 
       this.productsService.getProductById(productId).subscribe(res => {
+        console.log(res);
         this.selectedProduct = res;
       });
 
@@ -78,30 +79,4 @@ export class ProductRightSidebarComponent implements OnInit {
           this.counter -= 1;
       }
   }
-
- 
-
-  /*/ Add to cart
-  public addToCart(product: Product, quantity) {
-    if (quantity == 0) return false;
-    this.cartService.addToCart(product, parseInt(quantity));
-  }
-
-  // Add to cart
-  public buyNow(product: Product, quantity) {
-     if (quantity > 0) 
-       this.cartService.addToCart(product,parseInt(quantity));
-       this.router.navigate(['/home/checkout']);
-  }
-
-  // Add to wishlist
-  public addToWishlist(product: Product) {
-     this.wishlistService.addToWishlist(product);
-  }
-  
-  // Change size variant
-  public changeSizeVariant(variant) {
-     this.selectedSize = variant;
-  }*/
-
 }

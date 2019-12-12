@@ -50,7 +50,7 @@
     "ngx-pagination": "^5.0.0",
     "ngx-paypal": "^3.2.1",
     "ngx-rangeslider-component": "^1.0.6",
-    "ngx-slick-carousel": "^0.4.4",
+    "ngx-slick-carousel": "^0.4.6",
     "ngx-sticky": "^2.0.1",
     "ngx-toastr": "^10.0.4",
     "node-sass": "^4.12.0",

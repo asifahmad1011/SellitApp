@@ -1,24 +1,4 @@
-<!-- breadcrumb start -->
-<div class="breadcrumb-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="page-title">
-          <h2>collection</h2>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <nav aria-label="breadcrumb" class="theme-breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/home/one'">home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">collection</li>
-          </ol>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- breadcrumb end -->
+
 <!-- section start -->
 <section class="section-b-space">
   <div class="collection-wrapper">
@@ -33,8 +13,8 @@
                     <a [routerLink]="'/home/left-sidebar/collection/men'"><img src="assets/images/mega-menu/2.jpg" class="img-fluid" alt=""></a>
                     <div class="top-banner-content small-section">
                       <h4>fashion</h4>
-                      <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+                      <h5></h5>
+                      <p></p>
                     </div>
                   </div>
                   <div class="collection-product-wrapper">
@@ -142,7 +122,7 @@
               <app-color [colorsFilters]="colors" (colorFilters)="updateColorFilters($event)" *ngIf="colors.length"></app-color>
               <app-price (priceFilters)="updatePriceFilters($event)"></app-price>
             </div>
-            <app-new-product></app-new-product>
+            <!-- <app-new-product></app-new-product> -->
             <div class="collection-sidebar-banner">
               <a [routerLink]="">
                 <img src="assets/images/side-banner.png" class="img-fluid" alt="">
@@ -157,4 +137,3 @@
 </section>
 <!-- section End -->
 <app-quick-view></app-quick-view>
-<app-modal-cart></app-modal-cart>

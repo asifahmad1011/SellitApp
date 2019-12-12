@@ -19,6 +19,7 @@ import { MasonaryTwoGridComponent } from './portfolio/masonary-two-grid/masonary
 import { MasonaryThreeGridComponent } from './portfolio/masonary-three-grid/masonary-three-grid.component';
 import { MasonaryFourGridComponent } from './portfolio/masonary-four-grid/masonary-four-grid.component';
 import { MasonaryFullwidthComponent } from './portfolio/masonary-fullwidth/masonary-fullwidth.component';
+import { SellComponent } from './sell/sell.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'search',
         component: SearchComponent
+      },
+      {
+        path: 'sell',
+        component: SellComponent
       },
       {
         path: 'collection',

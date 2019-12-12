@@ -1024,6 +1024,7 @@ header {
       a {
         text-transform: capitalize;
         color: #999999;
+        margin-right: 23px;
       }
 
       i {
@@ -3378,11 +3379,13 @@ header {
       padding-right: 50px;
 
       h2 {
-        font-size: 36px;
+        font-size: 24px;
         letter-spacing: 0.05em;
         color: white;
-        margin-top: 5px;
-        margin-bottom: -7px;
+        margin-top: 9px;
+        margin-bottom: 9px;
+        margin-left: 0px;
+        margin-right: 63px;
       }
 
       h4 {
@@ -3449,7 +3452,7 @@ header {
     .contain-banner {
       &.banner-3 {
         h2{
-          color: $dark-font;
+          color: white;
         }
         h4 {
           color: $theme-deafult;
@@ -11203,7 +11206,7 @@ body.rtl {
     .contain-banner {
       &.banner-3 {
         h2 {
-          color: #222222;
+          color:white;
         }
       }
     }

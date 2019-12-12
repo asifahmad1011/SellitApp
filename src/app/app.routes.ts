@@ -24,7 +24,7 @@ export const rootRouterConfig: Routes = [
       {
         path: 'pages',
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-      }     
+      }
     ]
   },
   {path: "", loadChildren: () => import("./pages/search/search.module").then(m => m.SearchModule)},

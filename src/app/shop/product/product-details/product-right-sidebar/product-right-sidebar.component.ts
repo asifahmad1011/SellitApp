@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Product } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
-import { WishlistService } from '../../../../shared/services/wishlist.service';
-import { CartService } from '../../../../shared/services/cart.service';
 import { Observable, of } from 'rxjs';
 import * as $ from 'jquery';
 
@@ -18,7 +16,7 @@ export class ProductRightSidebarComponent implements OnInit {
   public products           :   Product[] = [];
   public counter            :   number = 1; 
   public selectedSize       :   any = '';
-
+  
 
 //she
   selectedProduct;

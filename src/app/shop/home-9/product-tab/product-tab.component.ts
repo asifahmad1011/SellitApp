@@ -11,7 +11,7 @@ export class ProductTabNineComponent implements OnInit {
   
    // Get product Using Input
   @Input() products: Product;
-
+  
   constructor() { }
 
   ngOnInit() {

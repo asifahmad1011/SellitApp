@@ -22,10 +22,11 @@ router.post('/', function(req, res, next) {
 				"user": null
 			})
 		} else {
-			res.json({
-				token,
-				"status": "sucessfull",
-			})
+			// res.json({
+			// 	token,
+			// 	"status": "sucessfull",
+			// })
+			res.render('search.ejs')
 		}
 	})
 

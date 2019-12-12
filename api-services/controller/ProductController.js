@@ -5,7 +5,11 @@ var Image=require("../model/ImageModel")
 
 module.exports.getAllProducts = function (callback) {
 	Product.findAll({
-		include: {model: Image, as:"image"}
+		include: {
+			model: Image, 
+			as:"image",
+			where: { primary_image_id: '0' }
+		}
 	  })
 	  .then(function (related) {
 		//console.log(related[0].role.role);
@@ -23,7 +27,12 @@ module.exports.getAllProducts = function (callback) {
 		name: {
 		  [Op.substring]: product_name
 		}
-	  }
+	  },
+	  include: {
+		model: Image, 
+		as:"image",
+		where: { primary_image_id: '0' }
+	}
 	})
 	  .then(function (related) {
 		//console.log(related[0].role.role);
@@ -35,7 +44,15 @@ module.exports.getAllProducts = function (callback) {
 	  });
   }
   module.exports.getProductById = function (product_id, callback) {
-	Product.findByPk(product_id)
+	Product.findAll({
+		where:{
+			product_id:product_id
+		},
+		include: {
+			model: Image, 
+			as:"image"
+		}
+	  })
 	  .then(function (related) {
 		//console.log(related[0].role.role);
 		callback(related);

@@ -3,15 +3,10 @@ var sequelize = require('../common/mysql');
 const Op = Sequelize.Op;
 
 var User = sequelize.define("users",{
-    id:{
-      type: Sequelize.CHAR(30),
-      allowNull: false
-    },
     matrikel_number : {
       type: Sequelize.BIGINT(11),
       allowNull : false,
-      primaryKey : true,
-      unique : true
+      primaryKey : true
     },
     first_name : {
       type: Sequelize.STRING(25),

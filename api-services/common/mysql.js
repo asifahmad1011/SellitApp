@@ -9,7 +9,6 @@ const sequelize = new Sequelize({
     dialect: 'mysql',
     define: {
       timestamps: false,
-      freezeTableName: true
     },
     operatorsAliases: false,
     pool: {

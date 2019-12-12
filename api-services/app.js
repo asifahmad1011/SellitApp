@@ -6,13 +6,10 @@ const swaggerUi = require('swagger-ui-express');
 
 const swaggerDocument = require('./swagger.json');
 
-var users = require('./routes/Users');
-var products = require("./routes/Product");
-var studentRecords = require("./routes/Studentrecord");
-var auths = require("./routes/Authentications");
-var chat = require("./routes/Chat");
-var category = require("./routes/Category");
-var brand = require("./routes/Brands");
+var users = require('./routes/users');
+var products = require("./routes/product");
+var studentRecords = require("./routes/studentrecord");
+var auths = require("./routes/authentications");
 
 var app = express();
 
@@ -30,9 +27,7 @@ app.use('/api/v1/users', users);
 app.use('/api/v1/product', products);
 app.use('/api/v1/studentrecord', studentRecords);
 app.use("/api/v1/auth", auths);
-app.use("/api/v1/chat", chat);
-app.use("/api/v1/category", category);
-app.use("/api/v1/brand", brand);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 module.exports = app;

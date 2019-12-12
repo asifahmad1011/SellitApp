@@ -1,6 +1,6 @@
 var express = require('express');
 //const app = express();
-var student = require('../controller/StudentarchiveController');
+var student = require('../model/studentarchive');
 var utili = require("../utility/utility");
 var router = express.Router();
 

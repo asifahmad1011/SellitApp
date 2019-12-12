@@ -1,7 +1,7 @@
 var express = require('express');
-var Product = require('../controller/ProductController');
+var Product = require('../model/product');
 var router = express.Router();
-var loginVerification = require('../utility/LoginVerification');
+var loginVerification = require('./loginVerification');
 var jwt = require('jsonwebtoken');
 
 

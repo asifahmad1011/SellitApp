@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Users = require("../controller/UserController");
+var Users = require("../model/user");
 var jwt = require('jsonwebtoken');
 
 

@@ -17,7 +17,7 @@ let products = JSON.parse(localStorage.getItem("compareItem")) || [];
 export class ProductsService {
 
   //Accessing the server address+api/products(she)
-  private serverUrl = "/api/v1/product";
+  private serverUrl = "http://localhost:3000/api/v1/product";
   
   public currency : string = 'EUR';
   public catalogMode : boolean = false;

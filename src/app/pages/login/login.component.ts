@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         {
           alert("You are now Logged in!");
           this.router.navigate(['./home/nine/']);
+          //storing the session
           sessionStorage.setItem("matrikel_number", this.model.matrikel_number);
           sessionStorage.setItem("token", data.token);  
 

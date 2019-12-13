@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     console.log("Session:",sessionStorage);   
   }    
   login(){
-    debugger;
+ 
     this.LoginService.Login(this.model).subscribe(data => {
       this.model = data;
         // console.log("This is Reality", data);
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
           alert("You are now Logged in!");
           this.router.navigate(['./home/nine/']);
           console.log(this.router);
-          debugger;
+  
          
         }
         else{

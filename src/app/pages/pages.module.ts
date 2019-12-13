@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FaqComponent } from './faq/faq.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { SellComponent } from './sell/sell.component';
 /* Shared Service */
 
 
@@ -29,8 +30,6 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    HttpModule,
-    HttpClient,
   ],
   declarations: [
     AboutUsComponent,
@@ -42,6 +41,7 @@ import { HttpModule } from '@angular/http';
     ForgetPasswordComponent,
     DashboardComponent,
     FaqComponent,
+    SellComponent
 
   ],
 })

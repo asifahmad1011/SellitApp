@@ -36,13 +36,14 @@ export class SellComponent implements OnInit {
       category_id: ["", [Validators.required]],
       description: ["", [Validators.required]],
       price: ["", [Validators.required]],
-      more_Details: ["", [Validators.required]],
+      more_details: ["", [Validators.required]],
       brand_id: ["", [Validators.required]],
       product_condition: ["", [Validators.required]],
+      image: ["", [Validators.required]],
     });
   }
 
-  Register() {
+  Product() {
     const userdata = this.productform.value;
     console.log(userdata);
     this.SellService.CategoryByID(userdata.category_id).subscribe(
@@ -64,6 +65,7 @@ export class SellComponent implements OnInit {
           category_id: DBForm.userdata.category_id,
           brand_id: DBForm.userdata.brand_id,
           product_condition: DBForm.userdata.product_condition,
+          image: DBForm.userdata.image,
           created_date: Date,
           modified_date: Date
         };

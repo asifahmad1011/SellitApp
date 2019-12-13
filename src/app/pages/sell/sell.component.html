@@ -1,99 +1,111 @@
-<!-- 
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet"> 
-<link href="css/style.css" rel="stylesheet" type="text/css"/>
-<link href="css/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="./assets/css/ele-style.css" rel="stylesheet" type="text/css"/>
-<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="line-awesome/css/line-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
-<link href="js/dist/css/bootstrap-select.css" rel="stylesheet" type="text/css" /> -->
-
-
-<!-- ad-single start here -->
-<div class="commontop">
-	<div class="container"> 
-		<div class="row">
-			<div class="col-sm-12 col-xs-12">
-				<div class="add">
-					<div class="addtop">
-						<h3>Submit a Free Ad</h3>
-					</div>
-					<form [formGroup]="productform" (ngSubmit)="Register()" enctype="multipart/form-data" class="form-horizontal addform">
-						<div class="form-group">
-							<div class="col-sm-12 col-xs-12">
-								<label>Add Title*</label>
-								<span class="pull-right">70 char Left</span>
-								<input formControlName="name" name="title" value="" id="input-title" class="form-control"  type="text">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-12 col-xs-12">
-								<label>Select Category*</label>
-                                <input type="number" formControlName="brand_id" value="2"> 
-							</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-7 col-xs-12">
-                                <label>Brand</label>
-                                <input name="model" formControlName="brand_id" value="1" id="input-model" class="form-control"  type="number">
-                            </div>
-                        </div>
-                        <div class="form-group">
-							<div class="col-sm-12 col-xs-12">
-								<label>Description*</label>
-								<span class="pull-right">5000 char Left</span>
-								<textarea type="text" name="enquiry" formControlName="description" id="input-enquiry" class="form-control"></textarea>
-							</div>
-						</div>
-						<div  class="tab-content">
-							<div class="tab-pane active" id="vehicle">
-								<div class="form-group">
-									<div class="col-sm-5 col-xs-12">
-										<label>Price*</label>
-										<input name="price" value="" formControlName="price" id="input-price" class="form-control"  type="text">
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+	<div class="wrapper wrapper--w790">
+		<div class="card card-5">
+			<div class="card-heading">
+				<h2 class="title">Post a Product - Free</h2>
+			</div>
+			<div class="card-body">
+				<form [formGroup]="productform" class="theme-form" (ngSubmit)="Product()">
+					<div class="form-row">
+						<div class="name"><h4>Title</h4></div>
+						<div class="value">
+									<div class="input-group">
+										<input class="input--style-5" type="text" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
 									</div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12 col-xs-12">
-                                        <label>Details</label>
-                                        <span class="pull-right">2500 char Left</span>
-                                        <textarea type="text" name="enquiry" formControlName="more_details" id="input-enquiry" class="form-control" required=""></textarea>
-                                    </div>
-                                </div>
-							
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="name"><h4>Which Category?</h4></div>
+						<div class="value">
+							<div class="col-7">
+							<div class="input-group">
+								<input class="input--style-5" type="text" name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id">
 							</div>
-							<div class="tab-pane" id="electonic">
-								
-							</div>
-							<div class="tab-pane" id="fashion">
-								
-							</div>
-							<div class="tab-pane" id="furniture">
-								
 							</div>
 						</div>
-				
-						<div class="form-group">
-							<div class="col-sm-12 col-xs-12">
-								<label>Add Photos*</label>
-								<div class="photo">
-									<ul class="list-inline">
-										<li><a href="#"><i class="la la-plus"></i></a></li>
-										<li><a href="#"><i class="la la-plus"></i></a></li>
-										<li><a href="#"><i class="la la-plus"></i></a></li>
-										<li><a href="#"><i class="la la-plus"></i></a></li>
-									</ul>
+					</div>
+					<div class="form-row">
+						<div class="name"><h4>Which Brand?</h4></div>
+						<div class="value">
+							<div class="col-7">
+							<div class="input-group">
+								<input class="input--style-5" type="text" name="brand_id" id="brand_id" formControlName="brand_id" [(ngModel)]="model.brand_id">
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="name"><h4>Price</h4></div>
+						<div class="value">
+							<div class="col-4">
+									<div class="input-group">
+										<input class="input--style-5" type="text" name="price" id="price" formControlName="price" [(ngModel)]="model.price" >
+									</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row ">
+						<div class="name"><h4>Description</h4></div>
+						<div class="value">
+									<div class="input-group">
+										<textarea class="form-control rounded-0" id="description" name="description" rows="3"  formControlName="description" [(ngModel)]="model.description"  style="background-color:#e5e5e5" ></textarea>
+									  </div>
+						</div>
+					</div>
+					<div class="form-row ">
+						<div class="name"><h4>Details</h4></div>
+						<div class="value">
+									<div class="input-group">
+										<textarea class="form-control rounded-0" id="more_details" name="more_details"  formControlName="more_details" [(ngModel)]="model.more_details"  rows="2.5" style="background-color: #e5e5e5;"></textarea>
+									  </div>
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="name"><h4>Product Condition?</h4></div>
+						<div class="value">
+							<div class="input-group">
+								<div class="rs-select2 js-select-simple select--no-search">
+									<select name="subject" name="product_condition"  id="product_condition" formControlName="product_condition" [(ngModel)]="model.product_condition">
+										<option disabled="disabled" selected="selected">Choose option</option>
+										<option value="1">Very Good</option>
+										<option value="2">Good</option>
+										<option value="3">Poor</option>
+									</select>
+									<div class="select-dropdown"></div>
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<div class="buttons">
-							<input class="btn btn-primary" value="Submit" type="submit">
+					<div class="form-row p-t-20">
+						<label class="label label--block">Are you an existing customer?</label>
+						<div class="p-t-15">
+							<label class="radio-container m-r-55">Yes
+								<input type="radio" checked="checked" name="exist">
+								<span class="checkmark"></span>
+							</label>
+							<label class="radio-container">No
+								<input type="radio" name="exist">
+								<span class="checkmark"></span>
+							</label>
 						</div>
-					</form>
-				</div>
+					</div>
+					<div>
+						<button class="btn btn--radius-2 btn--red" type="submit">Register</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Jquery JS-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Vendor JS-->
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/datepicker/moment.min.js"></script>
+<script src="vendor/datepicker/daterangepicker.js"></script>
+
+<!-- Main JS-->
+<script src="js/global.js"></script>

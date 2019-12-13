@@ -17,23 +17,24 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router,private LoginService:LoginService) { }    
     
     
-  ngOnInit() {    
-    sessionStorage.removeItem('matrikel_number');    
+  ngOnInit() {      
     sessionStorage.clear(); 
-    console.log("Session:",sessionStorage);   
   }    
   login(){
- 
+
     this.LoginService.Login(this.model).subscribe(data => {
-      this.model = data;
-        // console.log("This is Reality", data);
         if(data.status=="sucessfull")
         {
           alert("You are now Logged in!");
           this.router.navigate(['./home/nine/']);
-          console.log(this.router);
-  
-         
+          sessionStorage.setItem("matrikel_number", this.model.matrikel_number);
+          sessionStorage.setItem("token", data.token);  
+
+          //Getting the session
+          //var matId = sessionStorage.getItem("matrikel_number")
+          //var tok = sessionStorage.getItem("token")
+        
+          
         }
         else{
           alert("Incorrect Username or Password!");

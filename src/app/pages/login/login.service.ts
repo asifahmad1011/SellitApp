@@ -22,12 +22,9 @@ export class LoginService {
     
   }  
   Login(model : any){  
-    debugger;  
-     var a =this.Url;
-     console.log(a);  
-  return this.http.post<any>(this.Url+'auth',model,{ headers: this.header}); 
-   console.log(model);
-   console.log(a); 
+    //debugger;  
+     console.log(model); 
+      return this.http.post<any>(this.Url+'auth',model,{ headers: this.header}); 
   }  
    StudentRecords(register:Register)  
    {  

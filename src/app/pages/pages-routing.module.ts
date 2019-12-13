@@ -11,7 +11,6 @@ import { CollectionComponent } from './collection/collection.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FaqComponent } from './faq/faq.component';
-import { SellComponent } from './sell/sell.component';
 
 const routes: Routes = [
   {
@@ -36,10 +35,6 @@ const routes: Routes = [
       {
         path: 'search',
         component: SearchComponent
-      },
-      {
-        path: 'sell',
-        component: SellComponent
       },
       {
         path: 'collection',

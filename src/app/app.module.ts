@@ -19,6 +19,13 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import * as $ from 'jquery';
 import { NgxPaginationModule } from 'ngx-pagination';
+
+/* App Root */
+
+/* Feature Components */
+import { FormsModule } from '@angular/forms';
+
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -30,8 +37,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpModule,
+    FormsModule,
     // LoginService,
     BrowserAnimationsModule,
     ShopModule,

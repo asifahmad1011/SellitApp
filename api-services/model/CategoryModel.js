@@ -29,5 +29,6 @@ var Category = sequelize.define("category",{
     },
   }
 )
+Category.hasMany(Category, {foreignKey: "parent_id", as : "sub_category"});
 module.exports=Category;
 

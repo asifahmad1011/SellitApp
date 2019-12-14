@@ -101,6 +101,20 @@ router.post('/add', function (req, res, next) {
   })
 });
 
+router.get("/userproduct/:userid", function(req,res, next){
+  var user_id = req.params.userid;
+  Product.getAllUserProduct(user_id, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+})
+
 
 function saveImage(data) {
   Image.createImage({

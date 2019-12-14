@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     localStorage.clear(); 
   }    
 
-
   login(){
     this.LoginService.Login(this.model).subscribe(data => {
         if(data.status=="sucessfull")
@@ -38,12 +37,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("token", data.token);  
           console.log("mat",this.model.matrikel_number);
           console.log(localStorage);
-          
          
           //Getting the session
           //var matId = sessionStorage.getItem("matrikel_number")
           //var tok = sessionStorage.getItem("token")
-        
           
         }
         else{

@@ -16,12 +16,12 @@
 					</div>
 
 					<div class="form-row">
-						<div class="name"><h4>Which Category?</h4></div>
+						<div class="name"><h4>Which Category? {{results.name}}</h4></div>
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
 									<select  name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id">
-										<option value="{{results.rows[0].category_id}}"> {{results.rows[0].name}} </option>
+										<option *ngFor="let result of results.rows"  value="{{result.category_id}}"> {{result.name}} </option>
 									</select>
 									<div class="select-dropdown"></div>
 								</div>

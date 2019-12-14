@@ -13,6 +13,7 @@ export class SellService {
   serverUrl: string;
   token: string;
   header: any;
+  rows: any[];
   constructor(private http: HttpClient) {
     this.Url = "http://localhost:3000/api/v1/category";
     this.serverUrl ="http://localhost:3000/api/v1/product/";
@@ -21,13 +22,10 @@ export class SellService {
     this.header = new HttpHeaders(headerSettings);
   }
 
-  CategoryByID(category) {
-    const httpOptions = {
-      headers: new HttpHeaders({ "Content-Type": "application/json" })
-    };
-    return this.http.get<Category[]>(
-      `${this.Url}`,httpOptions);
+  CategoryByID() {
+    return this.http.get<Category[]>(this.Url);
   }
+  
   postAd(sell) {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-Type": "application/json" })

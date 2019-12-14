@@ -24,7 +24,7 @@ import { FormsModule } from "@angular/forms";
 export class SellComponent implements OnInit {
   model: any = {};
   public user = [];
-  public rows = [];
+  rows = [];
   data = false;
   
   urls = [];
@@ -52,9 +52,15 @@ export class SellComponent implements OnInit {
       product_condition: ["", [Validators.required]],
       image: ["", [Validators.required]],
       seller_id: ["",[Validators.required]],
-      
     });
-  }
+
+    
+  this.SellService.CategoryByID().subscribe(
+      data => {
+        console.log("ONit",data);
+        this.results = data   });
+  } 
+
 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
@@ -108,14 +114,6 @@ export class SellComponent implements OnInit {
     return sessionStorage.getItem(this.model.matrikel_number);
     }
 
-  Category() {
-
-    const userdata = this.productform.value;
-    this.SellService.CategoryByID(userdata.rows).subscribe(
-      data => {
-        console.log(data);
-        this.results = data   });
-  } 
 
   myFunction() {
     var user = localStorage.getItem('matrikel_number');

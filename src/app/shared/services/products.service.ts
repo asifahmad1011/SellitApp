@@ -11,6 +11,10 @@ import { HttpClient } from '@angular/common/http';
 
 
 
+let abcd = JSON.parse(localStorage.getItem("https://localhost:3000/api/v1/product")) || [];
+localStorage.setItem('data', JSON.stringify(name));
+console.log("sample:", name);
+
 @Injectable()
 
 export class ProductsService {
@@ -31,7 +35,8 @@ export class ProductsService {
   // Initialize 
   //Initializing the httpClient she
   constructor(private httpclient:HttpClient,private http: Http,private toastrService: ToastrService) {} 
-     
+
+
 
   // Observable Product Array
   // Observable Product Array
@@ -50,6 +55,10 @@ export class ProductsService {
   {
     return this.httpclient.get(this.serverUrl + "/id/" + id);
   }
+
+  private products(): Observable<Products[]> {
+    return this.http.get('assets/data/products.json').map((res:any) => res.json())
+ }
 
   // Get Products
   public getProducts(): Observable<Products[]> {

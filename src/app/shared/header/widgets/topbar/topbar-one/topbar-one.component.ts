@@ -20,6 +20,5 @@ export class TopbarOneComponent implements OnInit {
      alert("Please, login first to post a product!"); } else {
       this.router.navigate(['/pages/sell']);
      }
-
-     }
+    }
   }

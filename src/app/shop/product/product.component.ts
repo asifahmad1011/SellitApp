@@ -24,9 +24,9 @@ export class ProductComponent implements OnInit {
   ngOnInit() { 
  
     this.productsService.getProducts()
-    .subscribe((data) => {console.log("final:",data);} 
-
-);
+    .subscribe((data) => {
+      this.product_data = data
+      console.log("final:",this.product_data)} );
    }
 
  // Change variant images

@@ -10,7 +10,7 @@
 						<div class="name"><h4>Title</h4></div>
 						<div class="value">
 									<div class="input-group">
-										<input class="input--style-5" type="text" (click)="Category()" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
+										<input class="input--style-5" type="text" name="name" (click)="Category()" id="name" formControlName="name" [(ngModel)]="model.name">
 									</div>
 						</div>
 					</div>
@@ -45,7 +45,7 @@
 						<div class="value">
 							<div class="col-4">
 									<div class="input-group">
-										<input class="input--style-5" type="text" name="price" id="price" formControlName="price" [(ngModel)]="model.price" >
+										<input class="input--style-5" type="text" (click)="myFunction()" name="price" id="price" formControlName="price" [(ngModel)]="model.price" >
 									</div>
 							</div>
 						</div>
@@ -83,22 +83,13 @@
 							</div>
 						</div>
 					</div>
-					   
-					<!-- <div class="form-row">
-						<div class="invisible"><h4>Seller Info</h4></div>
-							<div class="col-4">
-									<div class="invisible">
-										<input class="input--style-5" type="text" name="seller_id" id="seller_id" value="'<%=session.getAttribute("matrikel_number")%>'" formControlName="seller_id" [(ngModel)]="model.seller_id" disabled>
-									</div>
-							</div>
-						</div> -->
-					  
+
 						<div class="form-row" ng-app="uploadPreview" ng-controller="Upload">
 							<div class="col-4">
 
 								<img *ngFor='let url of urls'  [src]="url" height="200px" width="200px"> <br/>
 
-								<input type='file' (change)="onSelectFile($event)" multiple>
+								<input type='file' (change)="onSelectFile($event)"  formControlName="image" [(ngModel)]="model.image" multiple>
 							
 					   <!-- <input  type="file" (change)="onFileSelected($event)"> -->
 					   </div>
@@ -124,3 +115,7 @@
 <!-- Main JS-->
 <script src="js/global.js"></script>
 
+
+
+	
+ 

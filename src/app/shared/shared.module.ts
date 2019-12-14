@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 // Services
 import { WINDOW_PROVIDERS } from "./services/windows.service";
 import { LandingFixService } from '../shared/services/landing-fix.service';
-import { InstagramService } from "./services/instagram.service";
 import { ProductsService } from "./services/products.service";
 import { PaginationService } from "./classes/paginate";
 import { SettingsService } from "./header/widgets/settings/settings.service";
@@ -59,7 +58,6 @@ import { SocialComponent } from './footer/widgets/social/social.component';
   providers: [
     WINDOW_PROVIDERS,
     LandingFixService,
-    InstagramService,
     ProductsService,
     PaginationService, 
     SettingsService,

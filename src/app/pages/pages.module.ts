@@ -18,6 +18,7 @@ import { FaqComponent } from './faq/faq.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { SellComponent } from './sell/sell.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 /* Shared Service */
 
 
@@ -41,8 +42,8 @@ import { SellComponent } from './sell/sell.component';
     ForgetPasswordComponent,
     DashboardComponent,
     FaqComponent,
-    SellComponent
-
+    SellComponent,
+    OrderSuccessComponent,
   ],
 })
 export class PagesModule { }

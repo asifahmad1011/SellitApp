@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';    
 import { LoginService } from './login.service';    
  import { FormsModule } from '@angular/forms';    
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -22,22 +23,21 @@ export class LoginComponent implements OnInit {
 }
 
   ngOnInit() {      
-    sessionStorage.clear(); 
+    localStorage.clear(); 
   }    
-  login(){
 
-    
+
+  login(){
     this.LoginService.Login(this.model).subscribe(data => {
         if(data.status=="sucessfull")
         {
           alert("You are now Logged in!");
           this.router.navigate(['./home/nine/']);
-          //storing the session
-          sessionStorage.setItem("matrikel_number", this.model.matrikel_number);
-          sessionStorage.setItem("token", data.token);  
+          // storing the session
+          localStorage.setItem("matrikel_number", this.model.matrikel_number);
+          localStorage.setItem("token", data.token);  
           console.log("mat",this.model.matrikel_number);
-          console.log(sessionStorage);
-          return sessionStorage.getItem(this.model.matrikel_number);
+          console.log(localStorage);
           
          
           //Getting the session
@@ -57,6 +57,11 @@ export class LoginComponent implements OnInit {
         // console.log(this.errorMessage);
       });
   };
+
+  getuser(): any {
+    var user = localStorage.getItem('matrikel_number')? JSON.parse(localStorage.getItem('matrikel_number')):[];
+}
+
  }
 
 

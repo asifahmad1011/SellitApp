@@ -11,6 +11,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FaqComponent } from './faq/faq.component';
 import { SellComponent } from './sell/sell.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
       {
         path: 'sell',
         component: SellComponent
+      },
+      {
+        path: 'order-success',
+        component: OrderSuccessComponent
       },
     ]
   }

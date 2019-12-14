@@ -9,8 +9,7 @@ import 'rxjs/add/operator/map';
 //She
 import { HttpClient } from '@angular/common/http';
 
-// Get product from Localstorage
-let products = JSON.parse(localStorage.getItem("compareItem")) || [];
+
 
 @Injectable()
 

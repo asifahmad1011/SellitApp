@@ -62,7 +62,7 @@ export class SellComponent implements OnInit {
         for (let i = 0; i < filesAmount; i++) {
                 var reader = new FileReader();
 
-                reader.onload = (event:any) => {
+                reader.onload = (event:any) => { 
                   console.log(event.target.result);
                    this.urls.push(event.target.result); 
                 }
@@ -83,7 +83,7 @@ export class SellComponent implements OnInit {
           slug: DBForm.userdata.name + DBForm.userdata.price,
           description: DBForm.userdata.description,
           price: DBForm.userdata.price,
-          seller_id: DBForm.userdata.seller_id,
+          seller_id: localStorage.getItem('matrikel_number'),
           more_details: DBForm.userdata.more_details,
           status: 3,
           category_id: DBForm.userdata.category_id,
@@ -93,7 +93,7 @@ export class SellComponent implements OnInit {
           created_date: Date,
           modified_date: Date
         };
-        console.log("Post Data:",pdata);
+        console.log("Post Data:",pdata.image);
 
         this.postNewAd(pdata);
   }
@@ -117,6 +117,11 @@ export class SellComponent implements OnInit {
         this.results = data   });
   } 
 
+  myFunction() {
+    var user = localStorage.getItem('matrikel_number');
+    console.log(user);
+  }
+
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
   }
@@ -133,7 +138,7 @@ export class SellComponent implements OnInit {
         if (event.type == HttpEventType.UploadProgress) {
           console.log('Upload Progess:' + Math.round(event.loaded / event.total * 100) + '%')
         } else if (event.type == HttpEventType.Response) {
-          this.router.navigate(['./home/nine/']);
+          this.router.navigate(['./pages/order-success']);
         }
         console.log(event);
       });

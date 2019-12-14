@@ -41,3 +41,10 @@ $(document).ready(function() {
   });
 
 });
+
+
+
+function myFunction() {
+  var x = localStorage.getItem("token");
+  document.getElementById("sell_id").innerHTML = x;
+}

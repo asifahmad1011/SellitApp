@@ -32,4 +32,8 @@ export class LoginService {
     console.log(register);
     //return this.http.post<Register[]>(this.Url + 'studentrecords/', register, httpOptions)  
    }  
+
+   getUser() {
+     return localStorage.getItem('matrikel_number');
+   }
 }  

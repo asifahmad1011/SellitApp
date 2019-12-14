@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { trigger, transition, style, animate } from "@angular/animations";
-import { Product } from '../../../../shared/classes/product';
+import { Products } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
 import * as _ from 'lodash'
 import * as $ from 'jquery';
@@ -26,9 +26,9 @@ import * as $ from 'jquery';
 })
 export class CollectionLeftSidebarComponent implements OnInit {
 
-  public products     :   Product[] = [];
-  public items        :   Product[] = [];
-  public allItems     :   Product[] = [];
+  public products     :   Products[] = [];
+  public items        :   Products[] = [];
+  public allItems     :   Products[] = [];
   public tagsFilters  :   any[] = [];
   public tags         :   any[] = [];
   public colors       :   any[] = [];
@@ -102,7 +102,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
   // Update price filter
   public updatePriceFilters(price: any) {
       let items: any[] = [];
-      this.products.filter((item: Product) => {
+      this.products.filter((item: Products) => {
           if (item.price >= price[0] && item.price <= price[1] )  {            
              items.push(item); // push in array
           } 

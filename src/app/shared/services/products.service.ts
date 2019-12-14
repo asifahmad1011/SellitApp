@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from '../classes/product';
+import { Products } from '../classes/product';
 import { BehaviorSubject, Observable, of, Subscriber} from 'rxjs';
 import { map, filter, scan } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
@@ -17,7 +17,7 @@ export class ProductsService {
 
   //Accessing the server address+api/products(she)
   private serverUrl = "http://localhost:3000/api/v1/product";
-  
+  product: any;
   public currency : string = 'EUR';
   public catalogMode : boolean = false;
   
@@ -34,10 +34,16 @@ export class ProductsService {
      
 
   // Observable Product Array
-  private products(): Observable<Product[]> {
-     return this.http.get('assets/data/products.json').map((res:any) => res.json())
-    //return this.http.get(this.serverUrl).map((res:any) => res.json());
-  }
+  // Observable Product Array
+
+  // public products(): Observable<Products[]> {
+  //   return this.httpclient.get(this.serverUrl).pipe(
+  //     map((res:any) => {
+  //       console.log("API Response:", res);
+  //     return this.product;
+  //     })
+  //   )}
+
 
   //she
   public getProductById(id: number)
@@ -46,23 +52,24 @@ export class ProductsService {
   }
 
   // Get Products
-  public getProducts(): Observable<Product[]> {
-    return this.products();
-  }
+  public getProducts(): Observable<Products[]> {
+    return this.httpclient.get(this.serverUrl).pipe(
+      map((res:any) => { console.log("API Response Final:", res); return this.product; })
+    )}
 
-  // Get Products By Id
-  public getProduct(id: number) :Observable<Product> {
-    return this.products().pipe(map(items => { return items.find((item: Product) => { return item.id === id; }); }));
-  }
+  // // Get Products By Id
+  // public getProduct(product_id: number) :Observable<Products> {
+  //   return this.products().pipe(map(items => { return items.find((item: Products) => { return item.product_id === product_id; }); }));
+  // }
 
    // Get Products By category
-  public getProductByCategory(category: string): Observable<Product[]> {
-    return this.products().pipe(map(items => 
-       items.filter((item: Product) => {
-         if(category == 'all')
+  public getProductByCategory(category_id: number): Observable<Products[]> {
+    return this.getProducts().pipe(map(items => 
+       items.filter((item: Products) => {
+         if(category_id === 1)
             return item
          else
-            return item.category === category; 
+            return item.category_id;
         
        })
      ));

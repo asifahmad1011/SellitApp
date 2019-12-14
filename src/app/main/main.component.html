@@ -1,8 +1,10 @@
 <app-header-one *ngIf="url == '/home/nine'  || url == '/pages/login'  || url == '/pages/register' || url == '/pages/search' || url == '/pages/about-us' || url == '/pages/sell'"></app-header-one>
 
+<app-header-profile *ngIf="url == '/home/profile'"></app-header-profile>
+
 <router-outlet></router-outlet>
 	
-<app-footer-one *ngIf="url == '/home/nine' || url == '/pages/login' || url == '/pages/register' || url == '/pages/search' || url == '/pages/about-us' || url == '/pages/sell'"></app-footer-one>
+<app-footer-one *ngIf="url == '/home/nine' || url == '/pages/login' || url == '/pages/register' || url == '/pages/search' || url == '/pages/about-us' || url == '/pages/sell' || url == '/home/profile'"></app-footer-one>
 	
 
 	

@@ -24,6 +24,8 @@ import { InformationComponent } from './footer/widgets/information/information.c
 import { WhyWeChooseComponent } from './footer/widgets/why-we-choose/why-we-choose.component';
 import { CopyrightComponent } from './footer/widgets/copyright/copyright.component';
 import { SocialComponent } from './footer/widgets/social/social.component';
+import { HeaderProfileComponent } from './header/header-profile/header-one.component';
+import { TopbarProfileComponent } from './header/widgets/topbar/topbar-profile/topbar-profile.component';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { SocialComponent } from './footer/widgets/social/social.component';
     CommonModule,
     TranslateModule,
     HeaderOneComponent,
+    HeaderProfileComponent,
     FooterOneComponent,
     OrderByPipe,
     NgxPaginationModule,
@@ -44,12 +47,14 @@ import { SocialComponent } from './footer/widgets/social/social.component';
   ],
   declarations: [
     HeaderOneComponent,
+    HeaderProfileComponent,
     FooterOneComponent,
     OrderByPipe,
     NavbarComponent,
     SettingComponent,
     LeftMenuComponent,
     TopbarOneComponent,
+    TopbarProfileComponent,
     InformationComponent,
     WhyWeChooseComponent,
     CopyrightComponent,

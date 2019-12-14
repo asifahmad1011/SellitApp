@@ -34,6 +34,7 @@ import { QuickViewComponent } from './product/widgets/quick-view/quick-view.comp
 import { NewProductComponent } from './product/widgets/new-product/new-product.component';
 import { SearchComponent } from './product/search/search.component';
 import { ColorComponent } from './product/collection/filter/color/color.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   exports: [],
@@ -48,7 +49,7 @@ import { ColorComponent } from './product/collection/filter/color/color.componen
     RangeSliderModule,
     InfiniteScrollModule,
     NgxPayPalModule,
-    NgxImgZoomModule
+    NgxImgZoomModule,
   ],
   declarations: [
   
@@ -57,6 +58,7 @@ import { ColorComponent } from './product/collection/filter/color/color.componen
     HomeBannerComponent,
     CollectionBannerNineComponent,
     ProductTabNineComponent,
+    ProfileComponent,
     
     // Product
     ProductComponent,

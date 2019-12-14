@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../../shared/classes/product';
+import { Products } from '../../../shared/classes/product';
 
 import { ProductsService } from '../../../shared/services/products.service';
 
@@ -13,7 +13,7 @@ import { Observable, of } from 'rxjs';
 })
 export class ProductBoxHoverComponent implements OnInit {
   
-  @Input() product : Product;
+  @Input() product : Products;
 
   constructor(private router: Router, public productsService: ProductsService) { 
   }

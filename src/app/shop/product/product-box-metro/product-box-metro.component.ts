@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../../shared/classes/product';
+import { Products } from '../../../shared/classes/product';
 import { CartItem } from '../../../shared/classes/cart-item';
 import { ProductsService } from '../../../shared/services/products.service';
 import { Observable, of } from 'rxjs';
@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class ProductBoxMetroComponent implements OnInit {
 
-  @Input() product : Product;
+  @Input() product : Products;
 
   constructor(private router: Router, public productsService: ProductsService, ) { 
   }

@@ -4,10 +4,10 @@ import { ProductsService } from '../../shared/services/products.service';
 
 @Component({
   selector: 'app-home-nine',
-  templateUrl: './home-nine.component.html',
-  styleUrls: ['./home-nine.component.scss']
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class HomeNineComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   public products: Products[] = [];
   

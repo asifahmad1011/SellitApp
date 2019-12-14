@@ -6,8 +6,5 @@
 		</div>
 		<a [routerLink]="['/home/left-sidebar/product', product.id]"><h6>{{product.name}}</h6></a>
 		<h4 *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}}</h4>
-		<ul class="color-variant" *ngIf="product.variants">
-	      <li [class]="variant.color" (click)="changeVariantImage(variant.images)" *ngFor="let variant of product.variants"></li>
-	    </ul>
 	</div>
 </div>

@@ -24,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 /* Feature Components */
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './shop/profile/profile.component';
 
 
 // AoT requires an exported function for factories

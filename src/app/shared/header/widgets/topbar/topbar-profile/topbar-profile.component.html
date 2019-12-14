@@ -5,22 +5,22 @@
     <div class="col-lg-6 text-right" *ngIf="!productsService?.catalogMode">
       <ul class="header-dropdown">
         
+        <li class="mobile-accountt">
+          <i class="fa fa-envelope" aria-hidden="true" [routerLink]="'/pages/message'"></i> 
+          <a [routerLink]="'/pages/messages'">{{ 'MESSAGES'}}</a>
+        </li>
 
         <li class="mobile-accountt">
-            <i class="fa fa-camera" aria-hidden="true"></i> 
-            <a onclick="checkuser()"> {{ 'SELL'}} </a>
+            <i class="fa fa-camera" aria-hidden="true" [routerLink]="'/pages/sell'"></i> 
+            <a [routerLink]="'/pages/sell'">{{ 'SELL'}}</a>
           </li>
 
         <li class="onhover-dropdown mobile-account">
           <i class="fa fa-user" aria-hidden="true"></i> {{ 'My-Account'}}
           <ul class="onhover-show-div">
+
             <li>
-              <a [routerLink]="'/pages/login'">
-                  {{ 'login'}}
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="'/home/nine'">
+              <a [routerLink]="'/home/nine'" onclick="localStorage.clear()">
                   {{ 'logout'}}
               </a>
             </li>

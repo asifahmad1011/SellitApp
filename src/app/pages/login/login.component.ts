@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         if(data.status=="sucessfull")
         {
           alert("You are now Logged in!");
-          this.router.navigate(['./home/nine/']);
+          this.router.navigate(['./home/profile/']);
           // storing the session
           localStorage.setItem("matrikel_number", this.model.matrikel_number);
           localStorage.setItem("token", data.token);  

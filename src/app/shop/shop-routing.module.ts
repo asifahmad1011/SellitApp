@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeNineComponent } from './home-9/home-nine.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { CollectionLeftSidebarComponent } from './product/collection/collection-left-sidebar/collection-left-sidebar.component';
 import { CollectionRightSidebarComponent } from './product/collection/collection-right-sidebar/collection-right-sidebar.component';
@@ -14,6 +15,10 @@ const routes: Routes = [
   { 
     path: 'nine',
     component: HomeNineComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   
   {

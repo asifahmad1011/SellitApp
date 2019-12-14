@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../shared/classes/product';
+import { Products } from '../../../shared/classes/product';
 import { ProductsService } from '../../../shared/services/products.service';
 import { trigger, transition, style, animate } from "@angular/animations";
 
@@ -22,8 +22,8 @@ import { trigger, transition, style, animate } from "@angular/animations";
 })
 export class SearchComponent implements OnInit {
   
-  public products          :   Product[] = [];  
-  public searchProducts    :   Product[] = [];	
+  public products          :   Products[] = [];  
+  public searchProducts    :   Products[] = [];	
   public animation         :   any;
   public searchTerms       :   any = '';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
-import { Product } from '../../../../shared/classes/product';
+import { Products } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
 import { PaginationService } from '../../../../shared/classes/paginate'
 import { trigger, transition, style, animate } from "@angular/animations";
@@ -26,8 +26,8 @@ import * as $ from 'jquery';
 })
 export class CollectionNoSidebarComponent implements OnInit {
 
-  private allProduct   :   Product[] = [];
-  public  products     :   Product[] = [];
+  private allProduct   :   Products[] = [];
+  public  products     :   Products[] = [];
   public  sortByOrder  :   string = '';   // sorting
   public  animation    :   any;   // Animation
   paginate: any = {};

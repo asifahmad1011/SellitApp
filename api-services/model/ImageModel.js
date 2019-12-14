@@ -36,13 +36,7 @@ var Image = sequelize.define('images', {
   modified_date: {
     type: Sequelize.DATE
   },
-
-
 });
-
-//Image.associate = function() {
- //Image.belongsTo(productmodel.Product, {foreignKey: 'product_id', as: 'product'})
-//};
 
 module.exports = Image;
 

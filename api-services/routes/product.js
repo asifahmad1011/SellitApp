@@ -1,5 +1,6 @@
 var express = require('express');
 var Product = require('../controller/ProductController');
+var Image = require("../controller/ImageController");
 var router = express.Router();
 var loginVerification = require('../utility/LoginVerification');
 var jwt = require('jsonwebtoken');
@@ -51,7 +52,8 @@ router.get('/', function (req, res, next) {
 // router.post('/add',loginVerification.verifyToken, function(req, res, next) {
 router.post('/add', function (req, res, next) {
   var data = req.body;
-  /////Adding Product
+  var images = data.image;
+  console.log(images);
   Product.addProduct({
     name: data.name,
     slug: data.slug,
@@ -71,36 +73,53 @@ router.post('/add', function (req, res, next) {
       })
     } else {
       var imagebase = "";
-      image2base64("https://i.ibb.co/qy56dPR/shirt-2.jpg") // you can also to use url
-        .then(
-          (response) => {
-            imagebase = response;
-            if (imagebase != null) {
-              console.log("making post to immbb");
-              request.post({
-                url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
-                form: { image: imagebase }
-              },
-                function (err, httpResponse, body) {
-                  var result = JSON.parse(body);
-                  console.log(result.data.url)
-                });
-            }
-          }
-        )
-        .catch(
-          (error) => {
-            console.log(error); //Exepection error....
-          }
-        )
-      res.json({
-        "status": "sucessfull"
-      })
+      images.forEach(function (value) {
+          imageBase64 = value.base64;
+          console.log("making post to immbb");
+          request.post({
+            url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
+            form: { image: imageBase64 }
+          },
+            function (err, httpResponse, body) {
+              var result = JSON.parse(body);
+              if(result.data.url != null){
+                  var data = {
+                    image: result.title,
+                    url: result.url,
+                    primary_image_id: 0,
+                    video: result.url,
+                    product_id: data.rows.product_id,
+                  }
+                  saveImage(data);
+                  res.json({
+                    "status": "sucessfull"
+                  })
+              }
+            });
+      });
     }
   })
 });
 
 
-
-
+function saveImage(data) {
+  Image.createImage({
+    image: data.image,
+    url: data.url,
+    primary_image_id: data.primary_image_id,
+    video: data.video,
+    product_id: data.product_id,
+  }, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({
+        "status": "sucessfull"
+      })
+    }
+  })
+}
 module.exports = router;

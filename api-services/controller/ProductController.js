@@ -44,6 +44,7 @@ module.exports.getAllProducts = function (callback) {
 		callback(err);
 	  });
   }
+
   module.exports.getProductById = function (product_id, callback) {
 	Product.findAll({
 		where:{
@@ -64,9 +65,7 @@ module.exports.getAllProducts = function (callback) {
 	  });
   }
 
-
   module.exports.addProduct = function (product, callback) {
-
 	Product.build(product).save().then((data) => {
 	  console.log(data.dataValues);
 	  callback(data.dataValues);

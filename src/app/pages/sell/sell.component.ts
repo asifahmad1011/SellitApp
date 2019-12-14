@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { SellRoutingModule } from "./sell-routing.module";
 import { Observable } from "rxjs";
+import { Router } from '@angular/router';    
+
 import {
   NgForm,
   FormBuilder,
@@ -17,17 +20,25 @@ import { FormsModule } from "@angular/forms";
   templateUrl: "./sell.component.html",
   styleUrls: ["./sell.component.scss"]
 })
+
 export class SellComponent implements OnInit {
   model: any = {};
   public user = [];
-
+  public rows = [];
   data = false;
+  
+  urls = [];
+  selectedFile: File = null;
+ 
   productform: FormGroup;
   massage: string;
+  public results: any[];
   errorMessage:string;  
   constructor(
     private formbulider: FormBuilder,
-    private SellService: SellService
+    private SellService: SellService,
+    private http: HttpClient,
+    private router:Router,
   ) {}
 
   ngOnInit() {
@@ -40,18 +51,31 @@ export class SellComponent implements OnInit {
       brand_id: ["", [Validators.required]],
       product_condition: ["", [Validators.required]],
       image: ["", [Validators.required]],
+      seller_id: ["",[Validators.required]],
+      
     });
   }
 
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = (event:any) => {
+                  console.log(event.target.result);
+                   this.urls.push(event.target.result); 
+                }
+                this.selectedFile = <File>event.target.files[i];
+                reader.readAsDataURL(event.target.files[i]);
+        }
+    }
+  }
   Product() {
     const userdata = this.productform.value;
     console.log(userdata);
-    this.SellService.CategoryByID(userdata.category_id).subscribe(
-      data => {
-        const dbData = Object.values(data);
-        console.log("Category Data:",dbData);
-
-        const DBForm = { dbData, userdata, status: 3 };
+         
+        const DBForm = { userdata, status: 3 };
         this.productform.reset();
 
         const pdata = {
@@ -59,7 +83,7 @@ export class SellComponent implements OnInit {
           slug: DBForm.userdata.name + DBForm.userdata.price,
           description: DBForm.userdata.description,
           price: DBForm.userdata.price,
-          seller_id: 1300921,
+          seller_id: DBForm.userdata.seller_id,
           more_details: DBForm.userdata.more_details,
           status: 3,
           category_id: DBForm.userdata.category_id,
@@ -72,13 +96,58 @@ export class SellComponent implements OnInit {
         console.log("Post Data:",pdata);
 
         this.postNewAd(pdata);
-      }
-    );
   }
+
+  
   postNewAd(userData) {
     const jsonData = JSON.stringify(userData);
     console.log("JSON",jsonData);
-
+    
     this.SellService.postAd(jsonData).subscribe(data => {});
+
+    return sessionStorage.getItem(this.model.matrikel_number);
     }
+
+  Category() {
+
+    const userdata = this.productform.value;
+    this.SellService.CategoryByID(userdata.rows).subscribe(
+      data => {
+        console.log(data);
+        this.results = data   });
+  } 
+
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
   }
+
+  onUpload() {
+      const fd = new FormData();
+      fd.append('image',this.selectedFile, this.selectedFile.name)
+      this.http.post('https://api.imgbb.com/1/upload?key=71754c0e6a4068fb0f4ea41370a58bb2', fd, {
+        reportProgress: true,
+        observe: 'events'
+
+      })
+      .subscribe(event => {
+        if (event.type == HttpEventType.UploadProgress) {
+          console.log('Upload Progess:' + Math.round(event.loaded / event.total * 100) + '%')
+        } else if (event.type == HttpEventType.Response) {
+          this.router.navigate(['./home/nine/']);
+        }
+        console.log(event);
+      });
+  }
+
+}
+  interface Categories{
+
+    category_id: bigint,
+    name: string,
+    description: string,
+    parent_id: bigint,
+    create_date: Date,
+    modified_date: Date,
+  }
+
+

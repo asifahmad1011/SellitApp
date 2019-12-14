@@ -2,7 +2,7 @@
 	<div class="wrapper wrapper--w790">
 		<div class="card card-5">
 			<div class="card-heading">
-				<h2 class="title">Post a Product - Free</h2>
+				<h2 class="title">Post a Product</h2>
 			</div>
 			<div class="card-body">
 				<form [formGroup]="productform" class="theme-form" (ngSubmit)="Product()">
@@ -10,20 +10,26 @@
 						<div class="name"><h4>Title</h4></div>
 						<div class="value">
 									<div class="input-group">
-										<input class="input--style-5" type="text" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
+										<input class="input--style-5" type="text" (click)="Category()" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
 									</div>
 						</div>
 					</div>
-					<div class="form-row">
+
+					<!-- <div class="form-row">
 						<div class="name"><h4>Which Category?</h4></div>
 						<div class="value">
-							<div class="col-7">
 							<div class="input-group">
-								<input class="input--style-5" type="text" name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id">
-							</div>
+								<div class="rs-select2 js-select-simple select--no-search">
+									<select  name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id">
+										<option value="{{results.rows[0].category_id}}"> {{results.rows[0].name}} </option>
+									</select>
+									<div class="select-dropdown"></div>
+								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
+
+
 					<div class="form-row">
 						<div class="name"><h4>Which Brand?</h4></div>
 						<div class="value">
@@ -66,7 +72,7 @@
 						<div class="value">
 							<div class="input-group">
 								<div class="rs-select2 js-select-simple select--no-search">
-									<select name="subject" name="product_condition"  id="product_condition" formControlName="product_condition" [(ngModel)]="model.product_condition">
+									<select name="product_condition"  id="product_condition" formControlName="product_condition" [(ngModel)]="model.product_condition">
 										<option disabled="disabled" selected="selected">Choose option</option>
 										<option value="1">Very Good</option>
 										<option value="2">Good</option>
@@ -77,22 +83,30 @@
 							</div>
 						</div>
 					</div>
+					   
+					<!-- <div class="form-row">
+						<div class="invisible"><h4>Seller Info</h4></div>
+							<div class="col-4">
+									<div class="invisible">
+										<input class="input--style-5" type="text" name="seller_id" id="seller_id" value="'<%=session.getAttribute("matrikel_number")%>'" formControlName="seller_id" [(ngModel)]="model.seller_id" disabled>
+									</div>
+							</div>
+						</div> -->
+					  
+						<div class="form-row" ng-app="uploadPreview" ng-controller="Upload">
+							<div class="col-4">
 
-					<div class="form-row p-t-20">
-						<label class="label label--block">Are you an existing customer?</label>
-						<div class="p-t-15">
-							<label class="radio-container m-r-55">Yes
-								<input type="radio" checked="checked" name="exist">
-								<span class="checkmark"></span>
-							</label>
-							<label class="radio-container">No
-								<input type="radio" name="exist">
-								<span class="checkmark"></span>
-							</label>
+								<img *ngFor='let url of urls'  [src]="url" height="200px" width="200px"> <br/>
+
+								<input type='file' (change)="onSelectFile($event)" multiple>
+							
+					   <!-- <input  type="file" (change)="onFileSelected($event)"> -->
+					   </div>
 						</div>
-					</div>
+                    
+
 					<div>
-						<button class="btn btn--radius-2 btn--red" type="submit">Register</button>
+						<button class="btn btn--radius-2 btn--red" type="submit" (click)="onUpload()">Register</button>
 					</div>
 				</form>
 			</div>
@@ -109,3 +123,4 @@
 
 <!-- Main JS-->
 <script src="js/global.js"></script>
+

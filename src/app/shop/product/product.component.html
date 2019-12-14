@@ -22,7 +22,7 @@
   <div>
     <bar-rating [rate]="5" [readOnly]="true"></bar-rating>
     <a [routerLink]="['/home/right-sidebar/product', product.id]"><h6>{{product.name}}</h6></a>
-    <h4 *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}} 
+    <h4 *ngIf="!productsService?.catalogMode">{{product.currency | currency:productsService?.currency:'symbol'}} 
     </h4>
     <ul class="color-variant" *ngIf="!productsService?.catalogMode">
       <li [class]="variant.color" (click)="changeVariantImage(variant.images)" *ngFor="let variant of product.variants"></li>

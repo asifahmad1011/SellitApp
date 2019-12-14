@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { from, Observable } from "rxjs";
 import { Sell } from "../sell/sell";
+import { Category } from "./category";
 
 @Injectable({
   providedIn: "root"
@@ -20,14 +21,12 @@ export class SellService {
     this.header = new HttpHeaders(headerSettings);
   }
 
-  CategoryByID(id): Observable<Sell[]> {
+  CategoryByID(category) {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-Type": "application/json" })
     };
-    return this.http.get<Sell[]>(
-      `${this.Url}`,
-      httpOptions
-    );
+    return this.http.get<Category[]>(
+      `${this.Url}`,httpOptions);
   }
   postAd(sell) {
     const httpOptions = {
@@ -35,4 +34,5 @@ export class SellService {
     };
     return this.http.post<Sell>(`${this.serverUrl}add/`, sell, httpOptions);
   }
+
 }

@@ -16,12 +16,17 @@ export class LoginComponent implements OnInit {
   errorMessage:string;    
   constructor(private router:Router,private LoginService:LoginService) { }    
     
-    
+  public sessionStorageItem(matrikel_number: string): string {
+    console.log("number", matrikel_number);
+    return sessionStorage.getItem(matrikel_number);
+}
+
   ngOnInit() {      
     sessionStorage.clear(); 
   }    
   login(){
 
+    
     this.LoginService.Login(this.model).subscribe(data => {
         if(data.status=="sucessfull")
         {
@@ -30,7 +35,11 @@ export class LoginComponent implements OnInit {
           //storing the session
           sessionStorage.setItem("matrikel_number", this.model.matrikel_number);
           sessionStorage.setItem("token", data.token);  
-
+          console.log("mat",this.model.matrikel_number);
+          console.log(sessionStorage);
+          return sessionStorage.getItem(this.model.matrikel_number);
+          
+         
           //Getting the session
           //var matId = sessionStorage.getItem("matrikel_number")
           //var tok = sessionStorage.getItem("token")

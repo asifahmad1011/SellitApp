@@ -1,14 +1,15 @@
 var Product = require('../model/ProductModel');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-var Image=require("../model/ImageModel")
+var Image=require("../model/ImageModel");
+
 
 module.exports.getAllProducts = function (callback) {
 	Product.findAll({
 		include: {
-			model: Image, 
+			model: Image,
 			as:"image",
-			where: { primary_image_id: '0' }
+			//where: { primary_image_id: '0' }
 		}
 	  })
 	  .then(function (related) {
@@ -20,7 +21,7 @@ module.exports.getAllProducts = function (callback) {
 		callback(err);
 	  });
   }
-  
+
   module.exports.getAllProductsByName = function (product_name, callback) {
 	Product.findAll({
 	  where: {
@@ -29,9 +30,9 @@ module.exports.getAllProducts = function (callback) {
 		}
 	  },
 	  include: {
-		model: Image, 
+		model: Image,
 		as:"image",
-		where: { primary_image_id: '0' }
+		//where: { primary_image_id: '0' }
 	}
 	})
 	  .then(function (related) {
@@ -49,7 +50,7 @@ module.exports.getAllProducts = function (callback) {
 			product_id:product_id
 		},
 		include: {
-			model: Image, 
+			model: Image,
 			as:"image"
 		}
 	  })
@@ -62,10 +63,10 @@ module.exports.getAllProducts = function (callback) {
 		callback(err);
 	  });
   }
-  
-  
+
+
   module.exports.addProduct = function (product, callback) {
-  
+
 	Product.build(product).save().then((data) => {
 	  console.log(data.dataValues);
 	  callback(data.dataValues);
@@ -73,5 +74,5 @@ module.exports.getAllProducts = function (callback) {
 	  callback(err);
 	})
   }
-  
-  
+
+

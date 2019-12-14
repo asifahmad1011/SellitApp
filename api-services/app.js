@@ -3,6 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
+var publicDir = path.join(__dirname,'/public');
+
 
 const swaggerDocument = require('./swagger.json');
 
@@ -19,6 +21,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
+app.use(express.static(publicDir));
 
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin","*");

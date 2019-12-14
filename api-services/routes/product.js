@@ -46,13 +46,11 @@ router.get('/', function(req, res, next) {
 	})
 });
 
-router.post('/add',loginVerification.verifyToken, function(req, res, next) {
+// router.post('/add',loginVerification.verifyToken, function(req, res, next) {
+	router.post('/add',function(req, res, next) {
 	var data = req.body;
 
-	jwt.verify(req.token, 'GDSD', (err, authData) => {
-		if(err) {
-		  res.sendStatus(403);
-		} else {
+	
 
 /////Adding Product
 Product.addProduct({
@@ -84,8 +82,6 @@ if (!rows) {
 ////////
 
 
-		}
-	  });
 
 
 

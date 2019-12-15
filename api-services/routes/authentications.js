@@ -56,7 +56,7 @@ router.post('/admin', function(req, res, next) {
 		} else {
      var data = JSON.parse(JSON.stringify(rows));
      if(data[0].role_id==1){
-      sessionStorage.setItem("status","sucessfull");
+      sessionStorage.setItem("matrik_num","sucessfull");
       // req.session.matrik_num = data[0].matrikel_number;
 			res.render("admin/index.ejs",{
         "status": "sucessfull",

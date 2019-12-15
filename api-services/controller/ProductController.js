@@ -119,7 +119,6 @@ module.exports.getMostRecentUserProduct = function (user_id, callback) {
     });
 }
 
-
 module.exports.updateProductStatus = function (product_id,status,callback) {
   Product.update({
     status: status
@@ -129,11 +128,9 @@ module.exports.updateProductStatus = function (product_id,status,callback) {
     }
   })
     .then(function (related) {
-      //console.log(related[0].role.role);
       callback(related);
     })
     .catch(function (err) {
-      //console.log(err);
       callback(err);
     });
 }
@@ -155,6 +152,24 @@ module.exports.getAllProductsByStatus = function (status, callback) {
     })
     .catch(function (err) {
       //console.log(err);
+      callback(err);
+    });
+}
+
+module.exports.getAllProductsByCategory = function (category_id, callback) {
+  Product.findAll({
+    where: {
+      category_id: category_id
+    },
+    include: {
+      model: Image,
+      as: "image",
+    }
+  })
+    .then(function (related) {
+      callback(related);
+    })
+    .catch(function (err) {
       callback(err);
     });
 }

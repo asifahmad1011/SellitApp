@@ -80,6 +80,55 @@
         }
       }
     },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all Users from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a User on the Platform",
+        "requestBody": {
+          "description": "User Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
     "/product": {
       "get": {
         "tags": [
@@ -240,6 +289,111 @@
         }
       }
     },
+    "/product/getProductsByStatus/{status}": {
+      "parameters": [
+        {
+          "name": "status",
+          "in": "path",
+          "required": true,
+          "description": "status of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Search for a Product by the status id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "status",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/product_name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/product/getProductsByCategory/{categoryid}": {
+      "parameters": [
+        {
+          "name": "categoryid",
+          "in": "path",
+          "required": true,
+          "description": "category id of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Search for a Product by the category id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "categoryid",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/product/changeProductStatus": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update a Product Status",
+        "requestBody": {
+          "description": "Product Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Update_Product"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
     "/product/add": {
       "post": {
         "tags": [
@@ -387,6 +541,13 @@
         }
       }
     },
+    "status": {
+      "properties": {
+        "id": {
+          "type": "number"
+        }
+      }
+    },
     "Product": {
       "type": "object",
       "properties": {
@@ -430,6 +591,17 @@
           "additionalProperties": {
             "$ref": "#/definitions/Product"
           }
+        }
+      }
+    },
+    "Update_Product": {
+      "type": "object",
+      "properties": {
+        "productid": {
+          "type": "number"
+        },
+        "status": {
+          "type": "number"
         }
       }
     },
@@ -572,6 +744,55 @@
         },
         "modified_date": {
           "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "role_id": {
+          "type": "number"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "postal_code":{
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/User"
+          }
         }
       }
     }

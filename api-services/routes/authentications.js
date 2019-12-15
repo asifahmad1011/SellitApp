@@ -22,9 +22,11 @@ router.post('/', function(req, res, next) {
 				"user": null
 			})
 		} else {
+     var data = JSON.parse(JSON.stringify(rows));
 			res.json({
 				token,
-				"status": "sucessfull",
+        "status": "sucessfull",
+        "user_id": data[0].matrikel_number
 			})
 		}
 	})

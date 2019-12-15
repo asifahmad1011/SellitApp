@@ -150,4 +150,20 @@ function saveImage(data) {
     }
   })
 }
+
+router.post("/changeProductStatus", function(req,res, next){
+  var productid = req.body.productid;
+  var status = req.body.status;
+  console.log(productid+"-"+status)
+  Product.updateProductStatus(productid,status, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+})
 module.exports = router;

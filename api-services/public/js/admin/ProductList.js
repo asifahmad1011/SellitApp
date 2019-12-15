@@ -70,8 +70,8 @@ function showPendingProducts() {
                 <div class='product-right'>\
                     <h2>"+json.products[0].name+"</h2>\
                     <h3>"+json.products[0].price+" | currency : 'EUR'</h3>\
-                    <button type='button' onclick='changeProductState('"+json.products[0].product_id+"',1)' class='btn btn-secondary m-1'>Approve</button>\
-                    <button type='button' onclick='changeProductState('"+json.products[0].product_id+"',4)' class='btn btn-primary m-1'>Deny</button>";      
+                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-secondary m-1'>Approve</button>\
+                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",4)' class='btn btn-primary m-1'>Deny</button>";      
                     body+="<div class='border-product'>\
                         <h6 class='product-title'>product details</h6>\
                         <p>"+json.products[0].more_details+"</p>\
@@ -117,7 +117,13 @@ function showPendingProducts() {
  
   };
 ///////////////
-function changeProductState(product_id,state){
+function changeProductStatus(product_id,status){
+console.log(product_id+"-this-"+status);
+var params = 'productid=' + product_id + '&status=' + status;
+req = new XMLHttpRequest();
 
-    
+req.open("POST", '/api/v1/product/changeProductStatus', true);
+req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+req.send(params);
+showPendingProducts(); 
 }

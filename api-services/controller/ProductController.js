@@ -119,3 +119,20 @@ module.exports.getMostRecentUserProduct = function (user_id, callback) {
 }
 
 
+module.exports.updateProductStatus = function (product_id,status,callback) {
+  Product.update({
+    status: status
+  },{
+    where: {
+      product_id: product_id
+    }
+  })
+    .then(function (related) {
+      //console.log(related[0].role.role);
+      callback(related);
+    })
+    .catch(function (err) {
+      //console.log(err);
+      callback(err);
+    });
+}

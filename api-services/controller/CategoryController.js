@@ -3,7 +3,7 @@ var Brand = require('../model/BrandModel');
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-module.exports.getAllCategoryAndBrands = function (callback) {
+module.exports.getAllCategoryAndSub = function (callback) {
   Category.findAll({
     where: {
       parent_id: 0

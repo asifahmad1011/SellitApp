@@ -7,7 +7,7 @@ function showProductsbyStatus(status) {
       json=JSON.parse(req.responseText);
       console.log("there is -"+json.products.length);
       var body="<div class='row products-admin ratio_asos'>";
-      for(var i=0;i<json.products.length;i++)
+      for(var i=json.products.length-1;i>=0;i--)
       { 
               var img_url;
               if(json.products[i].image.length>0)

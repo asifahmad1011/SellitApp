@@ -3,6 +3,8 @@ var router = express.Router();
 var Users = require("../controller/UserController");
 var utili = require("../utility/utility");
 var Product = require("../controller/ProductController");
+const Cryptr = require('cryptr');
+const cryptr = require("../utility/cryptrkey");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -22,6 +24,8 @@ router.get('/', function(req, res, next) {
 router.post("/", function(req,res,next){
   const data = req.body;
   console.log(data);
+  const encryptedString = cryptr.cryptr.encrypt(data.password);
+  console.log(encryptedString);
   Users.createUser(
         {
         matrikel_number : data.matrikel_number,
@@ -33,7 +37,7 @@ router.post("/", function(req,res,next){
         phone_number : data.phone_number,
         role_id : data.role_id,
         username : data.username,
-        password : data.password,
+        password : encryptedString,
         postal_code : data.postal_code,
         created_date : data.created_date,
         modified_date : data.modified_date
@@ -46,25 +50,12 @@ router.post("/", function(req,res,next){
      // console.log(result.original);
       return res.send({
         status : "failed",
-        reason : result.original.sqlMessage,
+        reason : result,
       })
     }
   })
 })
 
-router.get("/product/:userid", function(req,res, next){
-  var user_id = req.params.userid;
-  Product.getAllUserProduct(user_id, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
-})
 
 
 module.exports = router;

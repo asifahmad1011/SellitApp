@@ -45,16 +45,14 @@ var User = sequelize.define("users",{
       allowNull : false,
     },
     password : {
-      type: Sequelize.STRING(15),
+      type: Sequelize.STRING(300),
       allowNull : false,
     },
     created_date : {
       type: Sequelize.DATE,
-      allowNull : false,
     },
     modified_date : {
       type: Sequelize.DATE,
-      allowNull : false,
     },
   }
 )

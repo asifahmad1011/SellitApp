@@ -1,5 +1,6 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
+var Brand = require('../model/BrandModel');
 
 var Category = sequelize.define("category",{
     category_id : {
@@ -30,5 +31,6 @@ var Category = sequelize.define("category",{
   }
 )
 Category.hasMany(Category, {foreignKey: "parent_id", as : "sub_category"});
+Category.hasMany(Brand, {foreignKey: "category_id", as : "brands"});
 module.exports=Category;
 

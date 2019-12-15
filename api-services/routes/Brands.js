@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
                 "brand": null
             })
         } else {
-            res.json({ rows });
+            res.json({"brands": rows });
         }
     })
 });

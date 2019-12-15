@@ -11,16 +11,16 @@ module.exports.createUser  = function(user, callback){
       //console.log(err);
     })
   }
-  
+
   module.exports.getAllUser = function(callback){
     User.findAll().then(function(result){
       callback(result);
     }).catch(function(err){
       callback(err);
     });
-  
+
   }
-  
+
   module.exports.getUser = function(loginKey,password,callback){
     console.log(loginKey + " " +  password);
     User.findAll({
@@ -30,9 +30,10 @@ module.exports.createUser  = function(user, callback){
       }
     }).then(function(result){
       callback(result);
+      //console.log(result[0].users.dataValues);
     }).catch(function(err){
       callback(err);
       console.log(err);
     });
-  
+
   }

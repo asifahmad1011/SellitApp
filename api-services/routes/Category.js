@@ -40,6 +40,19 @@ router.get('/subcategories', function (req, res, next) {
   })
 });
 
+router.get('/categoriesandsub', function (req, res, next) {
+  Category.getAllCategoryAndSub((rows) => {
+      if (!rows || !rows.length) {
+          res.json({
+              "status": "failed",
+              "category": null
+          })
+      } else {
+          res.json({ rows });
+      }
+  })
+});
+
 router.get('/:id', function (req, res, next) {
   var category_id = req.params.id;
   Category.getAllCategoryBrands(category_id, (rows) => {

@@ -136,3 +136,24 @@ module.exports.updateProductStatus = function (product_id,status,callback) {
       callback(err);
     });
 }
+
+module.exports.getAllProductsByStatus = function (status, callback) {
+  Product.findAll({
+    where: {
+      status: status
+    },
+    include: {
+      model: Image,
+      as: "image",
+      //where: { primary_image_id: '0' }
+    }
+  })
+    .then(function (related) {
+      //console.log(related[0].role.role);
+      callback(related);
+    })
+    .catch(function (err) {
+      //console.log(err);
+      callback(err);
+    });
+}

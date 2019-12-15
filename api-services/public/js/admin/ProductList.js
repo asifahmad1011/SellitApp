@@ -1,14 +1,14 @@
-function showPendingProducts() {
+function showProductsbyStatus(status) {
     // Add your code below this line
     req=new XMLHttpRequest();
-  req.open("GET",'/api/v1/product/',true);
+  req.open("GET",'/api/v1/product/getProductsByStatus/'+status,true);
   req.send();
   req.onload=function(){
       json=JSON.parse(req.responseText);
+      console.log("there is -"+json.products.length);
       var body="<div class='row products-admin ratio_asos'>";
       for(var i=0;i<json.products.length;i++)
       { 
-          if(json.products[i].status==3){
               var img_url;
               if(json.products[i].image.length>0)
               img_url=json.products[i].image[0].url;
@@ -31,9 +31,9 @@ function showPendingProducts() {
                   </div>\
               </div>\
           </div>"
-          }
+          
       }
-      body+="</div>"
+      body+="</div>";
       document.getElementById('mainContainer').innerHTML=body;         
   };
   
@@ -125,5 +125,5 @@ req = new XMLHttpRequest();
 req.open("POST", '/api/v1/product/changeProductStatus', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
-showPendingProducts(); 
+showProductsbyStatus(3); 
 }

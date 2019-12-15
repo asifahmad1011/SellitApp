@@ -166,4 +166,19 @@ router.post("/changeProductStatus", function(req,res, next){
     }
   });
 })
+
+
+router.get('/getProductsByStatus/:status', function (req, res, next) {
+  var status = req.params.status;
+  Product.getAllProductsByStatus(status, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+});
 module.exports = router;

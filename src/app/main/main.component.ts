@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
+import { isNull } from 'util';
 
 
 declare var $: any;
@@ -14,6 +15,7 @@ declare var $: any;
 export class MainComponent implements OnInit {
   
   public url : any; 
+  isLoggedIn: boolean;
 
   constructor(private router: Router) {  
     this.router.events.subscribe((event) => {
@@ -25,6 +27,14 @@ export class MainComponent implements OnInit {
 
   ngOnInit() { 
    $.getScript('assets/js/script.js');
+   var mn = localStorage.getItem("matrikel_number");
+   var tok = localStorage.getItem("token");
+
+   if( mn === "" || isNull(mn) && isNull(tok) || tok === "" )
+    this.isLoggedIn = false;
+  else
+    this.isLoggedIn = true;
+
   }
 
 }

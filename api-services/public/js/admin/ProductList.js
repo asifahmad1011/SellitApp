@@ -1,5 +1,8 @@
+
+
 function showProductsbyStatus(status) {
     // Add your code below this line
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
   req.open("GET",'/api/v1/product/getProductsByStatus/'+status,true);
   req.send();
@@ -50,12 +53,15 @@ function showProductsbyStatus(status) {
       }
   };
   
-    
+}
+else
+window.location.replace("admin/login.ejs");
   };
 
 
   //////
   function getProductPage(product_id) {
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     // Add your code below this line
     req=new XMLHttpRequest();
     req.onload=function(){
@@ -127,10 +133,13 @@ function showProductsbyStatus(status) {
   req.open("GET",'/api/v1/product/id/'+product_id,true);
   req.send();
 
- 
+    }
+    else
+window.location.replace("admin/login.ejs");
   };
 ///////////////
 function changeProductStatus(product_id,status){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
 console.log(product_id+"-this-"+status);
 var params = 'productid=' + product_id + '&status=' + status;
 req = new XMLHttpRequest();
@@ -139,4 +148,7 @@ req.open("POST", '/api/v1/product/changeProductStatus', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
 showProductsbyStatus(3); 
+    }
+    else
+window.location.replace("admin/login.ejs");
 }

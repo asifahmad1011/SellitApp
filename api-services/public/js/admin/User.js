@@ -1,4 +1,5 @@
 function getAllUsers(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
     req.open("GET",'/api/v1/users',true);
     req.send();
@@ -54,5 +55,12 @@ function getAllUsers(){
         document.getElementById('mainHeader').innerHTML="Add Category"
         
     };
-    
+}
+else
+window.location.replace("admin/login.ejs"); 
+}
+
+function logout(){
+    sessionStorage.removeItem("matrik_num");
+    window.location.replace("admin/login.ejs");
 }

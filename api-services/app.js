@@ -19,7 +19,8 @@ var image = require("./routes/Image");
 var dashboard = require("./routes/Dashboard");
 
 var app = express();
-
+var session = require('express-session');
+app.use(session({ resave: true ,secret: 'admin' , saveUninitialized: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
@@ -51,8 +52,10 @@ var publicDir = require('path').join(__dirname,'/public');
 app.use(express.static(publicDir));
 app.set('views', path.join(__dirname, './vievs'));
 app.set('view engine', 'ejs');
+
+
 app.use(function(req, res, next) {
-	res.render('admin/index.ejs')
+	res.render('admin/login.ejs')
 });
 
 

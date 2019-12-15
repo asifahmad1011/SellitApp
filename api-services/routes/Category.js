@@ -60,7 +60,7 @@ router.post("/", function(req,res, next){
   var description = req.body.description;
   var parent_id = req.body.parent_id;
   var d = new Date();
-  var date=""+d.getFullYear+"-"+d.getMonth+"-"+d.getDate+" "+d.getHours+":"+d.getMinutes+":"+d.getSeconds;
+  var date=""+d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
   Category.addCategory({
     name:name,
     description:description,

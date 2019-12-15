@@ -35,4 +35,20 @@ app.use("/api/v1/category", category);
 app.use("/api/v1/brand", brand);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
+////////////parvin
+var pages=require("./routes/AdimGetPages");
+app.use("/api/v1/admin/page", pages);
+var config = require('./config');
+var publicDir = require('path').join(__dirname,'/public');
+app.use(express.static(publicDir));
+app.set('views', path.join(__dirname, './vievs'));
+app.set('view engine', 'ejs');
+app.use(function(req, res, next) {
+	res.render('admin/index.ejs') 
+});
+
+
+/////////
+
 module.exports = app;

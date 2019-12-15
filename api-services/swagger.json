@@ -524,6 +524,22 @@
           }
         }
       }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": [
+          "Admin Dashboard"
+        ],
+        "summary": "Reporting System for the Platform",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dashboard"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -793,6 +809,29 @@
           "additionalProperties": {
             "$ref": "#/definitions/User"
           }
+        }
+      }
+    },
+    "Dashboard": {
+      "type": "object",
+      "properties": {
+        "totalProduct": {
+          "type": "number"
+        },
+        "totalSoldProduct": {
+          "type": "number"
+        },
+        "totalPendingProduct": {
+          "type": "number"
+        },
+        "totalApprovedProduct": {
+          "type": "number"
+        },
+        "totalInActiveProduct": {
+          "type": "number"
+        },
+        "totalDeletedProduct": {
+          "type": "number"
         }
       }
     }

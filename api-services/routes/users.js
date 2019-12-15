@@ -42,16 +42,15 @@ router.post("/", function(req,res,next){
         created_date : data.created_date,
         modified_date : data.modified_date
   }, (result) => {
-    if(utili.isEmpty(result)){
-      return res.send({
-        status : "success",
-      })
-    }else{
-     // console.log(result.original);
+    if(result.isError){
       return res.send({
         status : "failed",
         reason : result,
       })
+    }else{
+     return res.send({
+      status : "success",
+    })
     }
   })
 })

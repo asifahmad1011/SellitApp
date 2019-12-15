@@ -15,6 +15,31 @@ router.get('/', function (req, res, next) {
     })
 });
 
+router.get('/categories', function (req, res, next) {
+  Category.getAllCategories((rows) => {
+      if (!rows || !rows.length) {
+          res.json({
+              "status": "failed",
+              "category": null
+          })
+      } else {
+          res.json({ rows });
+      }
+  })
+});
+router.get('/subcategories', function (req, res, next) {
+  Category.getAllSubCategories((rows) => {
+      if (!rows || !rows.length) {
+          res.json({
+              "status": "failed",
+              "category": null
+          })
+      } else {
+          res.json({ rows });
+      }
+  })
+});
+
 router.get('/:id', function (req, res, next) {
   var category_id = req.params.id;
   Category.getAllCategoryBrands(category_id, (rows) => {

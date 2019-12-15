@@ -27,6 +27,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() { 
    $.getScript('assets/js/script.js');
+   
+   //Checking if a user is logged in or logged out
    var mn = localStorage.getItem("matrikel_number");
    var tok = localStorage.getItem("token");
 

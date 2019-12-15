@@ -318,6 +318,22 @@
           }
         }
       }
+    },
+    "/brand": {
+      "get": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Get all brands from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Brand"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -499,6 +515,26 @@
           "type": "string"
         },
         "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "properties": {
+        "brand_id": {
+          "type": "number"
+        },
+        "category_id": {
+          "type": "number"
+        },
+        "brand_name": {
+          "type": "number"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "modified_date": {
           "type": "string"
         }
       }

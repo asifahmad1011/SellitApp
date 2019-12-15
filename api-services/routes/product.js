@@ -101,8 +101,6 @@ router.post('/add', function (req, res, next) {
   })
 });
 
-
-//limit:12
 router.get("/userproduct/:userid", function(req,res, next){
   var user_id = req.params.userid;
   Product.getAllUserProduct(user_id, (rows) => {

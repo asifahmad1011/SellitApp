@@ -5,10 +5,14 @@ const Op = Sequelize.Op;
 module.exports.createUser  = function(user, callback){
     User.create(user).then(function(related){
       callback(related);
-      //console.log(related);
+      //console.log("related => " +  related);
     }).catch(function(err){
+      var err = {
+        "isError" : true,
+        "error" : err.original.sqlMessage
+      }
       callback(err);
-      //console.log(err);
+      //console.log("err => " +  err);
     })
   }
 

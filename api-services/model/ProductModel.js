@@ -65,8 +65,6 @@ var Product = sequelize.define('products', {
   modified_date: {
     type: Sequelize.DATE
   },
-
-
 });
 
 

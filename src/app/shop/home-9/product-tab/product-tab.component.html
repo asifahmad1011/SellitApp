@@ -10,7 +10,31 @@
                         <li class=""><a href="tab-3">featured</a></li>
                     </ul>
 
-                    <h1> HELLO</h1>
+                    <table class="table table-light">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of productList.products | paginate: { itemsPerPage: 12, currentPage: page }">
+                                <td>{{product.name}}</td>
+                                <td>{{product.price}}</td>
+                                <td>
+                                    <a href="/home/right-sidebar/product/{{product.product_id}}"><img class="img-fluid" src="{{product.image[0].url}}" alt="" height="180px" width="180px"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
                     <div class="tab-content-cls no-color-varient">
                         <div id="tab-1" class="tab-content active default">
                             <div class="row no-slider">

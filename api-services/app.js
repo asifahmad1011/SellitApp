@@ -3,6 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
+var publicDir = path.join(__dirname,'/public');
+
 
 const swaggerDocument = require('./swagger.json');
 
@@ -13,12 +15,14 @@ var auths = require("./routes/Authentications");
 var chat = require("./routes/Chat");
 var category = require("./routes/Category");
 var brand = require("./routes/Brands");
+var image = require("./routes/Image");
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
+app.use(express.static(publicDir));
 
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin","*");
@@ -33,6 +37,7 @@ app.use("/api/v1/auth", auths);
 app.use("/api/v1/chat", chat);
 app.use("/api/v1/category", category);
 app.use("/api/v1/brand", brand);
+app.use("/api/v1/image", image);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 module.exports = app;

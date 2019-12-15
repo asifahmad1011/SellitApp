@@ -48,3 +48,6 @@ function myFunction() {
   var x = localStorage.getItem("token");
   document.getElementById("sell_id").innerHTML = x;
 }
+
+
+      document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");

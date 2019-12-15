@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Users = require("../controller/UserController");
 var utili = require("../utility/utility");
+var Product = require("../controller/ProductController");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -49,6 +50,20 @@ router.post("/", function(req,res,next){
       })
     }
   })
+})
+
+router.get("/product/:userid", function(req,res, next){
+  var user_id = req.params.userid;
+  Product.getAllUserProduct(user_id, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
 })
 
 

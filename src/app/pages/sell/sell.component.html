@@ -1,108 +1,140 @@
 <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-	<div class="wrapper wrapper--w790">
-		<div class="card card-5">
-			<div class="card-heading">
-				<h2 class="title">Post a Product</h2>
-			</div>
-			<div class="card-body">
-				<form [formGroup]="productform" class="theme-form" (ngSubmit)="Product()">
-					<div class="form-row">
-						<div class="name"><h4>Title</h4></div>
-						<div class="value">
-									<div class="input-group">
-										<input class="input--style-5" type="text" name="name" (click)="Category()" id="name" formControlName="name" [(ngModel)]="model.name">
-									</div>
-						</div>
-					</div>
+    <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Post a Product</h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="productform" class="theme-form" (ngSubmit)="Product()">
+                    <div class="form-row">
+                        <div class="name">
+                            <h4>Title</h4>
+                        </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-5" type="text" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
+                            </div>
+                        </div>
+                    </div>
 
-					<div class="form-row">
-						<div class="name"><h4>Which Category? {{results.name}}</h4></div>
-						<div class="value">
-							<div class="input-group">
-								<div class="rs-select2 js-select-simple select--no-search">
-									<select  name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id">
-										<option *ngFor="let result of results.rows"  value="{{result.category_id}}"> {{result.name}} </option>
+                    <div class="form-row">
+                        <div class="name">
+                            <h4>Which Category?</h4>
+                        </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+
+
+                                    <select name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id" (click)="getbrands()">
+											
+										<option  *ngFor="let result of results"  value="{{result.category_id}}">  
+												{{result.name}}
+
+										</option>
 									</select>
-									<div class="select-dropdown"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-					<div class="form-row">
-						<div class="name"><h4>Which Brand?</h4></div>
-						<div class="value">
-							<div class="col-7">
-							<div class="input-group">
-								<input class="input--style-5" type="text" name="brand_id" id="brand_id" formControlName="brand_id" [(ngModel)]="model.brand_id">
-							</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="name"><h4>Price</h4></div>
-						<div class="value">
-							<div class="col-4">
-									<div class="input-group">
-										<input class="input--style-5" type="text" (click)="myFunction()" name="price" id="price" formControlName="price" [(ngModel)]="model.price" >
-									</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-row ">
-						<div class="name"><h4>Description</h4></div>
-						<div class="value">
-									<div class="input-group">
-										<textarea class="form-control rounded-0" id="description" name="description" rows="3"  formControlName="description" [(ngModel)]="model.description"  style="background-color:#e5e5e5" ></textarea>
-									  </div>
-						</div>
-					</div>
-					<div class="form-row ">
-						<div class="name"><h4>Details</h4></div>
-						<div class="value">
-									<div class="input-group">
-										<textarea class="form-control rounded-0" id="more_details" name="more_details"  formControlName="more_details" [(ngModel)]="model.more_details"  rows="2.5" style="background-color: #e5e5e5;"></textarea>
-									  </div>
-						</div>
-					</div>
+                    <div class="form-row">
+                        <div class="name">
+                            <h4>Which Brand?</h4>
+                        </div>
+                        <div class="value">
+                            <div class="col-7">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
 
-					<div class="form-row">
-						<div class="name"><h4>Product Condition?</h4></div>
-						<div class="value">
-							<div class="input-group">
-								<div class="rs-select2 js-select-simple select--no-search">
-									<select name="product_condition"  id="product_condition" formControlName="product_condition" [(ngModel)]="model.product_condition">
+
+                                        <select name="brand_id" id="brand_id" formControlName="brand_id" [(ngModel)]="model.brand_id" (click)="getbrands()">
+														
+													<option  *ngFor="let Bresult of resultsBranch"  value="{{Bresult.brand_id}}">  
+															{{Bresult.brand_name}}
+																
+													
+													</option>
+												</select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">
+                            <h4>Price</h4>
+                        </div>
+                        <div class="value">
+                            <div class="col-4">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" (click)="myFunction()" name="price" id="price" formControlName="price" [(ngModel)]="model.price">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="name">
+                            <h4>Description</h4>
+                        </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <textarea class="form-control rounded-0" id="description" name="description" rows="3" formControlName="description" [(ngModel)]="model.description" style="background-color:#e5e5e5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="name">
+                            <h4>Details</h4>
+                        </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <textarea class="form-control rounded-0" id="more_details" name="more_details" formControlName="more_details" [(ngModel)]="model.more_details" rows="2.5" style="background-color: #e5e5e5;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">
+                            <h4>Product Condition?</h4>
+                        </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="product_condition" id="product_condition" formControlName="product_condition" [(ngModel)]="model.product_condition">
 										<option disabled="disabled" selected="selected">Choose option</option>
 										<option value="1">Very Good</option>
 										<option value="2">Good</option>
 										<option value="3">Poor</option>
 									</select>
-									<div class="select-dropdown"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="form-row" ng-app="uploadPreview" ng-controller="Upload">
-							<div class="col-4">
+                    <div class="form-row" ng-app="uploadPreview" ng-controller="Upload">
+                        <div class="col-4">
 
-								<img *ngFor='let url of urls'  [src]="url" height="200px" width="200px"> <br/>
+                            <img *ngFor='let url of urls' [src]="url" height="200px" width="200px"> <br/>
 
-								<input type='file' (change)="onSelectFile($event)"  formControlName="image" [(ngModel)]="model.image" multiple>
-							
-					   <!-- <input  type="file" (change)="onFileSelected($event)"> -->
-					   </div>
-						</div>
-                    
+                            <input type='file' (change)="onSelectFile($event)" formControlName="image" [(ngModel)]="model.image" multiple>
 
-					<div>
-						<button class="btn btn--radius-2 btn--red" type="submit" (click)="onUpload()">Register</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                            <!-- <input  type="file" (change)="onFileSelected($event)"> -->
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <button class="btn btn--radius-2 btn--red" type="submit" (click)="onUpload()">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Jquery JS-->
@@ -114,8 +146,3 @@
 
 <!-- Main JS-->
 <script src="js/global.js"></script>
-
-
-
-	
- 

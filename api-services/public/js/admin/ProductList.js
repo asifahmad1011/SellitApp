@@ -1,6 +1,9 @@
 
 
 function showProductsbyStatus(status) {
+    console.log("session");
+    
+console.log("my session-"+sessionStorage.getItem("matrik_num"));
     // Add your code below this line
     if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();

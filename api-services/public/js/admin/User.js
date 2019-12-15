@@ -62,5 +62,30 @@ window.location.replace("admin/login.ejs");
 
 function logout(){
     sessionStorage.removeItem("matrik_num");
-    window.location.replace("admin/login.ejs");
+    document.getElementById('index').style.display="none";
+     document.getElementById('login').style.display="contents";
+}
+
+function login(){
+    console.log("login");
+var uname=document.getElementById('uname').value;
+var pass=document.getElementById('pass').value;
+console.log(uname+"-"+pass);
+var params="matrikel_number="+uname+"&password="+pass;
+req=new XMLHttpRequest();
+
+    req.open("POST",'/api/v1/auth/admin',true);
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    req.send(params);
+    req.onload=function(){
+        json=JSON.parse(req.responseText);
+
+        if(json.status=='sucessfull'){
+            sessionStorage.setItem("matrik_num","sucessfull");
+            
+            document.getElementById('index').style.display="contents";
+            document.getElementById('login').style.display="none";
+        }
+    }
+    
 }

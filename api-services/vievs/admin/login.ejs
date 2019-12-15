@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
+<div id="login" ><!DOCTYPE html>
+<html >
 <div><%- include("head.ejs") %></div>
 
-
-<body>
+<script src="/js/admin/User.js"></script>
+<body >
 
 <div class="container card text-center form-signin mt-4 " style="width: 22rem;">
     <div class="text-center">
-      <form  class="form-signin" action="/api/v1/auth/admin" method="post">
         <img class="mb-4" src="/assets/images/logo_g.png" alt="" width="50" height="50">
     
         <div class="form-group mb-4">
@@ -28,13 +27,14 @@
         </div>
     
     
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a routerLink="/login" class="btn btn-lg btn-success btn-block">Register</a>
-      </form>
+        <button onclick="login()" class="btn btn-lg btn-primary btn-block" >Sign in</button>
     
     </div>
     </div>
     
     
 </body>
+
 </html>
+</div>
+<div id="index" style="display:none" ><%- include("index.ejs") %></div>

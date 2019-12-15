@@ -49,7 +49,7 @@ router.post('/admin', function(req, res, next) {
 
 	Users.getUser(loginKey,password, (rows) => {
 		if (!rows || !rows.length) {
-			res.render("admin/login.ejs",{
+			res.json({
         "status": "failed",
         "user_id": null
       })
@@ -57,13 +57,14 @@ router.post('/admin', function(req, res, next) {
      var data = JSON.parse(JSON.stringify(rows));
      if(data[0].role_id==1){
       sessionStorage.setItem("matrik_num","sucessfull");
+      console.log(sessionStorage.getItem("matrik_num"));
       // req.session.matrik_num = data[0].matrikel_number;
-			res.render("admin/index.ejs",{
+			res.json({
         "status": "sucessfull",
         "user_id": data[0].matrikel_number
       })}
       else
-      res.render("admin/login.ejs",{
+      res.json({
         "status": "failed",
         "user_id": null
       })

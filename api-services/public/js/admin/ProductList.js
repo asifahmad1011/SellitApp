@@ -34,7 +34,20 @@ function showProductsbyStatus(status) {
           
       }
       body+="</div>";
-      document.getElementById('mainContainer').innerHTML=body;         
+      document.getElementById('mainContainer').innerHTML=body;
+         
+      if(status==3){
+        document.getElementById('mainHeader').innerHTML="Pending Products"
+      }   
+      else if(status==1){
+        document.getElementById('mainHeader').innerHTML="Approved Products"
+      }
+      else if(status==2){
+        document.getElementById('mainHeader').innerHTML="Sold Products"
+      }
+      else if(status==4){
+        document.getElementById('mainHeader').innerHTML="Inactive Products"  
+      }
   };
   
     

@@ -16,6 +16,7 @@ var chat = require("./routes/Chat");
 var category = require("./routes/Category");
 var brand = require("./routes/Brands");
 var image = require("./routes/Image");
+var dashboard = require("./routes/Dashboard");
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use("/api/v1/chat", chat);
 app.use("/api/v1/category", category);
 app.use("/api/v1/brand", brand);
 app.use("/api/v1/image", image);
+app.use("/api/v1/dashboard", dashboard);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
@@ -50,7 +52,7 @@ app.use(express.static(publicDir));
 app.set('views', path.join(__dirname, './vievs'));
 app.set('view engine', 'ejs');
 app.use(function(req, res, next) {
-	res.render('admin/index.ejs') 
+	res.render('admin/index.ejs')
 });
 
 

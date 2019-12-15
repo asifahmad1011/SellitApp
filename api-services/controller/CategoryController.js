@@ -71,3 +71,12 @@ module.exports.getAllSubCategories = function (callback) {
     });
 }
 
+
+module.exports.addCategory = function (category, callback) {
+  Category.build(category).save().then((data) => {
+    console.log(data.dataValues);
+    callback(data.dataValues);
+  }).catch((err) => {
+    callback(err);
+  })
+}

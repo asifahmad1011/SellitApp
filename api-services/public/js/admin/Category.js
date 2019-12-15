@@ -1,6 +1,6 @@
 function getAllCategory(){
     req=new XMLHttpRequest();
-    req.open("GET",'/api/v1/category',true);
+    req.open("GET",'/api/v1/category/categories',true);
     req.send();
     req.onload=function(){
         json=JSON.parse(req.responseText);
@@ -28,6 +28,8 @@ function getAllCategory(){
                                     <div class='form-group'>\
                                         <label for='categoryName' class='mb-1'>Category Name :</label>\
                                         <input class='form-control' id='categoryName' type='text'>\
+                                        <label for='categoryDesc' class='mb-1'>Category Description :</label>\
+                                        <input class='form-control' id='categoryDesc' type='text'>\
                                     </div>\
                                 </div>\
                             </form>\
@@ -54,7 +56,6 @@ function getAllCategory(){
                 <table class='jsgrid-table'>\
                     <tbody>"
                     for(var i=0;i<json.rows.length;i++){
-                        if(json.rows[i].parent_id==0)
                         body+="<tr class='jsgrid-alt-row' style=''>\
                         <td class='jsgrid-cell' style='width: 50px;'>"+json.rows[i].name+"</td>\
                         <td class='jsgrid-cell jsgrid-align-right' style='width: 100px;'>"+json.rows[i].description+"</td>\
@@ -81,4 +82,16 @@ function getAllCategory(){
     
     
 document.getElementById('mainContainer').innerHTML=body;
+}
+
+function addCategory(){
+var categoryName=document.getElementById('categoryName').value;
+var categoryDesc=document.getElementById('categoryDesc').value;
+var params = 'name=' + categoryName + '&description=' + categoryDesc+"&parent_id=0";
+req = new XMLHttpRequest();
+req.open("POST", '/api/v1/category', true);
+req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+req.send(params);
+getAllCategory(); 
+
 }

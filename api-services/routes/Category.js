@@ -54,4 +54,29 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
+
+router.post("/", function(req,res, next){
+  var name = req.body.name;
+  var description = req.body.description;
+  var parent_id = req.body.parent_id;
+  var d = new Date();
+  var date=""+d.getFullYear+"-"+d.getMonth+"-"+d.getDate+" "+d.getHours+":"+d.getMinutes+":"+d.getSeconds;
+  Category.addCategory({
+    name:name,
+    description:description,
+    parent_id:parent_id,
+    created_date:date,
+    modified_date:date
+  }, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+})
+
 module.exports = router;

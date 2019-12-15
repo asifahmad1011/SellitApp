@@ -14,19 +14,19 @@ var Category = sequelize.define("category",{
     },
     name : {
       type: Sequelize.STRING(20),
-      allowNull : false,
+      allowNull : false
     },
     description : {
         type: Sequelize.TEXT,
-        allowNull : false,
+        allowNull : false
       },
     created_date : {
       type: Sequelize.DATE,
-      allowNull : false,
+      defaultValue : Date.now()
     },
     modified_date : {
       type: Sequelize.DATE,
-      allowNull : false,
+      defaultValue : Date.now()
     },
   }
 )

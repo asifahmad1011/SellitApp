@@ -38,8 +38,8 @@
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li><a [routerLink]="" >My Ads</a></li>
-                            <li><a [routerLink]="" >Change Password</a></li>
+                            <li><a [routerLink]="" (click) =toggleDisplay()>My Ads</a></li>
+                            <li><a [routerLink]="" (click) =toggleDisplay()>Change Password</a></li>
                             <!-- <li class="active"><a href='#'>Account Info</a></li>
                             <li><a [routerLink]="">Address Book</a></li>                       
                             <li><a [routerLink]="">My Wishlist</a></li>
@@ -119,8 +119,9 @@
                         </div> -->
                     </div>
                 </div>
-                <!-- <div id="myDiv">
-                        I show up onClick of "MyAdd / ChangePassword".
+                <!-- <div>
+                   <div>            
+                    </div>
                 </div> -->
             </div>
         </div>
@@ -128,3 +129,17 @@
     
 </section>
 <!-- section end -->
+<section>
+    <div class="container" padding = "20" *ngIf ='isShow'>
+        <div class="row">
+             <div class="col-lg-3">
+             </div>
+                 <div class="col-lg-9">
+                      <div class="dashboard-right">
+                             <div class="dashboard">
+                             </div>
+                      </div>
+                 </div>
+        </div>
+   </div>
+</section>

@@ -96,4 +96,26 @@ module.exports.getAllUserProduct = function (user_id, callback) {
     });
 }
 
+module.exports.getMostRecentUserProduct = function (user_id, callback) {
+  Product.findAll({
+    where: {
+      seller_id: user_id
+    },
+    include: {
+      model: Image,
+      as: "image"
+    },
+    limit: 1,
+    order : [
+      ['created_date', 'DESC'],
+    ]
+  })
+    .then(function (related) {
+      callback(related);
+    })
+    .catch(function (err) {
+      callback(err);
+    });
+}
+
 

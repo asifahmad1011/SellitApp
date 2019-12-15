@@ -132,10 +132,10 @@
         }
       }
     },
-    "/product/id/{userid}": {
+    "/product/userproduct/{userid}": {
       "parameters": [
         {
-          "name": "user id",
+          "name": "userid",
           "in": "path",
           "required": true,
           "description": "User ID of the product that you want to fetch",
@@ -150,7 +150,43 @@
         "parameters": [
           {
             "in": "path",
-            "name": "user id",
+            "name": "userid",
+            "required": true,
+            "description": "Product with user id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/recentproduct/{userid}": {
+      "parameters": [
+        {
+          "name": "userid",
+          "in": "path",
+          "required": true,
+          "description": "User ID of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Product By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userid",
             "required": true,
             "description": "Product with user id",
             "schema": {

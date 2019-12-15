@@ -36,4 +36,6 @@ export class LoginService {
    getUser() {
      return localStorage.getItem('matrikel_number');
    }
+
+  
 }  

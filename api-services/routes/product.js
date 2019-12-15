@@ -74,36 +74,34 @@ router.post('/add', function (req, res, next) {
     } else {
       var imagebase = "";
       images.forEach(function (value) {
-          imageBase64 = value.base64;
-          console.log("making post to immbb");
-          request.post({
-            url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
-            form: { image: imageBase64 }
-          },
-            function (err, httpResponse, body) {
-              var result = JSON.parse(body);
-              if(result.data.url != null){
-                  var data = {
-                    image: result.title,
-                    url: result.url,
-                    primary_image_id: 0,
-                    video: result.url,
-                    product_id: data.rows.product_id,
-                  }
-                  saveImage(data);
-                  res.json({
-                    "status": "sucessfull"
-                  })
+        imageBase64 = value.base64;
+        console.log("making post to immbb");
+        request.post({
+          url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
+          form: { image: imageBase64 }
+        },
+          function (err, httpResponse, body) {
+            var result = JSON.parse(body);
+            if (result.data.url != null) {
+              var data = {
+                image: result.title,
+                url: result.url,
+                primary_image_id: 0,
+                video: result.url,
+                product_id: data.rows.product_id,
               }
-            });
+              saveImage(data);
+              res.json({
+                "status": "sucessfull"
+              })
+            }
+          });
       });
     }
   })
 });
 
-
-//limit:12
-router.get("/userproduct/:userid", function(req,res, next){
+router.get("/userproduct/:userid", function (req, res, next) {
   var user_id = req.params.userid;
   Product.getAllUserProduct(user_id, (rows) => {
     if (!rows) {
@@ -117,7 +115,7 @@ router.get("/userproduct/:userid", function(req,res, next){
   });
 })
 
-router.get("/recentproduct/:userid", function(req,res, next){
+router.get("/recentproduct/:userid", function (req, res, next) {
   var user_id = req.params.userid;
   Product.getMostRecentUserProduct(user_id, (rows) => {
     if (!rows) {
@@ -152,4 +150,55 @@ function saveImage(data) {
     }
   })
 }
+
+router.post("/changeProductStatus", function (req, res, next) {
+  var productid = req.body.productid;
+  var status = req.body.status;
+  console.log(productid + "-" + status)
+  Product.updateProductStatus(productid, status, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      console.log(rows)
+      res.json({ product : {
+        "product_id" : productid,
+        "status" : "Successful"
+      }
+    });
+    }
+  });
+})
+
+router.get('/getProductsByStatus/:status', function (req, res, next) {
+  var status = req.params.status;
+  Product.getAllProductsByStatus(status, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+});
+
+router.get('/getProductsByCategory/:categoryid', function (req, res, next) {
+  var categoryid = req.params.categoryid;
+  Product.getAllProductsByCategory(categoryid, (rows) => {
+    if (!rows) {
+      res.json({
+        "status": "failed",
+        "user": null
+      })
+    } else {
+      res.json({ products: rows });
+    }
+  });
+});
+
+
 module.exports = router;

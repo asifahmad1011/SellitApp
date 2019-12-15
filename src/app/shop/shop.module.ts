@@ -35,6 +35,7 @@ import { NewProductComponent } from './product/widgets/new-product/new-product.c
 import { SearchComponent } from './product/search/search.component';
 import { ColorComponent } from './product/collection/filter/color/color.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CollectionNoSidebarComponent } from './product/collection/collection-no-sidebar/collection-no-sidebar.component';
 
 @NgModule({
   exports: [],
@@ -68,6 +69,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProductBoxMetroComponent,
     CollectionLeftSidebarComponent,
     CollectionRightSidebarComponent,
+    CollectionNoSidebarComponent,
     BrandComponent,
     PriceComponent,
     ColorComponent,

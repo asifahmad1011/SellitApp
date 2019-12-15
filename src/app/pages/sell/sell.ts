@@ -8,7 +8,7 @@ export interface Sell {
   more_details: string;
   status: bigint;
   category_id: bigint;
-  brand_id: bigint;
+  brand_id: number;
   product_condition: bigint;
   images: Blob;
   created_date: Date;

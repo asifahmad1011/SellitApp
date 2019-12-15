@@ -20,6 +20,9 @@ import { FormsModule } from "@angular/forms";
   templateUrl: './order-success.component.html',
   styleUrls: ['./order-success.component.scss']
 })
+
+
+
 export class OrderSuccessComponent implements OnInit {
   selectedProduct;
 

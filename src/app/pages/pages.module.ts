@@ -44,6 +44,7 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
     FaqComponent,
     SellComponent,
     OrderSuccessComponent,
+    DashboardComponent,
   ],
 })
 export class PagesModule { }

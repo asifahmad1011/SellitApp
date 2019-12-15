@@ -34,7 +34,7 @@ export class SellComponent implements OnInit {
   productform: FormGroup;
   massage: string;
   public results: any[];
-  public resultsBranch: any[];
+  public resultsBrand: any[];
   errorMessage: string;
   constructor(
     private formbulider: FormBuilder,
@@ -57,14 +57,13 @@ export class SellComponent implements OnInit {
     });
 
     this.SellService.CategoryByID().subscribe(data => {
-      //done
+      //Done
       var dbData: any = [];
       dbData = data;
-
+      console.log("test", dbData);
       this.results = dbData.rows.filter(item => {
         return item.parent_id != 0;
       });
-      console.log("Cate",this.results)
     });
   }
 
@@ -78,9 +77,10 @@ export class SellComponent implements OnInit {
       const cateID = junkData.category_id;
       console.log(cateID);
 
-      this.resultsBranch = dbData.rows.filter(item => {
+      this.resultsBrand = dbData.brands.filter(item => {
         return item.category_id == cateID;
       });
+      console.log("Selected Brand",this.resultsBrand);
     });
   }
 

@@ -7,6 +7,7 @@ import { CollectionLeftSidebarComponent } from './product/collection/collection-
 import { CollectionRightSidebarComponent } from './product/collection/collection-right-sidebar/collection-right-sidebar.component';
 import { ProductRightSidebarComponent } from './product/product-details/product-right-sidebar/product-right-sidebar.component';
 import { SearchComponent } from './product/search/search.component';
+import { CollectionNoSidebarComponent } from './product/collection/collection-no-sidebar/collection-no-sidebar.component';
 
 
 
@@ -22,14 +23,17 @@ const routes: Routes = [
   },
   
   {
-    path: 'left-sidebar/collection/:category',
+    path: 'left-sidebar/collection/:category_id',
     component: CollectionLeftSidebarComponent
   },
   {
-    path: 'right-sidebar/collection/:category',
+    path: 'right-sidebar/collection/:category_id',
     component: CollectionRightSidebarComponent
   },
-
+  {
+    path: 'no-sidebar/collection/:category_id',
+    component: CollectionNoSidebarComponent
+  },
   {
     path: 'right-sidebar/product/:id',
     component: ProductRightSidebarComponent

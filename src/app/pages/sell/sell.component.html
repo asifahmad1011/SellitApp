@@ -12,7 +12,7 @@
                         </div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="name" id="name" formControlName="name" [(ngModel)]="model.name">
+                                <input class="input--style-5" type="text" name="name" (click)="Category()" id="name" formControlName="name" [(ngModel)]="model.name">
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,8 @@
 											
 										<option  *ngFor="let result of results"  value="{{result.category_id}}">  
 												{{result.name}}
-
+													
+										
 										</option>
 									</select>
                                     <div class="select-dropdown"></div>
@@ -52,10 +53,8 @@
 
                                         <select name="brand_id" id="brand_id" formControlName="brand_id" [(ngModel)]="model.brand_id" (click)="getbrands()">
 														
-													<option  *ngFor="let Bresult of resultsBranch"  value="{{Bresult.brand_id}}">  
+													<option  *ngFor="let Bresult of resultsBrand"  value="{{Bresult.brand_id}}">  
 															{{Bresult.brand_name}}
-																
-													
 													</option>
 												</select>
                                         <div class="select-dropdown"></div>

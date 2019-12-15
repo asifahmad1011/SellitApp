@@ -1,5 +1,6 @@
 var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
+var Brand = require('../model/BrandModel');
 
 var Category = sequelize.define("category",{
     category_id : {
@@ -13,22 +14,23 @@ var Category = sequelize.define("category",{
     },
     name : {
       type: Sequelize.STRING(20),
-      allowNull : false,
+      allowNull : false
     },
     description : {
         type: Sequelize.TEXT,
-        allowNull : false,
+        allowNull : false
       },
     created_date : {
       type: Sequelize.DATE,
-      allowNull : false,
+      defaultValue : Date.now()
     },
     modified_date : {
       type: Sequelize.DATE,
-      allowNull : false,
+      defaultValue : Date.now()
     },
   }
 )
 Category.hasMany(Category, {foreignKey: "parent_id", as : "sub_category"});
+Category.hasMany(Brand, {foreignKey: "category_id", as : "brands"});
 module.exports=Category;
 

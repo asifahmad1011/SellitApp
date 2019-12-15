@@ -19,6 +19,8 @@ import { FormsModule } from "@angular/forms";
 })
 export class DashboardComponent implements OnInit {
 
+  matrik = localStorage.getItem("matrikel_number");
+  
   //Div toggle
   isShow = false;
   toggleDisplay() {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';    
  import { FormsModule } from '@angular/forms';    
 import { HttpHeaders } from '@angular/common/http';
+import { MainComponent } from 'src/app/main/main.component';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   public baseUrl = "http://localhost:3000/api/v1/"; 
     
   errorMessage:string;    
-  constructor(private router:Router,private LoginService:LoginService) { }    
+  constructor(private router:Router,private LoginService:LoginService,
+    private mc: MainComponent) { }    
     
   public sessionStorageItem(matrikel_number: string): string {
     console.log("number", matrikel_number);
@@ -32,15 +34,13 @@ export class LoginComponent implements OnInit {
         {
           alert("You are now Logged in!");
           this.router.navigate(['./home/profile/']);
+          this.mc.isLoggedIn = true;
           // storing the session
           localStorage.setItem("matrikel_number", this.model.matrikel_number);
           localStorage.setItem("token", data.token);  
           console.log("mat",this.model.matrikel_number);
           console.log(localStorage);
-         
-          //Getting the session
-          //var matId = sessionStorage.getItem("matrikel_number")
-          //var tok = sessionStorage.getItem("token")
+        
           
         }
         else{

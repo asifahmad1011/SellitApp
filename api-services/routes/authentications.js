@@ -61,7 +61,7 @@ router.post('/admin', function(req, res, next) {
       // req.session.matrik_num = data[0].matrikel_number;
 			res.json({
         "status": "sucessfull",
-        "user_id": data[0].matrikel_number
+        "user_name": data[0].first_name+" "+data[0].last_name
       })}
       else
       res.json({

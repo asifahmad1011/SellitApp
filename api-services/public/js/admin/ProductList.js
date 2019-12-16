@@ -1,8 +1,5 @@
 
-if(sessionStorage.getItem("matrik_num")=='sucessfull'){
-    document.getElementById('index').style.display="contents";
-    document.getElementById('login').style.display="none";
-}
+
 function showProductsbyStatus(status) {
     console.log("session");
     
@@ -94,9 +91,12 @@ window.location.replace("admin/login.ejs");
             <div class='col-lg-6 rtl-text'>\
                 <div class='product-right'>\
                     <h2>"+json.products[0].name+"</h2>\
-                    <h3>"+json.products[0].price+" | currency : 'EUR'</h3>\
-                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-success m-1'>Approve</button>\
-                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",4)' class='btn btn-danger m-1'>Deny</button>";      
+                    <h3>"+json.products[0].price+" | currency : 'EUR'</h3>"
+                    if(json.products[0].status==3){
+                    body+="<button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-success m-1'>Approve</button>";
+                    }
+                    
+                    body+="<button type='button' onclick='changeProductStatus("+json.products[0].product_id+",4)' class='btn btn-danger m-1'>Deny</button>";      
                     body+="<div class='border-product'>\
                         <h6 class='product-title'>product details</h6>\
                         <p>"+json.products[0].more_details+"</p>\

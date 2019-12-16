@@ -14,12 +14,12 @@ export class HomeNineComponent implements OnInit {
   constructor(private productsService: ProductsService) {   }
 
   ngOnInit() {
-  	this.productsService.getProducts().subscribe(product => { 
-  	  product.filter((item: Products) => {
-         if(item.category_id == 1)
-         	this.products.push(item)
-      })
-    });
+  	// this.productsService.getProducts().subscribe(product => { 
+  	//   product.filter((item: Products) => {
+    //      if(item.category_id == 1)
+    //      	this.products.push(item)
+    //   })
+    // });
   }
 
 }

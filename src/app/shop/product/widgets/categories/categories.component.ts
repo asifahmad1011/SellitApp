@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../../../shared/services/products.service';
 import * as $ from 'jquery';
+import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -7,8 +10,10 @@ import * as $ from 'jquery';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+  
+  product_data;
 
-  constructor() { }
+  constructor(public productsService: ProductsService, private activeRoute: ActivatedRoute) { }
   
   // collapse toggle
   ngOnInit() {
@@ -25,6 +30,17 @@ export class CategoriesComponent implements OnInit {
           nextLevel.slideDown(speed);
         }
     });
+
+
+    this.activeRoute.params.subscribe(p => {
+      var productId = p['id'];
+
+      this.productsService.getProductById(productId).subscribe(res => {
+        console.log(res);
+        this.product_data = res;
+      });
+
+    })
   }
 
   // For mobile view

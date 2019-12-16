@@ -114,9 +114,7 @@
         <!-- Collection Sidebar -->
         <div class="col-sm-3 collection-filter">
           <div class="coll_sidebar_sticky" sticky>
-            <div class="collection-filter-block">
-              <app-categories></app-categories>
-            </div>
+
             <div class="collection-filter-block">
               <app-brand [tagsFilters]="tags" (tagFilters)="updateTagFilters($event)" *ngIf="tags.length"></app-brand>
               <app-color [colorsFilters]="colors" (colorFilters)="updateColorFilters($event)" *ngIf="colors.length"></app-color>
@@ -136,4 +134,3 @@
   </div>
 </section>
 <!-- section End -->
-<app-quick-view></app-quick-view>

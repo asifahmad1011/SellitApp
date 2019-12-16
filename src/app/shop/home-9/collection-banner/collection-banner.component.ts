@@ -10,6 +10,7 @@ import { HttpClient } from "@angular/common/http";
 export class CollectionBannerNineComponent implements OnInit {
    
   category_res= [];
+  productList =[];
   constructor(private productService: ProductsService,
     private http: HttpClient) { }
 
@@ -18,6 +19,11 @@ export class CollectionBannerNineComponent implements OnInit {
     this.productService.Category().subscribe((res) => {
       this.category_res = res
       console.log("Category:", res)});
+
+      this.productService.getProducts().subscribe(data => {
+        this.productList = data;
+        console.log("productlist_new", this.productList);
+      });
   }
 
   // // Collection banner

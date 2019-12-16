@@ -22,22 +22,20 @@
                             <h4>Which Category?</h4>
                         </div>
                         <div class="value">
+                            <div class="col-7">
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
-
-
                                     <select name="category_id" id="category_id" formControlName="category_id" [(ngModel)]="model.category_id" (click)="getbrands()">
 											
-										<option class="btn btn-primary" *ngFor="let result of results"  value="{{result.category_id}}">  
+										<option *ngFor="let result of results"  value="{{result.category_id}}">  
 												{{result.name}}
-													
-										
 										</option>
 									</select>
                                     <div class="select-dropdown"></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
 
 
@@ -53,7 +51,7 @@
 
                                         <select name="brand_id" id="brand_id" formControlName="brand_id" [(ngModel)]="model.brand_id" (click)="getbrands()">
 														
-													<option  *ngFor="let Bresult of resultsBrand"  value="{{Bresult.brand_id}}">  
+													<option *ngFor="let Bresult of resultsBrand"  value="{{Bresult.brand_id}}">  
 															{{Bresult.brand_name}}
 													</option>
 												</select>

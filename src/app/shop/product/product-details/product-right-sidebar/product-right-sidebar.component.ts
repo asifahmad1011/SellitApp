@@ -5,6 +5,9 @@ import { ProductsService } from '../../../../shared/services/products.service';
 import { Observable, of } from 'rxjs';
 import * as $ from 'jquery';
 
+
+var a = localStorage.getItem('matrikel_number');
+
 @Component({
   selector: 'app-product-right-sidebar',
   templateUrl: './product-right-sidebar.component.html',
@@ -21,6 +24,8 @@ export class ProductRightSidebarComponent implements OnInit {
 //she
   selectedProduct;
   image = "";
+
+
   
   //Get Product By Id
   // constructor(private route: ActivatedRoute, private router: Router,

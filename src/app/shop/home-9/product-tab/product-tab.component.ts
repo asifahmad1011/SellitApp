@@ -52,5 +52,5 @@ export class ProductTabNineComponent implements OnInit {
     this.productService.Category().subscribe((res) => {
       this.category_res = res
       console.log("Category:", res)});
-  }
+    }
 }

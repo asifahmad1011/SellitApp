@@ -4,17 +4,11 @@
 </span>
 </div>
 <div class="collection-collapse-block border-0 open">
-  <h3 class="collapse-block-title">Category</h3>
+  <h3 class="collapse-block-title">Seller Info</h3>
   <div class="collection-collapse-block-content">
-    <div class="collection-brand-filter">
-      <ul class="category-list">
-        <li><a [routerLink]="'/home/left-sidebar/collection/women'">Womens Fashion</a></li>
-        <li><a [routerLink]="'/home/left-sidebar/collection/men'">Mens Fashion</a></li>
-        <li><a [routerLink]="'/home/left-sidebar/collection/watch'">Mens Watch</a></li>
-        <li><a [routerLink]="'/home/left-sidebar/collection/beauty'">Beauty Products</a></li>
-        <li><a [routerLink]="'/home/left-sidebar/collection/furniture'">Furnitures</a></li>
-        <li><a [routerLink]="'/home/left-sidebar/collection/flower'">Flowers Port</a></li>
-      </ul>
+    <div class="collection-brand-filter" *ngFor="let result of product_data.products">
+      <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:90px">
+        <p><span>{{result.seller_id}}</span></p>
     </div>
   </div>
 </div>

@@ -51,3 +51,7 @@ function myFunction() {
 
 
       document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
+
+
+
+      

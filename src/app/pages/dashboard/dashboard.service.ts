@@ -30,4 +30,11 @@ export class DashboardService {
     return this.http.get<Dashboard[]>(`${this.Url}${a}`);
     }
 
+    Delete(Dashboard) {
+      const httpOptions = {
+        headers: new HttpHeaders({ "Content-Type": "application/json" })
+      };
+      return this.http.post<Dashboard>(`${this.Url}${a}`, Dashboard, httpOptions);
+    }
+
 }

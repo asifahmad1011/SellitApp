@@ -42,27 +42,23 @@
 </section>
 <!-- section end -->
 <section>
-  
-
-
-                      <div class="container">
-                                <div class="card-columns" *ngIf ='isShow' width="200px" >
-                                    <div class="card" *ngFor="let result of selectedProduct.products" >
-                                      <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
-                                      <div class="card-body" >
-                                        <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
-                                        <p class="card-text">{{result.description}}</p>
-                                      </div>
-                                      <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">{{result.status}}</li>
-                                      </ul>
-                                      <div class="card-body">
-                                        <a href="#" class="card-link" style="color:red">Delete</a>
-                                        <a href="#" class="card-link" style="color:#00FF00">Mark as Sold</a>
-                                      </div>
-                                    </div>
-                                    </div>
-                                    </div>
-
+        <div class="container">
+            <div class="card-columns" *ngIf ='isShow' width="200px" >
+                <div class="card" *ngFor="let result of selectedProduct.products" >
+                     <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                 <div class="card-body" >
+                     <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                     <p class="card-text">{{result.description}}</p>
+                 </div>
+                     <ul class="list-group list-group-flush">
+                     <li class="list-group-item">{{result.status}}</li>
+                     </ul>
+                 <div class="card-body">
+                          <a href="#" class="card-link" style="color:red">Delete</a>
+                          <a href="#" class="card-link" style="color:#00FF00">Mark as Sold</a>
+                    </div>
+                </div>
+            </div>
+         </div>
 </section>
 

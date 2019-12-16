@@ -20,7 +20,8 @@ import { FormsModule } from "@angular/forms";
 export class DashboardComponent implements OnInit {
 
   matrik = localStorage.getItem("matrikel_number");
-  
+  dashboardform: FormGroup;
+
   //Div toggle
   isShow = false;
   toggleDisplay() {
@@ -42,4 +43,28 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
+  Delete() {
+    const userdata = this.dashboardform.value;
+    //console.log(userdata.matrikel_number);
+   
+
+        const DBForm = { userdata, status_id: 5 };
+
+        const pdata = {
+          product_id: DBForm.userdata.product_id,
+          status_id: 5,
+        };
+        console.log("Post Data:",pdata);
+
+        this.postNewUser(pdata);
+      }
+
+      postNewUser(userData) {
+        const jsonData = JSON.stringify(userData);
+        //console.log(jsonData);
+    
+        this.DashboardService.Delete(jsonData).subscribe(data => {});
+      }
+    
 }

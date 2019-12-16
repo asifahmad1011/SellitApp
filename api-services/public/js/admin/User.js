@@ -93,11 +93,21 @@ req=new XMLHttpRequest();
             document.getElementById('user_name').innerHTML=json.user_name;
             document.getElementById('index').style.display="contents";
             document.getElementById('login').style.display="none";
-            console.log("my session name2-"+sessionStorage.getItem("user_name"))
-    console.log("2")
+             
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'You have loged in',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
         else
-        alert("matrikel number or password is wrong!!!")
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Your Username or Password is wrong!',
+          })
     }
     
 }

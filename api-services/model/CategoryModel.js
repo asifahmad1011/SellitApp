@@ -20,6 +20,10 @@ var Category = sequelize.define("category",{
         type: Sequelize.TEXT,
         allowNull : false
       },
+    images : {
+      type: Sequelize.TEXT,
+      allowNull : true
+    },
     created_date : {
       type: Sequelize.DATE,
       defaultValue : Date.now()

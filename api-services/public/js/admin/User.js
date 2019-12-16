@@ -67,6 +67,7 @@ window.location.replace("admin/login.ejs");
 
 function logout(){
     sessionStorage.removeItem("matrik_num");
+    sessionStorage.removeItem("user_name");
     document.getElementById('index').style.display="none";
      document.getElementById('login').style.display="contents";
 }
@@ -86,13 +87,25 @@ req=new XMLHttpRequest();
         json=JSON.parse(req.responseText);
 
         if(json.status=='sucessfull'){
+            console.log("username: "+json.user_name)
             sessionStorage.setItem("matrik_num","sucessfull");
-            
+            sessionStorage.setItem("user_name",""+json.user_name);
+            document.getElementById('user_name').innerHTML=json.user_name;
             document.getElementById('index').style.display="contents";
             document.getElementById('login').style.display="none";
+            console.log("my session name2-"+sessionStorage.getItem("user_name"))
+    console.log("2")
         }
         else
         alert("matrikel number or password is wrong!!!")
     }
     
+}
+
+if(sessionStorage.getItem("matrik_num")=='sucessfull'){
+    document.getElementById('index').style.display="contents";
+    document.getElementById('login').style.display="none";
+    document.getElementById('user_name').innerHTML=sessionStorage.getItem("user_name");
+    console.log("my session name-"+sessionStorage.getItem("user_name"))
+    console.log("1")
 }

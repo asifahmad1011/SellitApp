@@ -30,9 +30,9 @@ console.log("my session-"+sessionStorage.getItem("matrik_num"));
                       </div>\
                       <div class='product-detail'>\
                          <a href='#'>\
-                              <h6>"+json.products[i].more_details+"</h6>\
+                              <h6>"+json.products[i].name+"</h6>\
                           </a>\
-                          <h4>"+json.products[i].price+"</h4>\
+                          <h4>"+json.products[i].price+" &euro;</h4>\
                       </div>\
                   </div>\
               </div>\
@@ -91,7 +91,7 @@ window.location.replace("admin/login.ejs");
             <div class='col-lg-6 rtl-text'>\
                 <div class='product-right'>\
                     <h2>"+json.products[0].name+"</h2>\
-                    <h3>"+json.products[0].price+" | currency : 'EUR'</h3>"
+                    <h3>"+json.products[0].price+" &euro;</h3>"
                     if(json.products[0].status==3){
                     body+="<button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-success m-1'>Approve</button>";
                     }
@@ -153,6 +153,13 @@ req = new XMLHttpRequest();
 req.open("POST", '/api/v1/product/changeProductStatus', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Done',
+    showConfirmButton: false,
+    timer: 1500
+})
 showProductsbyStatus(3); 
     }
     else

@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>SellIt - Admin </title>
+    
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -186,7 +187,7 @@
                                         <div class="align-self-center text-center"><i data-feather="box" class="font-warning"></i></div>
                                     </div>
                                     <div class="media-body col-8"><span class="m-0">Total of Product Amount</span>
-                                        <h3 class="mb-0">&euro; <span class="counter">6659</span></h3>
+                                        <h3 class="mb-0">&euro; <span class="counter"><%= totalProductAmount%></span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +201,7 @@
                                         <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
                                     </div>
                                     <div class="media-body col-8"><span class="m-0">Total Sold Product Amount</span>
-                                        <h3 class="mb-0">&euro; <span class="counter">9856</span></h3>
+                                        <h3 class="mb-0">&euro; <span class="counter"><%= totalSoldProductAmount%></span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +215,7 @@
                                         <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
                                     </div>
                                     <div class="media-body col-8"><span class="m-0">Total Messages</span>
-                                        <h3 class="mb-0"><span class="counter">893</span></h3>
+                                        <h3 class="mb-0"><span class="counter"><%= totalMessage%></span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -228,7 +229,7 @@
                                         <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
                                     </div>
                                     <div class="media-body col-8"><span class="m-0">Total Users</span>
-                                        <h3 class="mb-0"><span class="counter">45631</span></h3>
+                                        <h3 class="mb-0"><span class="counter"><%= totalUser%></span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +243,7 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="mb-0">9054</h2>
+                                        <h2 class="mb-0"><%= totalProduct%></h2>
                                     </div>
                                     <div class="bg-primary b-r-8">
                                         <div class="small-box">
@@ -261,7 +262,7 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="mb-0">9054</h2>
+                                        <h2 class="mb-0"><%= totalSoldProduct%></h2>
                                     </div>
                                     <div class="bg-secondary b-r-8">
                                         <div class="small-box">
@@ -280,7 +281,7 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="mb-0">9054</h2>
+                                        <h2 class="mb-0"><%= totalApprovedProduct%></h2>
                                     </div>
                                     <div class="bg-warning b-r-8">
                                         <div class="small-box">
@@ -299,7 +300,7 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="mb-0">9054</h2>
+                                        <h2 class="mb-0"><%= totalPendingProduct%></h2>
                                     </div>
                                     <div class="bg-danger b-r-8">
                                         <div class="small-box">
@@ -337,12 +338,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                            <% for(var i=topPendingProduct.products.length-1;i>=0;i--){ %>
                                         <tr>
-                                            <td>5</td>
-                                            <td class="digits">$50.00</td>
-                                            <td class="font-primary">Bank Transfers</td>
-                                            <td class="digits">Delivered</td>
+                                            <td><%= topPendingProduct.products[i].product_id%></td>
+                                            <td class="digits"><%= topPendingProduct.products[i].price%></td>
+                                            <td class="font-primary"><%= topPendingProduct.products[i].name%></td>
+                                            <td class="digits"><%= topPendingProduct.products[i].seller_id%></td>
                                         </tr>
+                                        <% } %>
                                         </tbody>
                                     </table>
                                     <a href="#" onclick="showProductsbyStatus(3)" class="btn btn-primary">View All Pending Products</a>
@@ -378,12 +381,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>5</td>
-                                            <td class="digits">$50.00</td>
-                                            <td class="font-primary">Bank Transfers</td>
-                                            <td class="digits">Delivered</td>
-                                        </tr>
+                                            <% for(var i=topSoldProduct.products.length-1;i>=0;i--){ %>
+                                                <tr>
+                                                    <td><%= topSoldProduct.products[i].product_id%></td>
+                                                    <td class="digits"><%= topSoldProduct.products[i].price%></td>
+                                                    <td class="font-primary"><%= topSoldProduct.products[i].name%></td>
+                                                    <td class="digits"><%= topSoldProduct.products[i].seller_id%></td>
+                                                </tr>
+                                                <% } %>
                                         </tbody>
                                     </table>
                                     <a href="#" onclick="showProductsbyStatus(2)" class="btn btn-primary">View All Sold Products</a>
@@ -492,6 +497,7 @@
   <script src="/js/admin/Category.js"></script>
   <script src="/js/admin/User.js"></script>
   <script src="/js/admin/ProductList.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </body>
 
 <!-- Mirrored from themes.pixelstrap.com/multikart/back-end/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 12:59:55 GMT -->

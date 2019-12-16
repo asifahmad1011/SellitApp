@@ -46,7 +46,7 @@ router.get('/', function (req, res, next) {
                           var topSoldProduct = rows
                           Dash.totalMessage((rows) => {
                           var totalMessage = rows
-                          res.json({
+                          res.render("admin/login.ejs",{
                             "totalProduct": totalProduct,
                             "totalSoldProduct": totalSoldProduct,
                             "totalPendingProduct": totalPendingProduct,
@@ -57,8 +57,8 @@ router.get('/', function (req, res, next) {
                             "totalSoldProductAmount" : totalSoldProductAmount.toLocaleString(),
                             "totalUser" : totalUser,
                             "totalMessage" : totalMessage,
-                            "topPendingProduct" : {"produts" : topPendingProduct},
-                            "topSoldProduct" : {"produts" : topSoldProduct}
+                            "topPendingProduct" : {"products" : topPendingProduct},
+                            "topSoldProduct" : {"products" : topSoldProduct}
                           })
                           })
                         })

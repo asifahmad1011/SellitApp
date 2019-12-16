@@ -55,7 +55,7 @@ app.set('view engine', 'ejs');
 
 
 app.use(function(req, res, next) {
-	res.render('admin/login.ejs')
+	res.redirect('/api/v1/dashboard/')
 });
 
 

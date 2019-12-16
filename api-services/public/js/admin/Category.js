@@ -95,7 +95,13 @@ req.onload=function(){setTimeout(getAllCategory(), 1000)}
 req.open("POST", '/api/v1/category', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
- 
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Done',
+    showConfirmButton: false,
+    timer: 1500
+})
     }
     else
 window.location.replace("admin/login.ejs");
@@ -119,7 +125,7 @@ function getAllSubCategory(){
                 <div class='card-body'>\
         <div class='btn-popup pull-right'>\
             <button type='button' class='btn btn-primary' data-toggle='modal' data-original-title='test'\
-                data-target='#exampleModal'>Add Category</button>\
+                data-target='#exampleModal'>Add SubCategory</button>\
             <div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'\
                 style='display: none;' aria-hidden='true'>\
                 <div class='modal-dialog' role='document'>\
@@ -216,7 +222,13 @@ function addSubCategory(){
     req.open("POST", '/api/v1/category', true);
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     req.send(params);
-     
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Done',
+        showConfirmButton: false,
+        timer: 1500
+    })
     }
     else
 window.location.replace("admin/login.ejs");

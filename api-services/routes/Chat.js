@@ -19,7 +19,7 @@ router.get('/:matrikel_number', function (req, res, next) {
 router.post('/getAllMessages', function (req, res, next) {
   console.log(req.body);
   var data = req.body;
-  Chat.getAllMessages(data.receiver_id, data.sender_id, (rows) => {
+  Chat.getAllMessages(data.receiver_id, data.sender_id,data.product_id, (rows) => {
     if (!rows || !rows.length) {
       res.json({
         "status": "failed",

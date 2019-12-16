@@ -11,16 +11,16 @@ router.get('/:matrikel_number', function(req, res, next) {
                     "cahat": null
                 })
             } else {
-          res.json({rows});
+          res.json({"contacts" : rows});
             }
         });
     });
-  
+
 router.post('/getAllMessages', function(req, res, next) {
     console.log(req.body);
     var data = req.body;
-    
-  
+
+
     Chat.getAllMessages(data.receiver_id,data.sender_id, (rows) => {
           if (!rows || !rows.length) {
               res.json({
@@ -33,7 +33,7 @@ router.post('/getAllMessages', function(req, res, next) {
               })
           }
       })
-  
+
   });
-  
+
   module.exports = router;

@@ -1,3 +1,8 @@
+
+if(sessionStorage.getItem("matrik_num")=='sucessfull'){
+    document.getElementById('index').style.display="contents";
+    document.getElementById('login').style.display="none";
+}
 function showProductsbyStatus(status) {
     console.log("session");
     
@@ -12,7 +17,7 @@ console.log("my session-"+sessionStorage.getItem("matrik_num"));
       console.log("there is -"+json.products.length);
       var body="<div class='row products-admin ratio_asos'>";
       for(var i=json.products.length-1;i>=0;i--)
-      { 
+      { console.log(json.products[i]);
               var img_url;
               if(json.products[i].image.length>0)
               img_url=json.products[i].image[0].url;
@@ -68,7 +73,7 @@ window.location.replace("admin/login.ejs");
     req.onload=function(){
         
             var json=JSON.parse(req.responseText);
-            console.log(json.products[0].product_id);
+            // console.log(json.products[0].product_id);
             var body="<section>\
                 <div class='collection-wrapper'>\
                 <div class='container'>\

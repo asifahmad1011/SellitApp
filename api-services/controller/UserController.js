@@ -5,10 +5,14 @@ const Op = Sequelize.Op;
 module.exports.createUser  = function(user, callback){
     User.create(user).then(function(related){
       callback(related);
-      //console.log(related);
+      //console.log("related => " +  related);
     }).catch(function(err){
+      var err = {
+        "isError" : true,
+        "error" : err.original.sqlMessage
+      }
       callback(err);
-      //console.log(err);
+      //console.log("err => " +  err);
     })
   }
 
@@ -26,7 +30,7 @@ module.exports.createUser  = function(user, callback){
     User.findAll({
       where: {
         [Op.or]:  [{username: loginKey}, {matrikel_number: loginKey}],
-        //password:password
+        password:password
       }
     }).then(function(result){
       callback(result);

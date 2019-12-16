@@ -2,18 +2,14 @@
 <section class="banner-padding banner-goggles">
     <div class="container">
         <div class="row partition3">
-            <div class="col-md-4" *ngFor="let ct of category">
-                <a [routerLink]="ct.link">
-                    <div class="collection-banner p-right text-right">
-                        <img [src]="ct.image" class="img-fluid" alt="">
-                        <div class="contain-banner banner-3">
-                            <div>
-                                
-                                <h2>{{ct.title}}</h2>
-                            </div>
-                        </div>
+            
+            <div class="col-md-4" *ngFor="let ct of category_res.rows | paginate: { itemsPerPage: 3, currentPage: page }">
+                <div class="card" >
+                    <div class="card-body" >
+                        <div class="img-fluid"><a href="/collection/no-sidebar/{{ct.category_id}}"><img src="{{ct.image}}"> </a></div>
+                      <h6 class="card-title">{{ct.name}}</h6>
                     </div>
-                </a>
+                  </div>
             </div>
            
         </div>

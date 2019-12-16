@@ -13,6 +13,7 @@ export class ProductTabNineComponent implements OnInit {
   // Get product Using Input
   @Input() products: Products;
   public productList: any = [];
+  category_res = [];
 
   constructor(
     private productService: ProductsService,
@@ -47,5 +48,9 @@ export class ProductTabNineComponent implements OnInit {
       this.productList = data;
       console.log("productlist", this.productList);
     });
+
+    this.productService.Category().subscribe((res) => {
+      this.category_res = res
+      console.log("Category:", res)});
   }
 }

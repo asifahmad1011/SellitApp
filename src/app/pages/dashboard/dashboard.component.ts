@@ -45,18 +45,17 @@ export class DashboardComponent implements OnInit {
 
 
   Delete() {
-    const userdata = this.dashboardform.value;
-    //console.log(userdata.matrikel_number);
-   
-
+    const userdata = this.dashboardform.value.product_id;
+    console.log(userdata);
+    
         const DBForm = { userdata, status_id: 5 };
 
         const pdata = {
           product_id: DBForm.userdata.product_id,
           status_id: 5,
         };
-        console.log("Post Data:",pdata);
 
+        console.log("Post Data:",pdata);
         this.postNewUser(pdata);
       }
 

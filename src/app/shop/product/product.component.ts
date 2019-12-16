@@ -13,6 +13,7 @@ import { Observable, of } from 'rxjs';
 export class ProductComponent implements OnInit {
   
   public product_data =[];
+  category_res =[];
   @Input() product : Products;
 
   public variantImage  :  any = ''; 
@@ -27,6 +28,9 @@ export class ProductComponent implements OnInit {
     .subscribe((data) => {
       this.product_data = data
       console.log("final:",this.product_data)} );
+
+    this.productsService.Category().subscribe((res) => {
+      this.category_res = res});
    }
 
  // Change variant images

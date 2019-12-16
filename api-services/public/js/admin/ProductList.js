@@ -1,5 +1,11 @@
+
+
 function showProductsbyStatus(status) {
+    console.log("session");
+    
+console.log("my session-"+sessionStorage.getItem("matrik_num"));
     // Add your code below this line
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
   req.open("GET",'/api/v1/product/getProductsByStatus/'+status,true);
   req.send();
@@ -8,7 +14,7 @@ function showProductsbyStatus(status) {
       console.log("there is -"+json.products.length);
       var body="<div class='row products-admin ratio_asos'>";
       for(var i=json.products.length-1;i>=0;i--)
-      { 
+      { console.log(json.products[i]);
               var img_url;
               if(json.products[i].image.length>0)
               img_url=json.products[i].image[0].url;
@@ -50,18 +56,21 @@ function showProductsbyStatus(status) {
       }
   };
   
-    
+}
+else
+window.location.replace("admin/login.ejs");
   };
 
 
   //////
   function getProductPage(product_id) {
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     // Add your code below this line
     req=new XMLHttpRequest();
     req.onload=function(){
         
             var json=JSON.parse(req.responseText);
-            console.log(json.products[0].product_id);
+            // console.log(json.products[0].product_id);
             var body="<section>\
                 <div class='collection-wrapper'>\
                 <div class='container'>\
@@ -82,9 +91,12 @@ function showProductsbyStatus(status) {
             <div class='col-lg-6 rtl-text'>\
                 <div class='product-right'>\
                     <h2>"+json.products[0].name+"</h2>\
-                    <h3>"+json.products[0].price+" | currency : 'EUR'</h3>\
-                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-success m-1'>Approve</button>\
-                    <button type='button' onclick='changeProductStatus("+json.products[0].product_id+",4)' class='btn btn-danger m-1'>Deny</button>";      
+                    <h3>"+json.products[0].price+" | currency : 'EUR'</h3>"
+                    if(json.products[0].status==3){
+                    body+="<button type='button' onclick='changeProductStatus("+json.products[0].product_id+",1)' class='btn btn-success m-1'>Approve</button>";
+                    }
+                    
+                    body+="<button type='button' onclick='changeProductStatus("+json.products[0].product_id+",4)' class='btn btn-danger m-1'>Deny</button>";      
                     body+="<div class='border-product'>\
                         <h6 class='product-title'>product details</h6>\
                         <p>"+json.products[0].more_details+"</p>\
@@ -127,10 +139,13 @@ function showProductsbyStatus(status) {
   req.open("GET",'/api/v1/product/id/'+product_id,true);
   req.send();
 
- 
+    }
+    else
+window.location.replace("admin/login.ejs");
   };
 ///////////////
 function changeProductStatus(product_id,status){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
 console.log(product_id+"-this-"+status);
 var params = 'productid=' + product_id + '&status=' + status;
 req = new XMLHttpRequest();
@@ -139,4 +154,7 @@ req.open("POST", '/api/v1/product/changeProductStatus', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
 showProductsbyStatus(3); 
+    }
+    else
+window.location.replace("admin/login.ejs");
 }

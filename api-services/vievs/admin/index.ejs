@@ -6,14 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <link rel="icon" href="/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <title>Multikart - Premium Admin Template</title>
-
+    <title>SellIt - Admin </title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -51,10 +44,7 @@
     <!--  -->
         <!-- jsgrid css-->
         <link rel="stylesheet" type="text/css" href="/assets/css/jsgrid.css">
-    <!-- parvin -->
-    <script src="/js/admin/ProductList.js"></script>
-    <script src="/js/admin/Category.js"></script>
-    <script src="/js/admin/User.js"></script>
+  
 </head>
 
 <body>
@@ -79,12 +69,12 @@
                     
                     
                     <li class="onhover-dropdown">
-                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/assets/images/dashboard/man.png" alt="header-user">
+                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/assets/images/admin.png" alt="header-user">
                             <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
                             
-                            <li><a href="#"><i data-feather="log-out"></i>Logout</a></li>
+                            <li><a href="#" onclick="logout()"><i data-feather="log-out"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -104,9 +94,9 @@
             </div>
             <div class="sidebar custom-scrollbar">
                 <div class="sidebar-user text-center">
-                    <div><img class="img-60 rounded-circle lazyloaded blur-up" src="/assets/images/dashboard/man.png" alt="#">
+                    <div><img class="img-60 rounded-circle lazyloaded blur-up" src="/assets/images/admin.png" alt="#">
                     </div>
-                    <h6 class="mt-3 f-14">JOHN</h6>
+                    <h6 id="user_name" class="mt-3 f-14">JOHN</h6>
                     <p>general manager.</p>
                 </div>
                 <ul class="sidebar-menu">
@@ -193,10 +183,10 @@
                             <div class="bg-warning card-body">
                                 <div class="media static-top-widget row">
                                     <div class="icons-widgets col-4">
-                                        <div class="align-self-center text-center"><i data-feather="navigation" class="font-warning"></i></div>
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-warning"></i></div>
                                     </div>
-                                    <div class="media-body col-8"><span class="m-0">Earnings</span>
-                                        <h3 class="mb-0">$ <span class="counter">6659</span><small> This Month</small></h3>
+                                    <div class="media-body col-8"><span class="m-0">Total of Product Amount</span>
+                                        <h3 class="mb-0">&euro; <span class="counter">6659</span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -209,8 +199,8 @@
                                     <div class="icons-widgets col-4">
                                         <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
                                     </div>
-                                    <div class="media-body col-8"><span class="m-0">Products</span>
-                                        <h3 class="mb-0">$ <span class="counter">9856</span><small> This Month</small></h3>
+                                    <div class="media-body col-8"><span class="m-0">Total Sold Product Amount</span>
+                                        <h3 class="mb-0">&euro; <span class="counter">9856</span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -223,8 +213,8 @@
                                     <div class="icons-widgets col-4">
                                         <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
                                     </div>
-                                    <div class="media-body col-8"><span class="m-0">Messages</span>
-                                        <h3 class="mb-0">$ <span class="counter">893</span><small> This Month</small></h3>
+                                    <div class="media-body col-8"><span class="m-0">Total Messages</span>
+                                        <h3 class="mb-0"><span class="counter">893</span></h3>
                                     </div>
                                 </div>
                             </div>
@@ -237,8 +227,84 @@
                                     <div class="icons-widgets col-4">
                                         <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
                                     </div>
-                                    <div class="media-body col-8"><span class="m-0">New Vendors</span>
-                                        <h3 class="mb-0">$ <span class="counter">45631</span><small> This Month</small></h3>
+                                    <div class="media-body col-8"><span class="m-0">Total Users</span>
+                                        <h3 class="mb-0"><span class="counter">45631</span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Product Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0">9054</h2>
+                                    </div>
+                                    <div class="bg-primary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                 <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Sold Product Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0">9054</h2>
+                                    </div>
+                                    <div class="bg-secondary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Approved Product</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0">9054</h2>
+                                    </div>
+                                    <div class="bg-warning b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Pending Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0">9054</h2>
+                                    </div>
+                                    <div class="bg-danger b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -247,33 +313,7 @@
                     <div class="col-xl-6 xl-100">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Market Value</h5>
-                                <div class="card-header-right">
-                                    <ul class="list-unstyled card-option">
-                                        <li><i class="icofont icofont-simple-left"></i></li>
-                                        <li><i class="view-html fa fa-code"></i></li>
-                                        <li><i class="icofont icofont-maximize full-card"></i></li>
-                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
-                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
-                                        <li><i class="icofont icofont-error close-card"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="market-chart"></div>
-                                <div class="code-box-copy">
-                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                                    <pre><code class="language-html" id="example-head">&lt;!-- Cod Box Copy begin --&gt;
-&lt;div class="market-chart"&gt;&lt;/div&gt;
-&lt;!-- Cod Box Copy end --&gt;</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 xl-100">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Latest Orders</h5>
+                                <h5>Latest Pending Products</h5>
                                 <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="icofont icofont-simple-left"></i></li>
@@ -290,37 +330,13 @@
                                     <table class="table table-bordernone">
                                         <thead>
                                         <tr>
-                                            <th scope="col">Order ID</th>
-                                            <th scope="col">Order Total</th>
-                                            <th scope="col">Payment Method</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Product ID</th>
+                                            <th scope="col">Product Price</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Seller ID</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td class="digits">$120.00</td>
-                                            <td class="font-danger">Bank Transfers</td>
-                                            <td class="digits">On Way</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td class="digits">$90.00</td>
-                                            <td class="font-secondary">Ewallets</td>
-                                            <td class="digits">Delivered</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td class="digits">$240.00</td>
-                                            <td class="font-warning">Cash</td>
-                                            <td class="digits">Delivered</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td class="digits">$120.00</td>
-                                            <td class="font-primary">Direct Deposit</td>
-                                            <td class="digits">$6523</td>
-                                        </tr>
                                         <tr>
                                             <td>5</td>
                                             <td class="digits">$50.00</td>
@@ -329,204 +345,53 @@
                                         </tr>
                                         </tbody>
                                     </table>
-                                    <a href="order.html" class="btn btn-primary">View All Orders</a>
+                                    <a href="#" onclick="showProductsbyStatus(3)" class="btn btn-primary">View All Pending Products</a>
                                 </div>
-                                <div class="code-box-copy">
-                                    <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head1" title="" data-original-title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                                    <pre class=" language-html"><code class=" language-html" id="example-head1">
-&lt;div class="user-status table-responsive latest-order-table"&gt;
-    &lt;table class="table table-bordernone"&gt;
-        &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th scope="col"&gt;Order ID&lt;/th&gt;
-                &lt;th scope="col"&gt;Order Total&lt;/th&gt;
-                &lt;th scope="col"&gt;Payment Method&lt;/th&gt;
-                &lt;th scope="col"&gt;Status&lt;/th&gt;
-            &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-            &lt;tr&gt;
-                &lt;td&gt;1&lt;/td&gt;
-                &lt;td class="digits"&gt;$120.00&lt;/td&gt;
-                &lt;td class="font-secondary"&gt;Bank Transfers&lt;/td&gt;
-                &lt;td class="digits"&gt;Delivered&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;2&lt;/td&gt;
-                &lt;td class="digits"&gt;$90.00&lt;/td&gt;
-                &lt;td class="font-secondary"&gt;Ewallets&lt;/td&gt;
-                &lt;td class="digits"&gt;Delivered&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;3&lt;/td&gt;
-                &lt;td class="digits"&gt;$240.00&lt;/td&gt;
-                &lt;td class="font-secondary"&gt;Cash&lt;/td&gt;
-                &lt;td class="digits"&gt;Delivered&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;4&lt;/td&gt;
-                &lt;td class="digits"&gt;$120.00&lt;/td&gt;
-                &lt;td class="font-primary"&gt;Direct Deposit&lt;/td&gt;
-                &lt;td class="digits"&gt;Delivered&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;5&lt;/td&gt;
-                &lt;td class="digits"&gt;$50.00&lt;/td&gt;
-                &lt;td class="font-primary"&gt;Bank Transfers&lt;/td&gt;
-                &lt;td class="digits"&gt;Delivered&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
-                                    </code></pre>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 xl-50">
-                        <div class="card order-graph sales-carousel">
+                    <div class="col-xl-6 xl-100">
+                        <div class="card">
                             <div class="card-header">
-                                <h6>Total Sales</h6>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="small-chartjs">
-                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-3"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="value-graph">
-                                            <h3>42% <span><i class="fa fa-angle-up font-primary"></i></span></h3>
-                                        </div>
-                                    </div>
+                                <h5>Latest Sold Products</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <span>Sales Last Month</span>
-                                        <h2 class="mb-0">9054</h2>
-                                        <p>0.25% <span><i class="fa fa-angle-up"></i></span></p>
-                                        <h5 class="f-w-600">Gross sales of August</h5>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                    </div>
-                                    <div class="bg-primary b-r-8">
-                                        <div class="small-box">
-                                            <i data-feather="briefcase"></i>
-                                        </div>
-                                    </div>
+                                <div class="user-status table-responsive latest-order-table">
+                                    <table class="table table-bordernone">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Product ID</th>
+                                            <th scope="col">Product Price</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Seller ID</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>5</td>
+                                            <td class="digits">$50.00</td>
+                                            <td class="font-primary">Bank Transfers</td>
+                                            <td class="digits">Delivered</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" onclick="showProductsbyStatus(2)" class="btn btn-primary">View All Sold Products</a>
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 xl-50">
-                        <div class="card order-graph sales-carousel">
-                            <div class="card-header">
-                                <h6>Total purchase</h6>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="small-chartjs">
-                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="value-graph">
-                                            <h3>20% <span><i class="fa fa-angle-up font-secondary"></i></span></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <span>Monthly purchase</span>
-                                        <h2 class="mb-0">2154</h2>
-                                        <p>0.13% <span><i class="fa fa-angle-up"></i></span></p>
-                                        <h5 class="f-w-600">Avg Gross purchase</h5>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                    </div>
-                                    <div class="bg-secondary b-r-8">
-                                        <div class="small-box">
-                                            <i data-feather="credit-card"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 xl-50">
-                        <div class="card order-graph sales-carousel">
-                            <div class="card-header">
-                                <h6>Total cash transaction</h6>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="small-chartjs">
-                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-2"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="value-graph">
-                                            <h3>28% <span><i class="fa fa-angle-up font-warning"></i></span></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <span>Cash on hand</span>
-                                        <h2 class="mb-0">4672</h2>
-                                        <p>0.8% <span><i class="fa fa-angle-up"></i></span></p>
-                                        <h5 class="f-w-600">Details about cash</h5>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                    </div>
-                                    <div class="bg-warning b-r-8">
-                                        <div class="small-box">
-                                            <i data-feather="shopping-cart"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 xl-50">
-                        <div class="card order-graph sales-carousel">
-                            <div class="card-header">
-                                <h6>Daily Deposits</h6>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="small-chartjs">
-                                            <div class="flot-chart-placeholder" id="simple-line-chart-sparkline-1"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="value-graph">
-                                            <h3>75% <span><i class="fa fa-angle-up font-danger"></i></span></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="media">
-                                    <div class="media-body">
-                                        <span>Security Deposits</span>
-                                        <h2 class="mb-0">0782</h2>
-                                        <p>0.25% <span><i class="fa fa-angle-up"></i></span></p>
-                                        <h5 class="f-w-600">Gross sales of June</h5>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
-                                    </div>
-                                    <div class="bg-danger b-r-8">
-                                        <div class="small-box">
-                                            <i data-feather="calendar"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-					
-
                 </div>
             </div>
             <!-- Container-fluid Ends-->
@@ -621,6 +486,12 @@
 <!-- Owlcarousel js-->
 <script src="/assets/js/owlcarousel/owl.carousel.js"></script>
 <script src="/assets/js/dashboard/product-carousel.js"></script>
+
+  <!-- parvin -->
+  
+  <script src="/js/admin/Category.js"></script>
+  <script src="/js/admin/User.js"></script>
+  <script src="/js/admin/ProductList.js"></script>
 </body>
 
 <!-- Mirrored from themes.pixelstrap.com/multikart/back-end/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 12:59:55 GMT -->

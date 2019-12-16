@@ -39,4 +39,38 @@ router.post('/', function(req, res, next) {
 
 });
 
+
+router.post('/admin', function(req, res, next) {
+  var sessionStorage = require('sessionstorage');
+  console.log(req.body);
+  var data = req.body;
+  var loginKey = data.matrikel_number;
+  var password= data.password;
+
+	Users.getUser(loginKey,password, (rows) => {
+		if (!rows || !rows.length) {
+			res.json({
+        "status": "failed",
+        "user_id": null
+      })
+		} else {
+     var data = JSON.parse(JSON.stringify(rows));
+     if(data[0].role_id==1){
+      sessionStorage.setItem("matrik_num","sucessfull");
+      console.log(sessionStorage.getItem("matrik_num"));
+      // req.session.matrik_num = data[0].matrikel_number;
+			res.json({
+        "status": "sucessfull",
+        "user_name": data[0].first_name+" "+data[0].last_name
+      })}
+      else
+      res.json({
+        "status": "failed",
+        "user_id": null
+      })
+		}
+	})
+
+});
+
 module.exports = router;

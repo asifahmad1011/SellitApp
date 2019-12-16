@@ -52,7 +52,7 @@ module.exports.getProductById = function (product_id, callback) {
   Product.findAll({
     where: {
       product_id: product_id,
-      status: Enum.productStatus.Approved.value
+      // status: Enum.productStatus.Approved.value
     },
     include: {
       model: Image,

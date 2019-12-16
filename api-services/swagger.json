@@ -524,6 +524,58 @@
           }
         }
       }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": [
+          "Admin Dashboard"
+        ],
+        "summary": "Reporting System for the Platform",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dashboard"
+            }
+          }
+        }
+      }
+    },
+    "/chat/{matrikel_number}": {
+      "parameters": [
+        {
+          "name": "matrikel_number",
+          "in": "path",
+          "required": true,
+          "description": "Get all the chat for a particular matrikel_number",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Get all the chat for a particular matrikel_number",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "matrikel_number",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/matrikel_number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Chat"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -793,6 +845,46 @@
           "additionalProperties": {
             "$ref": "#/definitions/User"
           }
+        }
+      }
+    },
+    "Dashboard": {
+      "type": "object",
+      "properties": {
+        "totalProduct": {
+          "type": "number"
+        },
+        "totalSoldProduct": {
+          "type": "number"
+        },
+        "totalPendingProduct": {
+          "type": "number"
+        },
+        "totalApprovedProduct": {
+          "type": "number"
+        },
+        "totalInActiveProduct": {
+          "type": "number"
+        },
+        "totalDeletedProduct": {
+          "type": "number"
+        }
+      }
+    },
+    "Chat": {
+      "type": "object",
+      "properties": {
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
         }
       }
     }

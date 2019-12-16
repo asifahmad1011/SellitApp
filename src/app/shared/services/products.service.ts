@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
 import { ToastrService } from "ngx-toastr";
 import { Products } from "../classes/product";
+import { Category } from "../classes/category";
 import { BehaviorSubject, Observable, of, Subscriber } from "rxjs";
 import { map, filter, scan } from "rxjs/operators";
 import "rxjs/add/operator/map";
 //import { HttpClient } from 'selenium-webdriver/http';
 //She
 import { HttpClient } from "@angular/common/http";
+
 
 let abcd =
   JSON.parse(localStorage.getItem("https://localhost:3000/api/v1/product")) ||
@@ -19,6 +21,7 @@ console.log("sample:", name);
 export class ProductsService {
   //Accessing the server address+api/products(she)
   private serverUrl = "http://localhost:3000/api/v1/product";
+  url = "http://localhost:3000/api/v1/category";
   product: any;
   public currency: string = "EUR";
   public catalogMode: boolean = false;
@@ -63,6 +66,12 @@ export class ProductsService {
   // Get Products
   public getProducts() {
     return this.httpclient.get<Products[]>(`${this.serverUrl}`);
+  }
+
+  
+  // Get Category
+  public Category() {
+    return this.httpclient.get<Category[]>(`${this.url}`);
   }
 
   // // Get Products By Id

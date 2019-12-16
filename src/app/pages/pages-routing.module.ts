@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FaqComponent } from './faq/faq.component';
 import { SellComponent } from './sell/sell.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { ChatComponent } from './Chat/chat.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
       {
         path: 'order-success',
         component: OrderSuccessComponent
+      },
+      {
+        path: 'chat',
+        component: ChatComponent
       },
     ]
   }

@@ -1,4 +1,5 @@
 function getAllCategory(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
     req.open("GET",'/api/v1/category/categories',true);
     req.send();
@@ -79,10 +80,13 @@ function getAllCategory(){
         document.getElementById('mainHeader').innerHTML="Add Category"
         
     };
-    
+}
+else
+window.location.replace("admin/login.ejs");
 }
 
 function addCategory(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
 var categoryName=document.getElementById('categoryName').value;
 var categoryDesc=document.getElementById('categoryDesc').value;
 var params = 'name=' + categoryName + '&description=' + categoryDesc+"&parent_id=0";
@@ -92,13 +96,16 @@ req.open("POST", '/api/v1/category', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
  
-
+    }
+    else
+window.location.replace("admin/login.ejs");
 }
 
 
 
 /////////
 function getAllSubCategory(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
     req.open("GET",'/api/v1/category/categoriesandsub',true);
     req.send();
@@ -187,16 +194,19 @@ function getAllSubCategory(){
         
         
         document.getElementById('mainContainer').innerHTML=body;
-        document.getElementById('mainHeader').innerHTML="Add Category"
+        document.getElementById('mainHeader').innerHTML="Add SubCategory"
         
     };
     
 
-   
+} 
+else
+window.location.replace("admin/login.ejs");
 }
 
 
 function addSubCategory(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     var categoryName=document.getElementById('categoryName').value;
     var categoryDesc=document.getElementById('categoryDesc').value;
     var parent_id=document.getElementById('parentCategory').value;
@@ -207,5 +217,7 @@ function addSubCategory(){
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
     req.send(params);
      
-    
+    }
+    else
+window.location.replace("admin/login.ejs");
     }

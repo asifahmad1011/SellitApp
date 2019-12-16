@@ -1,4 +1,10 @@
+
+if(sessionStorage.getItem("matrik_num")=='sucessfull'){
+    document.getElementById('index').style.display="contents";
+    document.getElementById('login').style.display="none";
+}
 function getAllUsers(){
+    if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
     req.open("GET",'/api/v1/users',true);
     req.send();
@@ -51,8 +57,55 @@ function getAllUsers(){
         
         
         document.getElementById('mainContainer').innerHTML=body;
-        document.getElementById('mainHeader').innerHTML="Add Category"
+        document.getElementById('mainHeader').innerHTML="Get All Users"
         
     };
+}
+else
+window.location.replace("admin/login.ejs"); 
+}
+
+function logout(){
+    sessionStorage.removeItem("matrik_num");
+    sessionStorage.removeItem("user_name");
+    document.getElementById('index').style.display="none";
+     document.getElementById('login').style.display="contents";
+}
+
+function login(){
+    console.log("login");
+var uname=document.getElementById('uname').value;
+var pass=document.getElementById('pass').value;
+console.log(uname+"-"+pass);
+var params="matrikel_number="+uname+"&password="+pass;
+req=new XMLHttpRequest();
+
+    req.open("POST",'/api/v1/auth/admin',true);
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+    req.send(params);
+    req.onload=function(){
+        json=JSON.parse(req.responseText);
+
+        if(json.status=='sucessfull'){
+            console.log("username: "+json.user_name)
+            sessionStorage.setItem("matrik_num","sucessfull");
+            sessionStorage.setItem("user_name",""+json.user_name);
+            document.getElementById('user_name').innerHTML=json.user_name;
+            document.getElementById('index').style.display="contents";
+            document.getElementById('login').style.display="none";
+            console.log("my session name2-"+sessionStorage.getItem("user_name"))
+    console.log("2")
+        }
+        else
+        alert("matrikel number or password is wrong!!!")
+    }
     
+}
+
+if(sessionStorage.getItem("matrik_num")=='sucessfull'){
+    document.getElementById('index').style.display="contents";
+    document.getElementById('login').style.display="none";
+    document.getElementById('user_name').innerHTML=sessionStorage.getItem("user_name");
+    console.log("my session name-"+sessionStorage.getItem("user_name"))
+    console.log("1")
 }

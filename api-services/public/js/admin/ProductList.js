@@ -153,6 +153,13 @@ req = new XMLHttpRequest();
 req.open("POST", '/api/v1/product/changeProductStatus', true);
 req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 req.send(params);
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Done',
+    showConfirmButton: false,
+    timer: 1500
+})
 showProductsbyStatus(3); 
     }
     else

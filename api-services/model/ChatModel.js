@@ -25,12 +25,10 @@ var Chat = sequelize.define("chat",{
       allowNull : false,
     },
     created_date : {
-      type: Sequelize.DATE,
-      allowNull : false,
+      type: Sequelize.DATE
     },
     modified_date : {
-      type: Sequelize.DATE,
-      allowNull : false,
+      type: Sequelize.DATE
     },
   }
 )

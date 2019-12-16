@@ -576,6 +576,72 @@
           }
         }
       }
+    },
+    "/chat/sendMessage": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Send a Message",
+        "requestBody": {
+          "description": "SendChat Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/SendChat"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/chat/getAllMessages": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Get All Message",
+        "requestBody": {
+          "description": "GetChat Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/GetChat"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -885,6 +951,34 @@
         },
         "product_name": {
           "type": "string"
+        }
+      }
+    },
+    "SendChat": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "number"
+        },
+        "sender_id": {
+          "type": "number"
+        },
+        "receiver_id": {
+          "type": "number"
+        }
+      }
+    },
+    "GetChat": {
+      "type": "object",
+      "properties": {
+        "receiver_id": {
+          "type": "number"
+        },
+        "sender_id": {
+          "type": "number"
         }
       }
     }

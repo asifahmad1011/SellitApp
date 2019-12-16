@@ -1,4 +1,5 @@
 var sequelize = require('../common/mysql');
+var Chat = require("../model/ChatModel");
 
 module.exports.getAllMessages = function (reciever_id, sender_id, callback) {
   var statement = "SELECT users.matrikel_number,users.first_name,users.last_name,chat.message\
@@ -20,5 +21,14 @@ module.exports.getAllCommunications = function(matrikel_number,callback){
       sequelize.query(statement).spread((data) => {
           callback(data);
       });
-
 }
+
+module.exports.sendMessage = function (message, callback) {
+	Chat.build(message).save().then((data) => {
+	  console.log(data.dataValues);
+	  callback(data.dataValues);
+	}).catch((err) => {
+    console.log(err);
+	  callback(err);
+	})
+  }

@@ -19,11 +19,4 @@ export class TopbarOneComponent implements OnInit {
   checkuser() {
        alert("Please, login first to post a product!") 
       }
-
-  // checkuser() {
-  //   if(localStorage.length == 0) {
-  //    alert("Please, login first to post a product!"); } else {
-  //     this.router.navigate(['/pages/sell']);
-  //    }
-  //   }
   }

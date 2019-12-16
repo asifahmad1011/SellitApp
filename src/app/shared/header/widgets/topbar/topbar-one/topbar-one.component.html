@@ -8,7 +8,7 @@
 
         <li class="mobile-accountt">
             <i class="fa fa-camera" aria-hidden="true"></i> 
-            <a onclick="checkuser()"> {{ 'SELL'}} </a>
+            <a (click)="checkuser()"[routerLink]="'/pages/login'"> {{ 'SELL'}} </a>
           </li>
 
         <li class="onhover-dropdown mobile-account">
@@ -19,11 +19,6 @@
                   {{ 'login'}}
               </a>
             </li>
-            <!-- <li>
-              <a [routerLink]="'/home/nine'">
-                  {{ 'logout'}}
-              </a>
-            </li> -->
           </ul>
         </li>
       </ul>

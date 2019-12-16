@@ -20,9 +20,13 @@
           <ul class="onhover-show-div">
 
             <li>
-              <a [routerLink]="'/home/nine'" (click)="Logout()">
-                  {{ 'logout'}}
-              </a>
+                <a [routerLink]="'/pages/dashboard'">
+                  {{ 'Dashboard'}}
+                </a> 
+                <a [routerLink]="'/home/nine'" (click)="Logout()">
+                    {{ 'Logout'}} 
+                </a>
+              
             </li>
           </ul>
         </li>

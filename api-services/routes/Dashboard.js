@@ -9,6 +9,12 @@ router.get('/', function (req, res, next) {
   var totalApprovedProduct = 0;
   var totalInActiveProduct = 0;
   var totalDeletedProduct = 0;
+  var totalProductAmount = 0;
+  var totalSoldProductAmount = 0;
+  var totalUser = 0;
+  var topPendingProduct;
+  var topSoldProduct;
+  var totalMessage = 0;
   Dash.totalProduct((rows) => {
     if (!rows) {
       console.log(rows);
@@ -28,13 +34,37 @@ router.get('/', function (req, res, next) {
               totalInActiveProduct = rows;
               Dash.totalDeletedProduct((rows) => {
                 totalDeletedProduct = rows;
-                res.json({
-                  "totalProduct": totalProduct,
-                  "totalSoldProduct": totalSoldProduct,
-                  "totalPendingProduct": totalPendingProduct,
-                  "totalApprovedProduct" : totalApprovedProduct,
-                  "totalInActiveProduct" :totalInActiveProduct,
-                  "totalDeletedProduct" :  totalDeletedProduct,
+                Dash.totalProductAmount((rows) => {
+                  totalProductAmount = parseInt(rows);
+                  Dash.totalSoldProductAmount((rows)=> {
+                    totalSoldProductAmount = parseInt(rows);
+                    Dash.totalUser((rows)=>{
+                      totalUser = rows
+                      Dash.getTopPendingProduct((rows)=>{
+                        var topPendingProduct = rows
+                        Dash.getTopSoldProduct((rows) => {
+                          var topSoldProduct = rows
+                          Dash.totalMessage((rows) => {
+                          var totalMessage = rows
+                          res.json({
+                            "totalProduct": totalProduct,
+                            "totalSoldProduct": totalSoldProduct,
+                            "totalPendingProduct": totalPendingProduct,
+                            "totalApprovedProduct": totalApprovedProduct,
+                            "totalInActiveProduct": totalInActiveProduct,
+                            "totalDeletedProduct": totalDeletedProduct,
+                            "totalProductAmount": totalProductAmount.toLocaleString(),
+                            "totalSoldProductAmount" : totalSoldProductAmount.toLocaleString(),
+                            "totalUser" : totalUser,
+                            "totalMessage" : totalMessage,
+                            "topPendingProduct" : {"produts" : topPendingProduct},
+                            "topSoldProduct" : {"produts" : topSoldProduct}
+                          })
+                          })
+                        })
+                      })
+                    })
+                  })
                 })
               })
             })

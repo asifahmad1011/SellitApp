@@ -194,7 +194,7 @@ function getAllSubCategory(){
         
         
         document.getElementById('mainContainer').innerHTML=body;
-        document.getElementById('mainHeader').innerHTML="Add Category"
+        document.getElementById('mainHeader').innerHTML="Add SubCategory"
         
     };
     

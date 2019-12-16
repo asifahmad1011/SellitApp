@@ -1,3 +1,8 @@
+
+if(sessionStorage.getItem("matrik_num")=='sucessfull'){
+    document.getElementById('index').style.display="contents";
+    document.getElementById('login').style.display="none";
+}
 function getAllUsers(){
     if(sessionStorage.getItem("matrik_num")=='sucessfull'){
     req=new XMLHttpRequest();
@@ -52,7 +57,7 @@ function getAllUsers(){
         
         
         document.getElementById('mainContainer').innerHTML=body;
-        document.getElementById('mainHeader').innerHTML="Add Category"
+        document.getElementById('mainHeader').innerHTML="Get All Users"
         
     };
 }
@@ -86,6 +91,8 @@ req=new XMLHttpRequest();
             document.getElementById('index').style.display="contents";
             document.getElementById('login').style.display="none";
         }
+        else
+        alert("matrikel number or password is wrong!!!")
     }
     
 }

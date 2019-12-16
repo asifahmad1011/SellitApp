@@ -1,5 +1,3 @@
-
-
 function showProductsbyStatus(status) {
     console.log("session");
     

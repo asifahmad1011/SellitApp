@@ -118,9 +118,9 @@
 
                             <img *ngFor='let url of urls' [src]="url" height="200px" width="200px"> <br/>
 
-                            <input type='file' (change)="onSelectFile($event)" formControlName="image" [(ngModel)]="model.image" multiple>
+                            <!-- <input type='file' (change)="onSelectFile($event)" formControlName="image" [(ngModel)]="model.image" multiple> -->
 
-                            <!-- <input  type="file" (change)="onFileSelected($event)"> -->
+                            <input  type="file" (change)="onFileSelected($event)" multiple>
                         </div>
                     </div>
 

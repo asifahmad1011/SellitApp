@@ -2,7 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Products } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
-import { Observable, of } from 'rxjs';
+import { ProductSidebarService } from "./product-right-sidebar.service";
+import { Observable } from "rxjs";
+import {
+  NgForm,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import * as $ from 'jquery';
 
 
@@ -15,6 +24,20 @@ var a = localStorage.getItem('matrikel_number');
 })
 export class ProductRightSidebarComponent implements OnInit {
 
+  model: any = {};
+  public user = [];
+
+  data = false;
+  sendmsgform: FormGroup;
+  massage: string;
+
+
+    //Div toggle
+    isShow = false;
+    toggleDisplay() {
+      this.isShow = !this.isShow;
+    }
+
   public product            :   any;
   public products           :   Products[] = [];
   public counter            :   number = 1; 
@@ -26,19 +49,9 @@ export class ProductRightSidebarComponent implements OnInit {
   image = "";
 
 
-  
-  //Get Product By Id
-  // constructor(private route: ActivatedRoute, private router: Router,
-  //   public productsService: ProductsService, private wishlistService: WishlistService,
-  //   private cartService: CartService) {
-  //     this.route.params.subscribe(params => {
-  //       const id = +params['id'];
-  //       this.productsService.getProduct(id).subscribe(product => this.product = product)
-  //     });
-  // }
 
   //she
-  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute, private formbulider: FormBuilder, private ProductSidebarService: ProductSidebarService) { }
 
   ngOnInit() {
   //she
@@ -48,10 +61,46 @@ export class ProductRightSidebarComponent implements OnInit {
       this.productsService.getProductById(productId).subscribe(res => {
         console.log(res);
         this.selectedProduct = res;
+        
       });
 
     })
+
+    this.sendmsgform = this.formbulider.group({
+      message: ["", [Validators.required]],
+      product_id: ["", [Validators.required]],
+      sender_id: ["", [Validators.required]],
+      receiver_id: ["", [Validators.required]]
+    })
   }
+
+  ChatMsg() {
+    const userdata = this.sendmsgform.value;
+    console.log("chat:",userdata);
+
+
+
+        const DBForm = { userdata };
+        this.sendmsgform.reset();
+
+        const pdata = {
+          message: DBForm.userdata.message,
+          product_id: DBForm.userdata.product_id,
+          sender_id: localStorage.getItem("matrikel_number"),
+          receiver_id: DBForm.userdata.receiver_id,
+        };
+        console.log("Post Data:",pdata);
+
+        this.SendMsg(pdata);
+      }
+
+    
+      SendMsg(userData) {
+        const jsonData = JSON.stringify(userData);
+        console.log("Send Message:",jsonData);
+        this.ProductSidebarService.SendMsg(jsonData).subscribe(data => {});
+      }
+    
 
   public slideConfig = {
     slidesToShow: 1,

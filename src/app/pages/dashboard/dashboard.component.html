@@ -1,6 +1,5 @@
-
 <!-- section start -->
-<section >
+<section>
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -17,14 +16,14 @@
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li><a [routerLink]="" (click) =toggleDisplay()>My Ads</a></li>
-                            <li><a [routerLink]="" (click) =toggleDisplay()>Change Password</a></li>
+                            <li><a [routerLink]="" (click)=toggleDisplay()>My Ads</a></li>
+                            <li><a [routerLink]="" (click)=toggleDisplay()>Change Password</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-9">
-                <div class="dashboard-right">
+                <div class="dashboard-left">
                     <div class="dashboard">
                         <div class="page-title">
                             <h2>My Dashboard</h2>
@@ -38,27 +37,32 @@
             </div>
         </div>
     </div>
-    
+
 </section>
 <!-- section end -->
 <section>
-        <div class="container">
-            <div class="card-columns" *ngIf ='isShow' width="200px" >
-                <div class="card" *ngFor="let result of selectedProduct.products" >
-                     <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
-                 <div class="card-body" >
-                     <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
-                     <p class="card-text">{{result.description}}</p>
-                 </div>
-                     <ul class="list-group list-group-flush">
-                     <li class="list-group-item">Status: {{result.status}}</li>
-                    </ul>
-                 <div class="card-body">
-                          <a href="#" class="card-link" style="color:red">Delete</a>
-                          <a href="#" class="card-link" style="color:#00FF00">Mark as Sold</a>
-                    </div>
+    <div class="container">
+        <div class="card-columns" *ngIf='isShow' width="200px">
+            <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
+            <div class="card" *ngFor="let result of selectedProduct.products">
+                <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                <div class="card-body">
+                    <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                    <p class="card-text">{{result.description}}</p>
                 </div>
-            </div>
-         </div>
-</section>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Status: {{result.status}}</li>
+                </ul>
+                <div class="card-body">
+                    <button class="card-link" style="color:red" (click)="Delete(result.product_id)">Delete</button>
+                    <button class="card-link" style="color:#00FF00" (click)="Sold(result.product_id)">Mark as Sold</button>
 
+
+
+                </div>
+
+            </div>
+            <!-- </form> -->
+        </div>
+    </div>
+</section>

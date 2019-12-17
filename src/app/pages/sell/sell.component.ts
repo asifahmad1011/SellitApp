@@ -164,7 +164,7 @@ export class SellComponent implements OnInit {
               "%"
           );
         } else if (event.type == HttpEventType.Response) {
-          this.router.navigate(["./pages/order-success"]);
+          // this.router.navigate(["./pages/order-success"]);
         }
         console.log(event);
       });

@@ -10,7 +10,7 @@ export interface Sell {
   category_id: bigint;
   brand_id: number;
   product_condition: bigint;
-  images: Blob;
+  image: File;
   created_date: Date;
   modified_date: Date;
 }

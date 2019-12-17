@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { from, Observable } from "rxjs";
 import { Sell } from "../sell/sell";
-import { Dashboard } from "./dashboard";
+import { Dashboard, ProductSatus } from "./dashboard";
 import { map, filter, scan } from 'rxjs/operators';
 
 
@@ -16,6 +16,7 @@ console.log("Local:",a);
 
 export class DashboardService {
   Url: string;
+  UrlStatus: String = "http://localhost:3000/api/v1/product/changeProductStatus";
   token: string;
   header: any;
   data: any;
@@ -30,11 +31,11 @@ export class DashboardService {
     return this.http.get<Dashboard[]>(`${this.Url}${a}`);
     }
 
-    Delete(Dashboard) {
+  public changeStatus(Dashboard) {
       const httpOptions = {
         headers: new HttpHeaders({ "Content-Type": "application/json" })
       };
-      return this.http.post<Dashboard>(`${this.Url}${a}`, Dashboard, httpOptions);
+      return this.http.post<ProductSatus>(`${this.UrlStatus}`, Dashboard, httpOptions);
     }
 
 }

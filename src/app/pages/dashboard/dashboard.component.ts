@@ -21,8 +21,7 @@ export class DashboardComponent implements OnInit {
 
   matrik = localStorage.getItem("matrikel_number");
   
-  dashboardform: FormGroup;
-  statusUpdate: FormGroup;
+  // dashboardform: FormGroup;
   //Div toggle
   isShow = false;
   toggleDisplay() {
@@ -34,10 +33,10 @@ export class DashboardComponent implements OnInit {
   url="http://localhost:3000/product/changeProductStatus/";
 
   ngOnInit() {
-    this.statusUpdate = this.formbuilder.group({
-      product_id:["", [Validators.required]],
-      
-    });
+    
+
+    
+
     var user = localStorage.getItem('matrikel_number');
     console.log("data",user);
 
@@ -48,32 +47,42 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getFormData(){
-    const statusData = this.statusUpdate.value;
-
-    console.log(statusData);
-  }
-
-  Delete() {
-    const userdata = this.dashboardform.value.product_id;
-    console.log(userdata);
+ 
+  Delete(resultd) {
     
-        const DBForm = { userdata, status_id: 5 };
-
-        const pdata = {
-          product_id: DBForm.userdata.product_id,
-          status_id: 5,
+    console.log("prodID",resultd);
+  const pdata = {
+          productid: resultd,
+          status: 5,
         };
 
-        console.log("Post Data:",pdata);
-        this.postNewUser(pdata);
+        console.log("Post Data for Del Status:",pdata);
+        this.prodDeleteSatus(pdata);
       }
 
-      postNewUser(userData) {
-        const jsonData = JSON.stringify(userData);
-        //console.log(jsonData);
+      prodDeleteSatus(postData) {
+        const jsonData = JSON.stringify(postData);
+        console.log("statusData:",jsonData);
     
-        this.DashboardService.Delete(jsonData).subscribe(data => {});
+        this.DashboardService.changeStatus(jsonData).subscribe(data => {});
       }
+      Sold(resultd) {
+       
+        console.log("prodID",resultd);
+        const pdata = {
+              productid: resultd,
+              status: 2,
+            };
+    
+            console.log("Post Data for Sold Status:",pdata);
+            this.prodSoldSatus(pdata);
+          }
+    
+          prodSoldSatus(postData) {
+            const jsonData = JSON.stringify(postData);
+            console.log("statusData:",jsonData);
+        
+            this.DashboardService.changeStatus(jsonData).subscribe(data => {});
+          }
     
 }

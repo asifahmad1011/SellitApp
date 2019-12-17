@@ -1,7 +1,7 @@
 <!-- <app-header-one *ngIf="url == '/home/nine'  || url == '/pages/login'  || url == '/pages/register' || url == '/pages/search' || url == '/pages/about-us' || url == '/pages/sell'"></app-header-one> -->
 
 <app-header-one *ngIf="!isLoggedIn"></app-header-one>
-<app-header-profile *ngIf="isLoggedIn"></app-header-profile>
+<app-header-profile *ngIf="isLoggedIn && url !== '/pages/order-success'"></app-header-profile>
 
 <router-outlet></router-outlet>
 <app-footer-one *ngIf="url == '/home/nine' || url == '/pages/login' || url == '/pages/register' || url == '/pages/search' || url == '/pages/about-us' || url == '/pages/sell' || url == '/home/profile' || url == '/pages/order-success' || url == '/pages/dashboard' || url == 'no-sidebar/collection/' || url == '/pages/chat' "></app-footer-one>

@@ -15,3 +15,7 @@ export interface Dashboard {
     image: Blob
   }
   
+  export interface ProductSatus {
+    product_id: bigint,
+    status: bigint,
+  }

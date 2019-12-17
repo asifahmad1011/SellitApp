@@ -9,45 +9,45 @@ const image2base64 = require('image-to-base64');
 var utility = require("../utility/utility");
 
 
-router.get('/:product_name', function (req, res, next) {
-  var product_name = req.params.product_name;
-  Product.getAllProductsByName(product_name, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get('/:product_name', function(req, res, next) {
+    var product_name = req.params.product_name;
+    Product.getAllProductsByName(product_name, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 });
 
-router.get('/id/:id', function (req, res, next) {
-  var product_id = req.params.id;
-  Product.getProductById(product_id, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get('/id/:id', function(req, res, next) {
+    var product_id = req.params.id;
+    Product.getProductById(product_id, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 });
 
-router.get('/', function (req, res, next) {
-  Product.getAllProducts((rows) => {
-    if (!rows || !rows.length) {
-      res.json({
-        "status": "failed",
-        "product": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  })
+router.get('/', function(req, res, next) {
+    Product.getAllProducts((rows) => {
+        if (!rows || !rows.length) {
+            res.json({
+                "status": "failed",
+                "product": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    })
 });
 
 // router.post('/add',loginVerification.verifyToken, function(req, res, next) {
@@ -119,56 +119,57 @@ router.post('/add', function (req, res, next) {
   })
 });
 
-router.get("/userproduct/:userid", function (req, res, next) {
-  var user_id = req.params.userid;
-  Product.getAllUserProduct(user_id, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get("/userproduct/:userid", function(req, res, next) {
+    var user_id = req.params.userid;
+    Product.getAllUserProduct(user_id, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 })
 
-router.get("/recentproduct/:userid", function (req, res, next) {
-  var user_id = req.params.userid;
-  Product.getMostRecentUserProduct(user_id, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get("/recentproduct/:userid", function(req, res, next) {
+    var user_id = req.params.userid;
+    Product.getMostRecentUserProduct(user_id, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 })
 
 
 function saveImage(data) {
-  Image.createImage({
-    image: data.image,
-    url: data.url,
-    primary_image_id: data.primary_image_id,
-    video: data.video,
-    product_id: data.product_id,
-  }, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({
-        "status": "sucessfull"
-      })
-    }
-  })
+    Image.createImage({
+        image: data.image,
+        url: data.url,
+        primary_image_id: data.primary_image_id,
+        video: data.video,
+        product_id: data.product_id,
+    }, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({
+                "status": "sucessfull"
+            })
+        }
+    })
 }
 
+<<<<<<< HEAD
 router.post("/changeProductStatus", function (req, res, next) {
   var productid = req.body.productid;
   var status = req.body.status;
@@ -189,34 +190,56 @@ router.post("/changeProductStatus", function (req, res, next) {
       });
     }
   });
+=======
+router.post("/changeProductStatus", function(req, res, next) {
+    var productid = req.body.productid;
+    var status = req.body.status;
+    console.log(productid + "-" + status)
+    Product.updateProductStatus(productid, status, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            console.log(rows)
+            res.json({
+                product: {
+                    "product_id": productid,
+                    "status": "Successful"
+                }
+            });
+        }
+    });
+>>>>>>> a4b9b15ae91f7b71f8b177fa4ae941b9d65c6ae7
 })
 
-router.get('/getProductsByStatus/:status', function (req, res, next) {
-  var status = req.params.status;
-  Product.getAllProductsByStatus(status, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get('/getProductsByStatus/:status', function(req, res, next) {
+    var status = req.params.status;
+    Product.getAllProductsByStatus(status, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 });
 
-router.get('/getProductsByCategory/:categoryid', function (req, res, next) {
-  var categoryid = req.params.categoryid;
-  Product.getAllProductsByCategory(categoryid, (rows) => {
-    if (!rows) {
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({ products: rows });
-    }
-  });
+router.get('/getProductsByCategory/:categoryid', function(req, res, next) {
+    var categoryid = req.params.categoryid;
+    Product.getAllProductsByCategory(categoryid, (rows) => {
+        if (!rows) {
+            res.json({
+                "status": "failed",
+                "user": null
+            })
+        } else {
+            res.json({ products: rows });
+        }
+    });
 });
 
 

@@ -66,7 +66,7 @@ export class CollectionRightSidebarComponent implements OnInit {
       var categoryId = p['category_id'];
 
       this.productsService.getProductByCat(categoryId).subscribe(res => {
-        console.log("Category Page:",res);
+        console.log(res);
         this.selectedCategory = res;
       });
 

@@ -117,7 +117,7 @@ export class SellComponent implements OnInit {
       category_id: DBForm.userdata.category_id,
       brand_id: DBForm.userdata.brand_id,
       product_condition: DBForm.userdata.product_condition,
-      image: ,
+      image: null,
       created_date: Date,
       modified_date: Date
     };

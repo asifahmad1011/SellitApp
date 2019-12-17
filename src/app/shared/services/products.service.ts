@@ -25,6 +25,7 @@ console.log("sample:", name);
 export class ProductsService {
   //Accessing the server address+api/products(she)
   private serverUrl = "http://localhost:3000/api/v1/product";
+
   url = "http://localhost:3000/api/v1/category";
   product: any;
   public currency: string = "EUR";
@@ -38,7 +39,7 @@ export class ProductsService {
   // this.compareProducts.subscribe(products => products = products);
   //}
 
-  // Initialize
+  
   //Initializing the httpClient she
   constructor(
     private httpclient: HttpClient,
@@ -64,6 +65,11 @@ export class ProductsService {
   //she
   public getProductById(id: number) {
     return this.httpclient.get(this.serverUrl + "/id/" + id);
+  }
+
+  //she
+  public getProductByCat(catid: number){
+    return this.httpclient.get(this.serverUrl + "/getProductsByCategory/" + catid);
   }
 
   private products(): Observable<Products[]> {

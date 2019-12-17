@@ -6,6 +6,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
 import * as _ from 'lodash'
 import * as $ from 'jquery';
 
+
 @Component({
   selector: 'app-collection-right-sidebar',
   templateUrl: './collection-right-sidebar.component.html',
@@ -26,6 +27,9 @@ import * as $ from 'jquery';
 })
 export class CollectionRightSidebarComponent implements OnInit {
 
+  //she
+  selectedCategory;
+
   public products     :   Products[] = [];
   public items        :   Products[] = [];
   public allItems     :   Products[] = [];
@@ -40,20 +44,34 @@ export class CollectionRightSidebarComponent implements OnInit {
   finished = false  // boolean when end of data is reached
  
    
-  constructor(private route: ActivatedRoute, private router: Router,
-    private productsService: ProductsService) { 
-       this.route.params.subscribe(params => {
-          const category = params['category'];
-          this.productsService.getProductByCategory(category).subscribe(products => {
-             this.allItems = products  // all products
-             this.products = products.slice(0,8)
-             this.getTags(products)
-             this.getColors(products)
-          })
-       });
-  }
+  // constructor(private route: ActivatedRoute, private router: Router,
+  //   private productsService: ProductsService) { 
+  //      this.route.params.subscribe(params => {
+  //         const category = params['category'];
+  //         this.productsService.getProductByCategory(category).subscribe(products => {
+  //            this.allItems = products  // all products
+  //            this.products = products.slice(0,8)
+  //            this.getTags(products)
+  //            this.getColors(products)
+  //         })
+  //      });
+  // }
 
-  ngOnInit() { }
+  //She
+  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute) { }
+
+  ngOnInit() { 
+    //she
+    this.activeRoute.params.subscribe(p => {
+      var categoryId = p['category_id'];
+
+      this.productsService.getProductByCat(categoryId).subscribe(res => {
+        console.log(res);
+        this.selectedCategory = res;
+      });
+
+    })
+  }
   
 
   // Get current product tags
@@ -104,7 +122,6 @@ export class CollectionRightSidebarComponent implements OnInit {
   }
 
 
-  
   // Update tags filter
   public updateTagFilters(tags: any[]) {
       this.tagsFilters = tags;

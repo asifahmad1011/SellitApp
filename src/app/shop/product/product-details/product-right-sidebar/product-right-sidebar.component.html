@@ -36,20 +36,52 @@
                   </div>
                 </div>
               </div>
+             
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
                   <h2>{{selectedProduct.products[0].name}}</h2>
                   <h3>{{selectedProduct.products[0].price | currency : 'EUR'}}</h3>
+
+                  <!-- <form [formGroup]="sendmsgform" class="theme-form" (ngSubmit)="ChatMsg()"> -->
                   <div class="product-description border-product">
                     <div >
                       <h6 class="product-title">product details</h6>
                       <p>{{selectedProduct.products[0].description}}</p>
                     </div>
+
+                   
+<!-- 
+                    <select formControlName="receiver_id" name="receiver_id" id="receiver_id" value="{{selectedProduct.products[0].seller_id}}">
+                      <option selected="{{selectedProduct.products[0].seller_id}}">  
+                        {{selectedProduct.products[0].seller_id}}
+                      </option>
+        
+                    </select>
+
+                    <select ng-options="" formControlName="product_id" value="{{selectedProduct.products[0].product_id}}" name="product_id" id="product_id">
+                      <option>  
+                        {{selectedProduct.products[0].product_id}}
+                      </option>
+                    </select> -->
+
+
+                    <!-- *ngIf ='isShow' -->
+                    <div class="input-group">      
+                      <div class="input-group-prepend">
+                        <button type="submit" class="input-group-text">Send now!</button>
+                      </div>
+                      <!-- <textarea class="form-control" aria-label="With textarea" formControlName="message" name="message" id="message" [(ngModel)]="model.message" required="" ></textarea> -->
+                    </div>
                   </div>
-                  <div class="product-buttons" *ngIf="!productsService?.catalogMode">
-                    <a [routerLink]=""  class="btn btn-solid" >Chat with Seller</a>
-                    <a [routerLink]=""  class="btn btn-solid" >HELP!</a>
+                 <!-- </form> -->
+               
+
+
+                  <div class="product-buttons">
+                    <button class="btn btn-solid" (click) =toggleDisplay()>Chat with Seller</button>
+                    <button class="btn btn-solid" >HELP!</button>
                   </div>
+
 
                   <div class="border-product">
                     <div id="map-container-google-1" class="z-depth-1-half map-container">
@@ -70,6 +102,7 @@
                     </div>
                   </div>
                 </div>
+                
               </div>
             </div>
           </div>

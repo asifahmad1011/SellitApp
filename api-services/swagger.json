@@ -979,9 +979,6 @@
         },
         "sender_id": {
           "type": "number"
-        },
-        "product_id": {
-          "type": "number"
         }
       }
     }

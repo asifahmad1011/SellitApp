@@ -5,10 +5,14 @@ import { Products } from "../classes/product";
 import { Category } from "../classes/category";
 import { BehaviorSubject, Observable, of, Subscriber } from "rxjs";
 import { map, filter, scan } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import { HttpHeaders } from "@angular/common/http";
 import "rxjs/add/operator/map";
+
+
 //import { HttpClient } from 'selenium-webdriver/http';
 //She
-import { HttpClient } from "@angular/common/http";
+
 
 
 let abcd =
@@ -25,6 +29,7 @@ export class ProductsService {
   product: any;
   public currency: string = "EUR";
   public catalogMode: boolean = false;
+  header: any;
 
   //public compareProducts : BehaviorSubject<Product[]> = new BehaviorSubject([]);
   //public observer   :  Subscriber<{}>;
@@ -39,7 +44,11 @@ export class ProductsService {
     private httpclient: HttpClient,
     private http: Http,
     private toastrService: ToastrService
-  ) {}
+    
+  ) {
+    const headerSettings: { [name: string]: string | string[] } = {};
+    this.header = new HttpHeaders(headerSettings);
+  }
 
   // Observable Product Array
   // Observable Product Array

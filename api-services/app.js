@@ -1,9 +1,13 @@
 var express = require('express');
+const fileUpload = require('express-fileupload');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 var publicDir = path.join(__dirname,'/public');
+//var upload = require("express-fileupload");
+
+
 
 
 const swaggerDocument = require('./swagger.json');
@@ -19,12 +23,15 @@ var image = require("./routes/Image");
 var dashboard = require("./routes/Dashboard");
 
 var app = express();
+
 var session = require('express-session');
 app.use(session({ resave: true ,secret: 'admin' , saveUninitialized: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(express.static(publicDir));
+app.use(fileUpload());
+
 
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin","*");
@@ -43,6 +50,19 @@ app.use("/api/v1/image", image);
 app.use("/api/v1/dashboard", dashboard);
 app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+/*=======================Sockets Part=============================*/
+var sockIO = require('socket.io')();
+app.sockIO = sockIO;
+sockIO.on('connection', function(socket){
+    console.log('A user connected!');
+
+    socket.on('chat message', function(msg){
+        sockIO.emit('chat message', msg);
+        console.log(msg);
+    });
+});
+/*=======================Sockets End=============================*/
+
 
 ////////////parvin
 var pages=require("./routes/AdimGetPages");
@@ -57,6 +77,7 @@ app.set('view engine', 'ejs');
 app.use(function(req, res, next) {
 	res.redirect('/api/v1/dashboard/')
 });
+
 
 
 /////////

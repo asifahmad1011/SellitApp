@@ -6,6 +6,7 @@ var loginVerification = require('../utility/LoginVerification');
 var jwt = require('jsonwebtoken');
 var request = require('request');
 const image2base64 = require('image-to-base64');
+var utility = require("../utility/utility");
 
 
 router.get('/:product_name', function (req, res, next) {
@@ -52,8 +53,13 @@ router.get('/', function (req, res, next) {
 // router.post('/add',loginVerification.verifyToken, function(req, res, next) {
 router.post('/add', function (req, res, next) {
   var data = req.body;
+  //var image = req.body.image;
+ // var images = req.files;
+  //console.log(req.files.file);
   var images = data.image;
-  console.log(images);
+  //console.log(images);
+  console.log(data);
+  //console.log(images);
   Product.addProduct({
     name: data.name,
     slug: data.slug,
@@ -72,31 +78,43 @@ router.post('/add', function (req, res, next) {
         "user": null
       })
     } else {
-      var imagebase = "";
-      images.forEach(function (value) {
-        imageBase64 = value.base64;
-        console.log("making post to immbb");
-        request.post({
-          url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
-          form: { image: imageBase64 }
-        },
-          function (err, httpResponse, body) {
-            var result = JSON.parse(body);
-            if (result.data.url != null) {
-              var data = {
-                image: result.title,
-                url: result.url,
-                primary_image_id: 0,
-                video: result.url,
-                product_id: data.rows.product_id,
+
+      var data = {
+        image: data.name,
+        url: images,
+        primary_image_id: 0,
+        video:  images,
+        product_id: data.rows.product_id,
+      }
+      saveImage(data);
+
+    res.json({
+      "status": "sucessfull"
+    });
+
+    /* if (images != null || images != undefined) {
+       /* images.forEach(function (value) {
+
+        })*/
+       /* var imageBase64 = utility.toBase64(images);
+        if (imageBase64 != null) {
+          request.post({
+            url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
+            form: { image: imageBase64 }
+          },
+            function (err, httpResponse, body) {
+              var result = JSON.parse(body);
+              if (result.data.url != null) {
+                var data = {
+                  image: result.title,
+                  url: result.url,
+                  primary_image_id: 0,
+                  video: result.url,
+                  product_id: data.rows.product_id,
+                }
+                saveImage(data);
               }
-              saveImage(data);
-              res.json({
-                "status": "sucessfull"
-              })
-            }
-          });
-      });
+            });*/     
     }
   })
 });
@@ -163,11 +181,12 @@ router.post("/changeProductStatus", function (req, res, next) {
       })
     } else {
       console.log(rows)
-      res.json({ product : {
-        "product_id" : productid,
-        "status" : "Successful"
-      }
-    });
+      res.json({
+        product: {
+          "product_id": productid,
+          "status": "Successful"
+        }
+      });
     }
   });
 })

@@ -33,10 +33,6 @@ export class DashboardComponent implements OnInit {
   url="http://localhost:3000/product/changeProductStatus/";
 
   ngOnInit() {
-    
-
-    
-
     var user = localStorage.getItem('matrikel_number');
     console.log("data",user);
 
@@ -63,7 +59,7 @@ export class DashboardComponent implements OnInit {
       prodDeleteSatus(postData) {
         const jsonData = JSON.stringify(postData);
         console.log("statusData:",jsonData);
-    
+        location.reload();
         this.DashboardService.changeStatus(jsonData).subscribe(data => {});
       }
       Sold(resultd) {
@@ -76,6 +72,7 @@ export class DashboardComponent implements OnInit {
     
             console.log("Post Data for Sold Status:",pdata);
             this.prodSoldSatus(pdata);
+            location.reload();
           }
     
           prodSoldSatus(postData) {
@@ -83,6 +80,7 @@ export class DashboardComponent implements OnInit {
             console.log("statusData:",jsonData);
         
             this.DashboardService.changeStatus(jsonData).subscribe(data => {});
+            location.reload();
           }
     
 }

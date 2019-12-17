@@ -42,43 +42,27 @@
                   <h2>{{selectedProduct.products[0].name}}</h2>
                   <h3>{{selectedProduct.products[0].price | currency : 'EUR'}}</h3>
 
-                  <!-- <form [formGroup]="sendmsgform" class="theme-form" (ngSubmit)="ChatMsg()"> -->
+                  <form [formGroup]="sendmsgform" class="theme-form">
                   <div class="product-description border-product">
                     <div >
                       <h6 class="product-title">product details</h6>
                       <p>{{selectedProduct.products[0].description}}</p>
                     </div>
-
-                   
-<!-- 
-                    <select formControlName="receiver_id" name="receiver_id" id="receiver_id" value="{{selectedProduct.products[0].seller_id}}">
-                      <option selected="{{selectedProduct.products[0].seller_id}}">  
-                        {{selectedProduct.products[0].seller_id}}
-                      </option>
-        
-                    </select>
-
-                    <select ng-options="" formControlName="product_id" value="{{selectedProduct.products[0].product_id}}" name="product_id" id="product_id">
-                      <option>  
-                        {{selectedProduct.products[0].product_id}}
-                      </option>
-                    </select> -->
-
-
-                    <!-- *ngIf ='isShow' -->
-                    <div class="input-group">      
+                    
+                    <!-- -->
+                    <div class="input-group" *ngIf ='isShow' >      
                       <div class="input-group-prepend">
-                        <button type="submit" class="input-group-text">Send now!</button>
+                        <button type="submit" class="input-group-text" (click)="ChatMsg(selectedProduct.products[0].product_id, selectedProduct.products[0].seller_id)"> Send now! </button>
                       </div>
-                      <!-- <textarea class="form-control" aria-label="With textarea" formControlName="message" name="message" id="message" [(ngModel)]="model.message" required="" ></textarea> -->
+                      <textarea class="form-control" aria-label="With textarea" formControlName="message" name="message" id="message" [(ngModel)]="model.message" required="" ></textarea>
                     </div>
                   </div>
-                 <!-- </form> -->
+                 </form>
                
 
 
                   <div class="product-buttons">
-                    <button class="btn btn-solid" (click) =toggleDisplay()>Chat with Seller</button>
+                    <button class="btn btn-solid" ng-disabled="checkRole()" (click) =toggleDisplay()>Chat with Seller</button>
                     <button class="btn btn-solid" >HELP!</button>
                   </div>
 

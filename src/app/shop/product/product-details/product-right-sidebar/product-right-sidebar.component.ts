@@ -74,20 +74,17 @@ export class ProductRightSidebarComponent implements OnInit {
     })
   }
 
-  ChatMsg() {
+  ChatMsg(prod, receiver) {
     const userdata = this.sendmsgform.value;
-    console.log("chat:",userdata);
-
-
-
+    console.log("Result:", prod);
         const DBForm = { userdata };
         this.sendmsgform.reset();
 
         const pdata = {
           message: DBForm.userdata.message,
-          product_id: DBForm.userdata.product_id,
+          product_id: prod,
           sender_id: localStorage.getItem("matrikel_number"),
-          receiver_id: DBForm.userdata.receiver_id,
+          receiver_id: receiver,
         };
         console.log("Post Data:",pdata);
 
@@ -99,7 +96,7 @@ export class ProductRightSidebarComponent implements OnInit {
         const jsonData = JSON.stringify(userData);
         console.log("Send Message:",jsonData);
         this.ProductSidebarService.SendMsg(jsonData).subscribe(data => {});
-      }
+     }
     
 
   public slideConfig = {

@@ -169,7 +169,6 @@ function saveImage(data) {
     })
 }
 
-<<<<<<< HEAD
 router.post("/changeProductStatus", function (req, res, next) {
   var productid = req.body.productid;
   var status = req.body.status;
@@ -190,28 +189,6 @@ router.post("/changeProductStatus", function (req, res, next) {
       });
     }
   });
-=======
-router.post("/changeProductStatus", function(req, res, next) {
-    var productid = req.body.productid;
-    var status = req.body.status;
-    console.log(productid + "-" + status)
-    Product.updateProductStatus(productid, status, (rows) => {
-        if (!rows) {
-            res.json({
-                "status": "failed",
-                "user": null
-            })
-        } else {
-            console.log(rows)
-            res.json({
-                product: {
-                    "product_id": productid,
-                    "status": "Successful"
-                }
-            });
-        }
-    });
->>>>>>> a4b9b15ae91f7b71f8b177fa4ae941b9d65c6ae7
 })
 
 router.get('/getProductsByStatus/:status', function(req, res, next) {

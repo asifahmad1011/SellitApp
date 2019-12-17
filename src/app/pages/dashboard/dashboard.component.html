@@ -54,11 +54,8 @@
                     <li class="list-group-item">Status: {{result.status}}</li>
                 </ul>
                 <div class="card-body">
-                    <button class="card-link" style="color:red" (click)="Delete(result.product_id)">Delete</button>
-                    <button class="card-link" style="color:#00FF00" (click)="Sold(result.product_id)">Mark as Sold</button>
-
-
-
+                    <button class="btn btn-danger"  (click)="Delete(result.product_id)">Delete</button>
+                    <button class="btn btn-success"  (click)="Sold(result.product_id)">Mark as Sold</button>
                 </div>
 
             </div>

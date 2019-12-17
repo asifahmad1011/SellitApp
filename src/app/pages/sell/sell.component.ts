@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpClient, HttpEventType } from "@angular/common/http";
+import { HttpClient, HttpEventType, HttpHeaderResponse } from "@angular/common/http";
 import { SellRoutingModule } from "./sell-routing.module";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
@@ -164,6 +164,8 @@ export class SellComponent implements OnInit {
               "%"
           );
         } else if (event.type == HttpEventType.Response) {
+          console.log(HttpEventType.Response);
+
           // this.router.navigate(["./pages/order-success"]);
         }
         console.log(event);

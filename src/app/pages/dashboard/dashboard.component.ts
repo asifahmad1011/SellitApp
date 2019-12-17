@@ -20,19 +20,24 @@ import { FormsModule } from "@angular/forms";
 export class DashboardComponent implements OnInit {
 
   matrik = localStorage.getItem("matrikel_number");
+  
   dashboardform: FormGroup;
-
+  statusUpdate: FormGroup;
   //Div toggle
   isShow = false;
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
 
-  constructor(private DashboardService: DashboardService) { }
-  selectedProduct;
+  constructor(private DashboardService: DashboardService, private formbuilder: FormBuilder ) { }
+  selectedProduct:any =[];
   url="http://localhost:3000/product/changeProductStatus/";
 
   ngOnInit() {
+    this.statusUpdate = this.formbuilder.group({
+      product_id:["", [Validators.required]],
+      
+    });
     var user = localStorage.getItem('matrikel_number');
     console.log("data",user);
 
@@ -43,6 +48,11 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getFormData(){
+    const statusData = this.statusUpdate.value;
+
+    console.log(statusData);
+  }
 
   Delete() {
     const userdata = this.dashboardform.value.product_id;

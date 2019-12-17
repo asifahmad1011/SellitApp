@@ -117,7 +117,7 @@ export class SellComponent implements OnInit {
       category_id: DBForm.userdata.category_id,
       brand_id: DBForm.userdata.brand_id,
       product_condition: DBForm.userdata.product_condition,
-      image: ,
+      image: localStorage.getItem("image"),
       created_date: Date,
       modified_date: Date
     };
@@ -165,11 +165,12 @@ export class SellComponent implements OnInit {
           );
         } else if (event.type == HttpEventType.Response) {
 
-          var a = (JSON.parse(JSON.stringify(event.body)).data);
-          console.log(a.url);
+          var a = (JSON.parse(JSON.stringify(event.body)));
+          a = localStorage.setItem("image",a.url);
           
-
-          // this.router.navigate(["./pages/order-success"]);
+          alert("Success");
+          this.router.navigate(["./pages/order-success"]);
+          
         }
         console.log(event);
       }))

@@ -22,13 +22,13 @@ import { FormsModule } from "@angular/forms";
 })
 
 
-
 export class OrderSuccessComponent implements OnInit {
   selectedProduct;
 
   constructor(private OrderService: OrderService) { }
 
   ngOnInit() {
+   
     var user = localStorage.getItem('matrikel_number');
     console.log("data",user);
 
@@ -36,8 +36,11 @@ export class OrderSuccessComponent implements OnInit {
       data => {
         console.log("Kuch MIla", data);
       this.selectedProduct= data;
+
     });
+    
+    localStorage.removeItem("image");
   }
 
-
+ 
   }

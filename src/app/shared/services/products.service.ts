@@ -69,7 +69,7 @@ export class ProductsService {
 
   //she
   public getProductByCat(catid: number){
-    return this.httpclient.get(this.serverUrl + "/getProductsByCategory/" + catid);
+    return this.httpclient.get<Category[]>(this.serverUrl + "/getProductsByCategory/" + catid);
   }
 
   private products(): Observable<Products[]> {

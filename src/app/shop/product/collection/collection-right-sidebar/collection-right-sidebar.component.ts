@@ -66,7 +66,7 @@ export class CollectionRightSidebarComponent implements OnInit {
       var categoryId = p['category_id'];
 
       this.productsService.getProductByCat(categoryId).subscribe(res => {
-        console.log(res);
+        console.log("Category Page:",res);
         this.selectedCategory = res;
       });
 
@@ -74,43 +74,6 @@ export class CollectionRightSidebarComponent implements OnInit {
   }
   
 
-  // Get current product tags
-  public getTags(products) {
-     var uniqueBrands = []
-     var itemBrand = Array();
-     products.map((product, index) => { 
-        if(product.tags) {
-           product.tags.map((tag) => {
-           const index = uniqueBrands.indexOf(tag);
-           if(index === -1)  uniqueBrands.push(tag);
-        })
-       }
-     });
-     for (var i = 0; i < uniqueBrands.length; i++) {
-          itemBrand.push({brand:uniqueBrands[i]})
-     }
-     this.tags = itemBrand
-  }
-  
-  // Get current product colors
-  public getColors(products) {
-     var uniqueColors = []
-     var itemColor = Array();
-     products.map((product, index) => {
-       if(product.colors) {
-       product.colors.map((color) => {
-           const index = uniqueColors.indexOf(color);
-           if(index === -1)  uniqueColors.push(color);
-       })
-      }
-     });
-     for (var i = 0; i < uniqueColors.length; i++) {
-          itemColor.push({color:uniqueColors[i]})
-     }
-     this.colors = itemColor
-  }
-
-  
   // Animation Effect fadeIn
   public fadeIn() {
       this.animation = 'fadeIn';

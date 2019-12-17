@@ -97,6 +97,8 @@ export class ProductRightSidebarComponent implements OnInit {
         console.log("Send Message:",jsonData);
         this.ProductSidebarService.SendMsg(jsonData).subscribe(data => {});
      }
+
+
     
 
   public slideConfig = {

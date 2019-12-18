@@ -6,8 +6,8 @@
                 <div class="success-text">
                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                     <div id="user" *ngFor="let result of selectedProduct.products"><h2>thank you! {{result.seller_id}}</h2></div>
-                    <!-- <p>Payment is successfully processsed and your order is on the way</p>
-                    <p>Transaction ID:267676GHERT105467</p> -->
+                    <a href="/home/profile"><p>HOME</p></a>
+                    <!-- <p>Transaction ID:267676GHERT105467</p> -->
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                     <h3>your product details</h3>
                     <div class="row product-order-detail">
                         <div class="col-3" *ngFor="let result of selectedProduct.products">
-                            <img src="{{result.image[0].url}}" alt="" class="img-fluid">
+                            <a href="/home/right-sidebar/product/{{result.product_id}}"><img src="{{result.image[0].url}}" alt="" class="img-fluid"></a>
                         </div>
                         <div class="col-3 order_detail">
                             <div *ngFor="let result of selectedProduct.products">

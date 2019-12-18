@@ -60,7 +60,7 @@
 
 
                   <div class="product-buttons">
-                    <button class="btn btn-solid" ng-disabled="checkRole()" (click) =toggleDisplay()>Chat with Seller</button>
+                    <button class="btn btn-solid" *ngIf="isLoggedIn" (click)=toggleDisplay()>Chat with Seller</button>
                     <button class="btn btn-solid" >HELP!</button>
                   </div>
 

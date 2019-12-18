@@ -66,104 +66,12 @@ export class CollectionRightSidebarComponent implements OnInit {
       var categoryId = p['category_id'];
 
       this.productsService.getProductByCat(categoryId).subscribe(res => {
-        console.log(res);
+        console.log("Category Items:",res);
         this.selectedCategory = res;
       });
 
     })
   }
   
-
-  // Animation Effect fadeIn
-  public fadeIn() {
-      this.animation = 'fadeIn';
-  }
-
-  // Animation Effect fadeOut
-  public fadeOut() {
-      this.animation = 'fadeOut';
-  }
-
-
-  // Update tags filter
-  public updateTagFilters(tags: any[]) {
-      this.tagsFilters = tags;
-      this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
-  }
-
-  // Update color filter
-  public updateColorFilters(colors: any[]) {
-      this.colorFilters = colors;
-      this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
-  }
-  
-  // Update price filter
-  public updatePriceFilters(price: any) {
-      let items: any[] = [];
-      this.products.filter((item: Products) => {
-          if (item.price >= price[0] && item.price <= price[1] )  {            
-             items.push(item); // push in array
-          } 
-      });
-      this.items = items;
-  }
-
-  public twoCol() {
-    if ($('.product-wrapper-grid').hasClass("list-view")) {} else {
-      $(".product-wrapper-grid").children().children().children().removeClass();
-      $(".product-wrapper-grid").children().children().children().addClass("col-lg-6");
-    }
-  }
-
-  public threeCol() {
-    if ($('.product-wrapper-grid').hasClass("list-view")) {} else {
-      $(".product-wrapper-grid").children().children().children().removeClass();
-      $(".product-wrapper-grid").children().children().children().addClass("col-lg-4");
-    }
-  }
-
-  public fourCol() {
-    if ($('.product-wrapper-grid').hasClass("list-view")) {} else {
-      $(".product-wrapper-grid").children().children().children().removeClass();
-      $(".product-wrapper-grid").children().children().children().addClass("col-lg-3");
-    }
-  }
-
-  public sixCol() {
-    if ($('.product-wrapper-grid').hasClass("list-view")) {} else {
-      $(".product-wrapper-grid").children().children().children().removeClass();
-      $(".product-wrapper-grid").children().children().children().addClass("col-lg-2");
-    }
-  }
-
-  // For mobile filter view
-  public mobileFilter() {
-    $('.collection-filter').css("left", "-15px");
-  }
-
-  // Infinite scroll
-  public onScroll() {
-      this.lastKey = _.last(this.allItems)['id'];
-      if (this.lastKey != _.last(this.items)['id']) {
-         this.finished = false
-      }  
-      // If data is identical, stop making queries
-      if (this.lastKey == _.last(this.items)['id']) {
-         this.finished = true
-      }
-      if(this.products.length < this.allItems.length){  
-         let len = this.products.length;
-         for(var i = len; i < len+4; i++){
-           if(this.allItems[i] == undefined) return true
-             this.products.push(this.allItems[i]);
-         }
-      }
-  }
-  
-  // sorting type ASC / DESC / A-Z / Z-A etc.
-  public onChangeSorting(val) {
-     this.sortByOrder = val;
-     this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
-  }
 
 }

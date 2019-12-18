@@ -3,16 +3,17 @@
      
     </div>
     <div class="col-lg-6 text-right" *ngIf="!productsService?.catalogMode">
+      
       <ul class="header-dropdown">
         
         <li class="mobile-accountt">
           <i class="fa fa-envelope" aria-hidden="true" [routerLink]="'/pages/message'"></i> 
-          <a [routerLink]="'/pages/messages'">{{ 'MESSAGES'}}</a>
+          <a [routerLink]="'/pages/messages'">{{ 'Messages'}}</a>
         </li>
 
         <li class="mobile-accountt">
             <i class="fa fa-camera" aria-hidden="true" [routerLink]="'/pages/sell'"></i> 
-            <a [routerLink]="'/pages/sell'">{{ 'SELL'}}</a>
+            <a [routerLink]="'/pages/sell'">{{ 'Sell Now'}}</a>
           </li>
 
         <li class="onhover-dropdown mobile-account">
@@ -28,7 +29,7 @@
                 <a [routerLink]="'/home/nine'" (click)="Logout()">
                   {{ 'Logout'}} 
               </a>
-            </li>>
+            </li>
           </ul>
         </li>
       </ul>

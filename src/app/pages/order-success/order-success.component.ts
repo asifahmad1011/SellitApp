@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderSuccessRouting } from "./order-success-routing.module";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 import {
   NgForm,
@@ -25,7 +26,7 @@ import { FormsModule } from "@angular/forms";
 export class OrderSuccessComponent implements OnInit {
   selectedProduct;
 
-  constructor(private OrderService: OrderService) { }
+  constructor(private OrderService: OrderService, Router: Router) { }
 
   ngOnInit() {
    

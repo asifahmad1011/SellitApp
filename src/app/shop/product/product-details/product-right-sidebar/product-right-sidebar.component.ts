@@ -4,6 +4,7 @@ import { Products } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
 import { ProductSidebarService } from "./product-right-sidebar.service";
 import { Observable } from "rxjs";
+import { isNull } from 'util';
 import {
   NgForm,
   FormBuilder,
@@ -13,9 +14,13 @@ import {
 } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 import * as $ from 'jquery';
+import { inject } from '@angular/core/testing';
+import { MainComponent } from 'src/app/main/main.component';
 
 
 var a = localStorage.getItem('matrikel_number');
+
+
 
 @Component({
   selector: 'app-product-right-sidebar',
@@ -42,6 +47,8 @@ export class ProductRightSidebarComponent implements OnInit {
   public products           :   Products[] = [];
   public counter            :   number = 1; 
   public selectedSize       :   any = '';
+  public url : any; 
+  isLoggedIn: boolean;
   
 
 //she
@@ -51,7 +58,8 @@ export class ProductRightSidebarComponent implements OnInit {
 
 
   //she
-  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute, private formbulider: FormBuilder, private ProductSidebarService: ProductSidebarService) { }
+  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute,
+     private formbulider: FormBuilder, private ProductSidebarService: ProductSidebarService,private mc: MainComponent) { }
 
   ngOnInit() {
   //she
@@ -60,11 +68,19 @@ export class ProductRightSidebarComponent implements OnInit {
 
       this.productsService.getProductById(productId).subscribe(res => {
         console.log(res);
-        this.selectedProduct = res;
-        
+        this.selectedProduct = res;       
       });
 
     })
+    
+ {
+    var mn = localStorage.getItem("matrikel_number");
+    var tok = localStorage.getItem("token");
+    if( mn === "" || isNull(mn) && isNull(tok) || tok === "" )
+     this.isLoggedIn = false;
+   else
+     this.isLoggedIn = true; 
+  }
 
     this.sendmsgform = this.formbulider.group({
       message: ["", [Validators.required]],
@@ -91,6 +107,9 @@ export class ProductRightSidebarComponent implements OnInit {
         this.SendMsg(pdata);
       }
 
+
+ 
+      
     
       SendMsg(userData) {
         const jsonData = JSON.stringify(userData);

@@ -8,19 +8,31 @@
 
         <li class="mobile-accountt">
             <i class="fa fa-camera" aria-hidden="true"></i> 
-            <a (click)="checkuser()"[routerLink]="'/pages/login'"> {{ 'SELL'}} </a>
+            <a (click)="checkuser()"[routerLink]="'/pages/login'"> {{ 'Sell Now'}} </a>
           </li>
 
-        <li class="onhover-dropdown mobile-account">
-          <i class="fa fa-user" aria-hidden="true"></i> {{ 'My-Account'}}
-          <ul class="onhover-show-div">
+        <li class="mobile-accountt">
+          <i class="fa fa-user"></i> <a [routerLink]="'/pages/login'"> {{ 'Login'}} </a>
+          <!-- <ul class="onhover-show-div">
             <li>
               <a [routerLink]="'/pages/login'">
                   {{ 'login'}}
               </a>
             </li>
-          </ul>
+          </ul> -->
         </li>
+
+        <li class="mobile-accountt">
+          <i class="fa fa-user"></i> <a [routerLink]="'/pages/register'"> {{ 'Register'}} </a>
+          <!-- <ul class="onhover-show-div">
+            <li>
+              <a [routerLink]="'/pages/register'">
+                  {{ 'Register'}}
+              </a>
+            </li>
+          </ul> -->
+        </li>
+
       </ul>
     </div>
 </div>

@@ -28,12 +28,12 @@
                 <div class="theme-card">
                     <form  (ngSubmit)="login()" #f="ngForm" class="theme-form">
                         <div class="form-group">
-                            <label for="email">Matrikel#/Username</label>
-                            <input type="text" class="form-control" id="email" placeholder="Matrikel#/Username" [(ngModel)]="model.matrikel_number" name="matrikel_number" required>
+                            <label for="username">Matrikel#/Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Matrikel#/Username" [(ngModel)]="model.matrikel_number" name="matrikel_number" required>
                         </div>
                         <div class="form-group">
-                            <label for="review">Password</label>
-                            <input type="password" class="form-control" id="review" [(ngModel)]="model.password" name="password" placeholder="Enter your password" required>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password" placeholder="Enter your password" required>
                         </div>
                         <button class="btn btn-solid">Login</button>
                     </form>
@@ -57,5 +57,7 @@
     </div>
 
 </section>
+
+
 
 <!--Section ends-->

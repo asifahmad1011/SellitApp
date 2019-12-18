@@ -17,4 +17,4 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [RegisterComponent]
 })
-export class SearchModule { }
+export class RegisterModule { }

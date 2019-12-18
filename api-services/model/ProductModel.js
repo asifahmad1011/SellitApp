@@ -3,6 +3,7 @@ var Sequelize = require('sequelize');
 var sequelize = require('../common/mysql');
 const Op = Sequelize.Op;
 var Image = require("./ImageModel");
+var User = require("./UserModel");
 
 
 var Product = sequelize.define('products', {
@@ -69,5 +70,10 @@ var Product = sequelize.define('products', {
 
 
 Product.hasMany(Image, {foreignKey: "product_id", as : "image"});
+
+/*Product.associate = function(models) {
+  Product.belongsTo(User, {foreignKey: 'seller_id', as: 'company'})
+};*/
+Product.belongsTo(User, {foreignKey: "seller_id", as : "seller_info"});
 module.exports = Product;
 

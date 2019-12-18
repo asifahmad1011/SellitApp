@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } 
 import { Subject, throwError, of } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, switchMap, catchError, retryWhen, retry } from "rxjs/operators";
 import {SettingsService} from "./settings.service";
-import { CartItem } from '../../../../shared/classes/cart-item';
 import { Observable} from 'rxjs';
 declare var $: any;
 
@@ -14,7 +13,7 @@ declare var $: any;
 })
 export class SettingComponent implements OnInit {
 
-    @Input() shoppingCartItems  :   CartItem[] = [];
+    @Input()
     public show  :   boolean = false;
     public loading: boolean;
     public searchTerm = new Subject<string>();

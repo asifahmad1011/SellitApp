@@ -1,5 +1,5 @@
 <!-- side-bar single product slider start -->
-<div class="theme-card">
+<!-- <div class="theme-card">
   <h5 class="title-border">new product</h5>
   <ngx-slick-carousel class="offer-slider" #slickModal="slick-carousel">
     <div ngxSlickItem *ngFor="let product of products | slice:0:3 ">
@@ -7,11 +7,11 @@
         <a [routerLink]="['/home/right-sidebar/product', products.id]"><img class="img-fluid" [src]="products.pictures[0]" alt=""></a>
         <div class="media-body align-self-center">
           <bar-rating [rate]="5" [readOnly]="true"></bar-rating>
-          <a [routerLink]="['/home/left-sidebar/product', product.id]"><h6>{{products.name}}</h6></a>
-          <h4 *ngIf="!productsService?.catalogMode">{{products.price | currency:productsService?.currency:'symbol'}}</h4>
+          <a [routerLink]="['/home/left-sidebar/product', product.id]"><h6>{{selectedProducts.products[0].name}}</h6></a>
+          <h4 *ngIf="!productsService?.catalogMode">{{selectedProducts.products[0].price | currency:productsService?.currency:'symbol'}}</h4>
         </div>
       </div>
     </div>
   </ngx-slick-carousel>
-</div>
+</div> -->
 <!-- side-bar single product slider end -->

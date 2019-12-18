@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 // Services
 import { WINDOW_PROVIDERS } from "./services/windows.service";
 import { LandingFixService } from '../shared/services/landing-fix.service';
-import { InstagramService } from "./services/instagram.service";
 import { ProductsService } from "./services/products.service";
 import { PaginationService } from "./classes/paginate";
 import { SettingsService } from "./header/widgets/settings/settings.service";
@@ -22,9 +21,10 @@ import { SettingComponent } from './header/widgets/settings/settings.component';
 import { LeftMenuComponent } from './header/widgets/left-menu/left-menu.component';
 import { FooterOneComponent } from './footer/footer-one/footer-one.component';
 import { InformationComponent } from './footer/widgets/information/information.component';
-import { WhyWeChooseComponent } from './footer/widgets/why-we-choose/why-we-choose.component';
 import { CopyrightComponent } from './footer/widgets/copyright/copyright.component';
 import { SocialComponent } from './footer/widgets/social/social.component';
+import { HeaderProfileComponent } from './header/header-profile/header-one.component';
+import { TopbarProfileComponent } from './header/widgets/topbar/topbar-profile/topbar-profile.component';
 
 
 @NgModule({
@@ -32,6 +32,7 @@ import { SocialComponent } from './footer/widgets/social/social.component';
     CommonModule,
     TranslateModule,
     HeaderOneComponent,
+    HeaderProfileComponent,
     FooterOneComponent,
     OrderByPipe,
     NgxPaginationModule,
@@ -45,21 +46,21 @@ import { SocialComponent } from './footer/widgets/social/social.component';
   ],
   declarations: [
     HeaderOneComponent,
+    HeaderProfileComponent,
     FooterOneComponent,
     OrderByPipe,
     NavbarComponent,
     SettingComponent,
     LeftMenuComponent,
     TopbarOneComponent,
+    TopbarProfileComponent,
     InformationComponent,
-    WhyWeChooseComponent,
     CopyrightComponent,
     SocialComponent, 
   ],
   providers: [
     WINDOW_PROVIDERS,
     LandingFixService,
-    InstagramService,
     ProductsService,
     PaginationService, 
     SettingsService,

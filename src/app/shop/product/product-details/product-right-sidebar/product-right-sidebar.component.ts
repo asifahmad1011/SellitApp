@@ -1,9 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
-import { Product } from '../../../../shared/classes/product';
+import { Products } from '../../../../shared/classes/product';
 import { ProductsService } from '../../../../shared/services/products.service';
-import { Observable, of } from 'rxjs';
+import { ProductSidebarService } from "./product-right-sidebar.service";
+import { Observable } from "rxjs";
+import { isNull } from 'util';
+import {
+  NgForm,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import * as $ from 'jquery';
+import { inject } from '@angular/core/testing';
+import { MainComponent } from 'src/app/main/main.component';
+
+
+var a = localStorage.getItem('matrikel_number');
+
+
 
 @Component({
   selector: 'app-product-right-sidebar',
@@ -12,28 +29,37 @@ import * as $ from 'jquery';
 })
 export class ProductRightSidebarComponent implements OnInit {
 
-  public product            :   Product = {};
-  public products           :   Product[] = [];
+  model: any = {};
+  public user = [];
+
+  data = false;
+  sendmsgform: FormGroup;
+  massage: string;
+
+
+    //Div toggle
+    isShow = false;
+    toggleDisplay() {
+      this.isShow = !this.isShow;
+    }
+
+  public product            :   any;
+  public products           :   Products[] = [];
   public counter            :   number = 1; 
   public selectedSize       :   any = '';
+  public url : any; 
+  isLoggedIn: boolean;
   
 
 //she
   selectedProduct;
-  image = "src\assets\apple-watch-premium-design-vs-pebble-time-round-classic-design.jpg";
-  
-  //Get Product By Id
-  // constructor(private route: ActivatedRoute, private router: Router,
-  //   public productsService: ProductsService, private wishlistService: WishlistService,
-  //   private cartService: CartService) {
-  //     this.route.params.subscribe(params => {
-  //       const id = +params['id'];
-  //       this.productsService.getProduct(id).subscribe(product => this.product = product)
-  //     });
-  // }
+  image = "";
+
+
 
   //she
-  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private activeRoute: ActivatedRoute,
+     private formbulider: FormBuilder, private ProductSidebarService: ProductSidebarService,private mc: MainComponent) { }
 
   ngOnInit() {
   //she
@@ -41,11 +67,58 @@ export class ProductRightSidebarComponent implements OnInit {
       var productId = p['id'];
 
       this.productsService.getProductById(productId).subscribe(res => {
-        this.selectedProduct = res;
+        console.log(res);
+        this.selectedProduct = res;       
       });
 
     })
+    
+ {
+    var mn = localStorage.getItem("matrikel_number");
+    var tok = localStorage.getItem("token");
+    if( mn === "" || isNull(mn) && isNull(tok) || tok === "" )
+     this.isLoggedIn = false;
+   else
+     this.isLoggedIn = true; 
   }
+
+    this.sendmsgform = this.formbulider.group({
+      message: ["", [Validators.required]],
+      product_id: ["", [Validators.required]],
+      sender_id: ["", [Validators.required]],
+      receiver_id: ["", [Validators.required]]
+    })
+  }
+
+  ChatMsg(prod, receiver) {
+    const userdata = this.sendmsgform.value;
+    console.log("Result:", prod);
+        const DBForm = { userdata };
+        this.sendmsgform.reset();
+
+        const pdata = {
+          message: DBForm.userdata.message,
+          product_id: prod,
+          sender_id: localStorage.getItem("matrikel_number"),
+          receiver_id: receiver,
+        };
+        console.log("Post Data:",pdata);
+
+        this.SendMsg(pdata);
+      }
+
+
+ 
+      
+    
+      SendMsg(userData) {
+        const jsonData = JSON.stringify(userData);
+        console.log("Send Message:",jsonData);
+        this.ProductSidebarService.SendMsg(jsonData).subscribe(data => {});
+     }
+
+
+    
 
   public slideConfig = {
     slidesToShow: 1,
@@ -78,30 +151,4 @@ export class ProductRightSidebarComponent implements OnInit {
           this.counter -= 1;
       }
   }
-
- 
-
-  /*/ Add to cart
-  public addToCart(product: Product, quantity) {
-    if (quantity == 0) return false;
-    this.cartService.addToCart(product, parseInt(quantity));
-  }
-
-  // Add to cart
-  public buyNow(product: Product, quantity) {
-     if (quantity > 0) 
-       this.cartService.addToCart(product,parseInt(quantity));
-       this.router.navigate(['/home/checkout']);
-  }
-
-  // Add to wishlist
-  public addToWishlist(product: Product) {
-     this.wishlistService.addToWishlist(product);
-  }
-  
-  // Change size variant
-  public changeSizeVariant(variant) {
-     this.selectedSize = variant;
-  }*/
-
 }

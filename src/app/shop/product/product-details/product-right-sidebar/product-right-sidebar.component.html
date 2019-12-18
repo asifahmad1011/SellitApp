@@ -1,6 +1,3 @@
-
-<app-header-one></app-header-one>
-
 <!-- breadcrumb End -->
 <!-- section start -->
 <section class="section-b-space">
@@ -21,43 +18,52 @@
                 <ngx-slick-carousel class="product-slick" #slickModal="slick-carousel" [config]="slideConfig">
                   <div ngxSlickItem>
                     <div>
-                      <img [src]="image" alt="" class="img-fluid">
+                      <img src="{{selectedProduct.products[0].image[0].url}}" alt="" class="img-fluid">
                     </div>
                     </div>
-                </ngx-slick-carousel>
+                </ngx-slick-carousel>   
                 <div class="row">
                   <div class="col-12 p-0">
                     <ngx-slick-carousel class="slider-nav" #slickModal="slick-carousel" [config]="slideNavConfig">
-                      <div ngxSlickItem *ngFor="let image of product.pictures">
+                      <div ngxSlickItem *ngFor="let image of selectedProduct.products[0].image">
                         <div>
-                          <img [src]="image" alt="" class="img-fluid">
+                          <img src="{{selectedProduct.products[0].image[0].url}}" alt="" class="img-fluid">
                         </div>
                         </div>
                     </ngx-slick-carousel>
                   </div>
                 </div>
               </div>
+             
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
-                  <h2>{{selectedProduct.products.name}}</h2>
-                  <h3>{{selectedProduct.products.price | currency : 'EUR'}}</h3>
-                  <!-- <ul class="color-variant" *ngIf="!productsService?.catalogMode">
-                    <li [class]="variant.color" (click)="slickModal.slickGoTo(i)" *ngFor="let variant of product.variants let i = index"></li>
-                  </ul> -->
-                  <div class="product-description border-product">
-  
+                  <h2>{{selectedProduct.products[0].name}}</h2>
+                  <h3>{{selectedProduct.products[0].price | currency : 'EUR'}}</h3>
 
-                    <!-- <h5 class="avalibility" *ngIf="counter <= product.stock"><span>In Stock</span></h5>
-                    <h5 class="avalibility" *ngIf="counter > product.stock"><span>Out of Stock</span></h5> -->
+                  <form [formGroup]="sendmsgform" class="theme-form">
+                  <div class="product-description border-product">
                     <div >
                       <h6 class="product-title">product details</h6>
-                      <p>{{selectedProduct.products.description}}</p>
+                      <p>{{selectedProduct.products[0].description}}</p>
+                    </div>
+                    
+                    <!-- -->
+                    <div class="input-group" *ngIf ='isShow' >      
+                      <div class="input-group-prepend">
+                        <button type="submit" class="input-group-text" (click)="ChatMsg(selectedProduct.products[0].product_id, selectedProduct.products[0].seller_id)"> Send now! </button>
+                      </div>
+                      <textarea class="form-control" aria-label="With textarea" formControlName="message" name="message" id="message" [(ngModel)]="model.message" required="" ></textarea>
                     </div>
                   </div>
-                  <div class="product-buttons" *ngIf="!productsService?.catalogMode">
-                    <a [routerLink]=""  class="btn btn-solid" >Chat with Seller</a>
-                    <a [routerLink]=""  class="btn btn-solid" >HELP!</a>
+                 </form>
+               
+
+
+                  <div class="product-buttons">
+                    <button class="btn btn-solid" *ngIf="isLoggedIn" (click)=toggleDisplay()>Chat with Seller</button>
+                    <button class="btn btn-solid" >HELP!</button>
                   </div>
+
 
                   <div class="border-product">
                     <div id="map-container-google-1" class="z-depth-1-half map-container">
@@ -65,8 +71,7 @@
                         style="border:0" allowfullscreen></iframe>
                     </div>
                   </div>
-                  
-                  <!-- <div class="border-product">
+                  <div class="border-product">
                     <h6 class="product-title">share it</h6>
                     <div class="product-icon">
                       <ul class="product-social">
@@ -75,12 +80,11 @@
                         <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
                       </ul>
-                      <form class="d-inline-block" *ngIf="!productsService?.catalogMode">
-                        <button class="wishlist-btn" (click)="addToWishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
-                      </form>
+                      
                     </div>
-                  </div> -->
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -106,10 +110,10 @@
                 </ul>
                 <div class="tab-content nav-material" id="top-tabContent">
                   <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
-                    <p>{{selectedProduct.products.more_details}}</p>
+                    <p>{{selectedProduct.products[0].more_details}}</p>
                   </div>
                   <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                    <p>{{selectedProduct.products.description}}</p>
+                    <p>{{selectedProduct.products[0].description}}</p>
                 
                   </div>
                   <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">

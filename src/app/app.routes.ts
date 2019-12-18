@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 import { MainComponent } from './main/main.component';
 import { HomeNineComponent } from './shop/home-9/home-nine.component';
+import { ProfileComponent } from './shop/profile/profile.component';
+
 
 export const rootRouterConfig: Routes = [
   {
@@ -14,6 +16,10 @@ export const rootRouterConfig: Routes = [
     component: HomeNineComponent
   },
   {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
     path: '',
     component: MainComponent,
     children: [
@@ -24,7 +30,7 @@ export const rootRouterConfig: Routes = [
       {
         path: 'pages',
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-      }
+      },
     ]
   },
   {path: "", loadChildren: () => import("./pages/search/search.module").then(m => m.SearchModule)},

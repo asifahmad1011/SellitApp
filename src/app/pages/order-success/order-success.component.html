@@ -1,0 +1,86 @@
+<!-- thank-you section start -->
+<section class="section-b-space light-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="success-text">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <div id="user" *ngFor="let result of selectedProduct.products"><h2>thank you! {{result.seller_id}}</h2></div>
+                    <a href="/home/profile"><p>HOME</p></a>
+                    <!-- <p>Transaction ID:267676GHERT105467</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<!-- order-detail section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-order">
+                    <h3>your product details</h3>
+                    <div class="row product-order-detail">
+                        <div class="col-3" *ngFor="let result of selectedProduct.products">
+                            <a href="/home/right-sidebar/product/{{result.product_id}}"><img src="{{result.image[0].url}}" alt="" class="img-fluid"></a>
+                        </div>
+                        <div class="col-3 order_detail">
+                            <div *ngFor="let result of selectedProduct.products">
+                                <h4>{{result.name}}</h4>
+                                <h5>Price:{{result.price}}</h5>
+                            </div>
+                        </div>
+                        <!-- <div class="col-3 order_detail">
+                            <div>
+                                <h4>quantity</h4>
+                                <h5>1</h5>
+                            </div>
+                        </div> 
+                        <div class="col-3 order_detail">
+                            <div>
+                                <h4>price</h4>
+                                <h5>$555.00</h5>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row order-success-sec">
+                    <!-- <div class="col-sm-6">
+                        <h4>summery</h4>
+                        <ul class="order-detail">
+                            <li>order ID: 5563853658932</li>
+                            <li>Order Date: October 22, 2018</li>
+                            <li>Order Total: $907.28</li>
+                        </ul>
+                    </div> -->
+                    <!-- <div class="col-sm-6">
+                        <h4>shipping address</h4>
+                        <ul class="order-detail">
+                            <li>gerg harvell</li>
+                            <li>568, suite ave.</li>
+                            <li>Austrlia, 235153</li>
+                            <li>Contact No. 987456321</li>
+                        </ul>
+                    </div> -->
+
+                    <!-- <div class="col-sm-12 payment-mode">
+                        <h4>payment method</h4>
+                        <p>Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net banking acceptance subject to device availability.</p>
+                    </div> -->
+                    <div class="col-md-12">
+                        <div class="delivery-sec">
+                            <h2>We will get your Product Ad approved soon!</h2>
+                            <h6>Admin will check your details now.</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+

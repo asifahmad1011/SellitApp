@@ -30,7 +30,7 @@ module.exports.createUser  = function(user, callback){
     User.findAll({
       where: {
         [Op.or]:  [{username: loginKey}, {matrikel_number: loginKey}],
-        password:password
+        //password:password
       }
     }).then(function(result){
       callback(result);

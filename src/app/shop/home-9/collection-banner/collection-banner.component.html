@@ -2,21 +2,39 @@
 <section class="banner-padding banner-goggles">
     <div class="container">
         <div class="row partition3">
-            <div class="col-md-4" *ngFor="let ct of category">
-                <a [routerLink]="ct.link">
-                    <div class="collection-banner p-right text-right">
-                        <img [src]="ct.image" class="img-fluid" alt="">
-                        <div class="contain-banner banner-3">
-                            <div>
-                                
-                                <h2>{{ct.title}}</h2>
-                            </div>
-                        </div>
+            
+            <div class="col-md-4" *ngFor="let ct of category_res.rows | paginate: { itemsPerPage: 3, currentPage: page }">
+                <div class="card" >
+                    <div class="card-body" >
+                        <div class="img-fluid"><a href="/home/right-sidebar/collection/{{ct.category_id}}"><img src="{{ct.images}}" class="img-fluid"> </a></div>
+                        <div class="centered"><a href="/home/right-sidebar/collection/{{ct.category_id}}"><h1 style="color: white;">{{ct.name}}</h1></a></div>
                     </div>
-                </a>
+                  </div>
             </div>
-           
+
         </div>
-    </div>
+        <div class="row">
+        <div class="col">
+        <div class="theme-tab">
+            <ul class="tabs tab-title2">
+                <li class="current"><a href="tab-1">Recently Added</a></li>
+            </ul>
+        
+                <div class="card-columns" width="150px" >
+                    <div class="card" *ngFor="let result of productList.products | paginate: { itemsPerPage: 6, currentPage: page }" >
+                        <a href="/home/right-sidebar/product/{{result.product_id}}"> <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px"> </a>
+                     <div class="card-body" >
+                         <h5 class="font-weight-bold">{{result.name}}</h5>
+                         <h5 class="font-weight-light"><i class="fa fa-euro" style="font-size:15px; color: black; padding: 2px;"></i>{{result.price}}</h5>
+                     </div>
+                    </div>
+                </div>
+
+              </div>
+              </div>
+            </div>
+
+        </div>
 </section>
 <!-- collection banner end -->
+

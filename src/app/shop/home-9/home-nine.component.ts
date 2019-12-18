@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../shared/classes/product';
+import { Products } from '../../shared/classes/product';
 import { ProductsService } from '../../shared/services/products.service';
 
 @Component({
@@ -9,17 +9,17 @@ import { ProductsService } from '../../shared/services/products.service';
 })
 export class HomeNineComponent implements OnInit {
 
-  public products: Product[] = [];
+  public products: Products[] = [];
   
   constructor(private productsService: ProductsService) {   }
 
   ngOnInit() {
-  	this.productsService.getProducts().subscribe(product => { 
-  	  product.filter((item: Product) => {
-         if(item.category == 'electronics')
-         	this.products.push(item)
-      })
-    });
+  	// this.productsService.getProducts().subscribe(product => { 
+  	//   product.filter((item: Products) => {
+    //      if(item.category_id == 1)
+    //      	this.products.push(item)
+    //   })
+    // });
   }
 
 }

@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../shared/classes/product';
+import { Products } from '../../shared/classes/product';
 import { ProductsService } from '../../shared/services/products.service';
-import { WishlistService } from '../../shared/services/wishlist.service';
-import { CartService } from '../../shared/services/cart.service';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -14,16 +12,26 @@ import { Observable, of } from 'rxjs';
 
 export class ProductComponent implements OnInit {
   
-  @Input() product : Product;
+  public product_data =[];
+  category_res =[];
+  @Input() product : Products;
 
   public variantImage  :  any = ''; 
   public selectedItem  :  any = '';
 
-  constructor(private router: Router, public productsService: ProductsService, 
-    private wishlistService: WishlistService, private cartService: CartService) { 
+  constructor(private router: Router, public productsService: ProductsService) { 
   }
 
-  ngOnInit() {  }
+  ngOnInit() { 
+ 
+    this.productsService.getProducts()
+    .subscribe((data) => {
+      this.product_data = data
+      console.log("final:",this.product_data)} );
+
+    this.productsService.Category().subscribe((res) => {
+      this.category_res = res});
+   }
 
  // Change variant images
   public changeVariantImage(image) {

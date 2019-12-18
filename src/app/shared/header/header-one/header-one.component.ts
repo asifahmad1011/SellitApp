@@ -2,8 +2,6 @@ import { Component, Inject, HostListener, OnInit, ViewEncapsulation } from '@ang
 import { LandingFixService } from '../../services/landing-fix.service';
 import { DOCUMENT } from "@angular/common";
 import { WINDOW } from '../../services/windows.service';
-import { CartItem } from '../../classes/cart-item';
-import { CartService } from '../../services/cart.service';
 import { Observable, of } from 'rxjs';
 import { NgxPaginationModule } from 'ngx-pagination';
 declare var $: any;
@@ -15,12 +13,10 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderOneComponent implements OnInit {
-  
-  public shoppingCartItems  :   CartItem[] = [];
+
   
   constructor(@Inject(DOCUMENT) private document: Document,
-    @Inject(WINDOW) private window,private fix: LandingFixService, private cartService: CartService) { 
-    this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
+    @Inject(WINDOW) private window,private fix: LandingFixService) { 
   }
 
   ngOnInit() { 

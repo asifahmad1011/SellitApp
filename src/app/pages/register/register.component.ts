@@ -44,7 +44,9 @@ export class RegisterComponent implements OnInit {
     this.RegisterService.StudentRecordByID(userdata.matrikel_number).subscribe(
       data => {
         const dbData = Object.values(data);
-        //console.log(dbData);
+
+        console.log(dbData);
+
 
         const DBForm = { dbData, userdata, role_id: 0 };
         this.registerForm.reset();
@@ -64,8 +66,8 @@ export class RegisterComponent implements OnInit {
           created_date: dbData[0].created_date,
           modified_date: dbData[0].modified_date
         };
-        //console.log(pdata);
 
+        console.log(pdata);
         this.postNewUser(pdata);
       }
     );

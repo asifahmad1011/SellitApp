@@ -31,10 +31,11 @@
                 <div class="repo" *ngFor="let result of paginationElements | paginate: { itemsPerPage: 12, currentPage: page }">
                    <div class="card-deck">
                      <div class="card">
-                <img loading="lazy" src="../../assets/{{result.image}}"
+                <img loading="lazy" src="{{result.image[0].url}}"
                     width="200"
                     height="auto"
                     alt="image"
+                    class="img-fluid"
                 />
 
                 <h5><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h5>

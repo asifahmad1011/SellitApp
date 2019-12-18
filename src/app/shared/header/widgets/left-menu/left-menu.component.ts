@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MENUITEMS, Menu } from './left-menu-items';
+import { ProductsService } from '../../../../shared/services/products.service';
+import { Router } from '@angular/router';
+
 declare var $: any;
 
 @Component({
@@ -9,12 +11,15 @@ declare var $: any;
 })
 export class LeftMenuComponent implements OnInit {
   
-  public menuItems: Menu[];
+  category_res=[];
 
-  constructor() { }
+  constructor(private router: Router, public productService: ProductsService) { }
 
   ngOnInit() { 
-     this.menuItems = MENUITEMS.filter(menuItem => menuItem);
+
+    this.productService.Category().subscribe((res) => {
+      this.category_res = res
+      console.log("Category:", res)});
   }
 
 }

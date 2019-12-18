@@ -7,6 +7,9 @@ var jwt = require('jsonwebtoken');
 var request = require('request');
 const image2base64 = require('image-to-base64');
 
+var utility = require("../utility/utility");
+
+
 
 router.get('/:product_name', function (req, res, next) {
   var product_name = req.params.product_name;
@@ -50,6 +53,70 @@ router.get('/', function (req, res, next) {
 });
 
 // router.post('/add',loginVerification.verifyToken, function(req, res, next) {
+
+  router.post('/add', function (req, res, next) {
+    var data = req.body;
+    var images = data.image;
+    console.log(data);
+    Product.addProduct({
+      name: data.name,
+      slug: data.slug,
+      description: data.description,
+      price: data.price,
+      seller_id: data.seller_id,
+      more_details: data.more_details,
+      status: data.status,
+      category_id: data.category_id,
+      brand_id: data.brand_id,
+      product_condition: data.product_condition,
+    }, (rows) => {
+      if (!rows) {
+        res.json({
+          "status": "failed",
+          "user": null
+        })
+      } else {
+        console.log(rows);
+        var imageData = {
+          image: data.name,
+          url: images,
+          primary_image_id: 0,
+          video:  images,
+          product_id: rows.product_id,
+        }
+        saveImage(imageData);
+
+      res.json({
+        "status": "sucessfull"
+      });
+
+      /* if (images != null || images != undefined) {
+         /* images.forEach(function (value) {
+
+          })*/
+         /* var imageBase64 = utility.toBase64(images);
+          if (imageBase64 != null) {
+            request.post({
+              url: 'https://api.imgbb.com/1/upload?key=5c4df642ef55dee4580c09e200375ec0',
+              form: { image: imageBase64 }
+            },
+              function (err, httpResponse, body) {
+                var result = JSON.parse(body);
+                if (result.data.url != null) {
+                  var data = {
+                    image: result.title,
+                    url: result.url,
+                    primary_image_id: 0,
+                    video: result.url,
+                    product_id: data.rows.product_id,
+                  }
+                  saveImage(data);
+                }
+              });*/
+      }
+    })
+  });
+
 router.post('/add', function (req, res, next) {
   var data = req.body;
   var images = data.image;
@@ -101,6 +168,7 @@ router.post('/add', function (req, res, next) {
   })
 });
 
+
 router.get("/userproduct/:userid", function (req, res, next) {
   var user_id = req.params.userid;
   Product.getAllUserProduct(user_id, (rows) => {
@@ -139,6 +207,17 @@ function saveImage(data) {
     product_id: data.product_id,
   }, (rows) => {
     if (!rows) {
+
+      var result = {
+        "status" : "failed"
+      };
+      return err;
+    } else {
+      var result = {
+        "status": "sucessfull"
+      };
+      return result;
+
       res.json({
         "status": "failed",
         "user": null
@@ -147,6 +226,7 @@ function saveImage(data) {
       res.json({
         "status": "sucessfull"
       })
+
     }
   })
 }
@@ -163,11 +243,20 @@ router.post("/changeProductStatus", function (req, res, next) {
       })
     } else {
       console.log(rows)
+
+      res.json({
+        product: {
+          "product_id": productid,
+          "status": "Successful"
+        }
+      });
+
       res.json({ product : {
         "product_id" : productid,
         "status" : "Successful"
       }
     });
+
     }
   });
 })

@@ -44,7 +44,7 @@ p {
     color: #777777;
     font-weight: 800 !important;
     line-height: 3;
-    margin-left: 13px !important;
+    margin-left: 0px !important;
 }
 
 .collection-collapse-block .collapse-block-title {
@@ -62,4 +62,15 @@ p {
     padding: 0 30px;
     border: 0px solid white !important;
     background-color: #ffffff;
+}
+
+element.style {
+  width: 90px;
+  margin-left: 25px !important;
+}
+
+.seller {
+    vertical-align: middle;
+    border-style: none;
+    margin-left: 8px;
 }

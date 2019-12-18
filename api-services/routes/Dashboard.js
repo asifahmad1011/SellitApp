@@ -35,9 +35,15 @@ router.get('/', function (req, res, next) {
               Dash.totalDeletedProduct((rows) => {
                 totalDeletedProduct = rows;
                 Dash.totalProductAmount((rows) => {
+
                   totalProductAmount = !rows ? 0 : parseInt(rows);
                   Dash.totalSoldProductAmount((rows)=> {
                     totalSoldProductAmount = !rows ? 0 :  parseInt(rows);
+
+                  totalProductAmount = parseInt(rows);
+                  Dash.totalSoldProductAmount((rows)=> {
+                    totalSoldProductAmount = parseInt(rows);
+
                     Dash.totalUser((rows)=>{
                       totalUser = rows
                       Dash.getTopPendingProduct((rows)=>{

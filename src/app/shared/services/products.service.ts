@@ -20,6 +20,10 @@ export class ProductsService {
   //Accessing the server address+api/products(she)
   private serverUrl = "http://localhost:3000/api/v1/product";
 
+  
+  public currency : string = 'EUR';
+  public catalogMode : boolean = false;
+
   url = "http://localhost:3000/api/v1/category";
   product: any;
   public currency: string = "EUR";

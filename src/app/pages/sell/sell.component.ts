@@ -131,7 +131,6 @@ export class SellComponent implements OnInit {
     console.log("JSON", jsonData);
 
     this.SellService.postAd(jsonData).subscribe(data => {});
-
     return sessionStorage.getItem(this.model.matrikel_number);
   }
 
@@ -165,17 +164,19 @@ export class SellComponent implements OnInit {
           );
         } else if (event.type == HttpEventType.Response) {
 
-          var a = (JSON.parse(JSON.stringify(event.body)));
+          var a = (JSON.parse(JSON.stringify(event.body)).data);
           a = localStorage.setItem("image",a.url);
-          
-          alert("Success");
-          this.router.navigate(["./pages/order-success"]);
-          
+          // alert("Success");
         }
         console.log(event);
       }))
   }
 }
+
+
+
+
+
 interface Categories {
   category_id: bigint;
   name: string;

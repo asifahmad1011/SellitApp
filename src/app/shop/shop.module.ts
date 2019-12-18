@@ -19,23 +19,15 @@ import { ProductTabNineComponent } from './home-9/product-tab/product-tab.compon
 
 // Products Components 
 import { ProductComponent } from './product/product.component';
-import { ProductBoxComponent } from './product/product-box/product-box.component';
-import { ProductBoxHoverComponent } from './product/product-box-hover/product-box-hover.component';
-import { ProductBoxVerticalComponent } from './product/product-box-vertical/product-box-vertical.component';
-import { ProductBoxMetroComponent } from './product/product-box-metro/product-box-metro.component';
-import { CollectionLeftSidebarComponent } from './product/collection/collection-left-sidebar/collection-left-sidebar.component';
 import { CollectionRightSidebarComponent } from './product/collection/collection-right-sidebar/collection-right-sidebar.component';
-import { BrandComponent } from './product/collection/filter/brand/brand.component';
-import { PriceComponent } from './product/collection/filter/price/price.component';
 import { ProductRightSidebarComponent } from './product/product-details/product-right-sidebar/product-right-sidebar.component';
 import { SidebarComponent } from './product/product-details/sidebar/sidebar.component';
 import { CategoriesComponent } from './product/widgets/categories/categories.component';
-import { QuickViewComponent } from './product/widgets/quick-view/quick-view.component';
 import { NewProductComponent } from './product/widgets/new-product/new-product.component';
 import { SearchComponent } from './product/search/search.component';
-import { ColorComponent } from './product/collection/filter/color/color.component';
+
 import { ProfileComponent } from './profile/profile.component';
-import { CollectionNoSidebarComponent } from './product/collection/collection-no-sidebar/collection-no-sidebar.component';
+
 
 @NgModule({
   exports: [],
@@ -63,20 +55,10 @@ import { CollectionNoSidebarComponent } from './product/collection/collection-no
     
     // Product
     ProductComponent,
-    ProductBoxComponent,
-    ProductBoxHoverComponent,
-    ProductBoxVerticalComponent,
-    ProductBoxMetroComponent,
-    CollectionLeftSidebarComponent,
     CollectionRightSidebarComponent,
-    CollectionNoSidebarComponent,
-    BrandComponent,
-    PriceComponent,
-    ColorComponent,
     ProductRightSidebarComponent,
     SidebarComponent,
     CategoriesComponent,
-    QuickViewComponent,
     NewProductComponent,
     SearchComponent,
   ]

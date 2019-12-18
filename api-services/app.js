@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 var publicDir = path.join(__dirname,'/public');
-var upload=require("express-fileupload");
+//var upload=require("express-fileupload");
 
 
 
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(express.static(publicDir));
-app.use(upload());
+//app.use(upload());
 
 app.use(function(req,res,next){
   res.header("Access-Control-Allow-Origin","*");

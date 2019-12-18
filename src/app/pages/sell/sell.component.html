@@ -120,13 +120,13 @@
 
                             <!-- <input type='file' (change)="onSelectFile($event)" formControlName="image" [(ngModel)]="model.image" multiple> -->
 
-                            <input  type="file" (change)="onFileSelected($event)" multiple>
+                            <input type="file" id="image" name="image" multiple>
                         </div>
                     </div>
 
 
                     <div>
-                        <button class="btn btn--radius-2 btn--red" type="submit" (click)="onUpload()">Register</button>
+                        <button class="btn btn--radius-2 btn--red" name="image" click="UploadImage()" type="submit">Register</button>
                     </div>
                 </form>
             </div>

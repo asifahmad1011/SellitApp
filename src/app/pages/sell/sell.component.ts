@@ -84,21 +84,6 @@ export class SellComponent implements OnInit {
     });
   }
 
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-
-        reader.onload = (event: any) => {
-          console.log(event.target.result);
-          this.urls.push(event.target.result);
-        };
-        this.selectedFile = <File>event.target.files[i];
-        reader.readAsDataURL(event.target.files[i]);
-      }
-    }
-  }
   Product() {
     const userdata = this.productform.value;
     console.log(userdata);
@@ -131,7 +116,6 @@ export class SellComponent implements OnInit {
     console.log("JSON", jsonData);
 
     this.SellService.postAd(jsonData).subscribe(data => {});
-
     return sessionStorage.getItem(this.model.matrikel_number);
   }
 
@@ -141,6 +125,7 @@ export class SellComponent implements OnInit {
   }
 
   onFileSelected(event) {
+    console.log(event);
     this.selectedFile = <File>event.target.files[0];
   }
 
@@ -165,17 +150,18 @@ export class SellComponent implements OnInit {
           );
         } else if (event.type == HttpEventType.Response) {
 
-          var a = (JSON.parse(JSON.stringify(event.body)));
+          var a = (JSON.parse(JSON.stringify(event.body)).data);
           a = localStorage.setItem("image",a.url);
-          
-          alert("Success");
-          this.router.navigate(["./pages/order-success"]);
-          
         }
         console.log(event);
       }))
   }
 }
+
+
+
+
+
 interface Categories {
   category_id: bigint;
   name: string;

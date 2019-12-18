@@ -54,6 +54,7 @@ export class ProductRightSidebarComponent implements OnInit {
 //she
   selectedProduct;
   image = "";
+  loggedInUser;
 
 
 
@@ -62,7 +63,11 @@ export class ProductRightSidebarComponent implements OnInit {
      private formbulider: FormBuilder, private ProductSidebarService: ProductSidebarService,private mc: MainComponent) { }
 
   ngOnInit() {
+
   //she
+
+    this.loggedInUser = localStorage.getItem("matrikel_number");
+
     this.activeRoute.params.subscribe(p => {
       var productId = p['id'];
 
@@ -74,6 +79,7 @@ export class ProductRightSidebarComponent implements OnInit {
     })
     
  {
+   //Chat seller button hide if user not log in
     var mn = localStorage.getItem("matrikel_number");
     var tok = localStorage.getItem("token");
     if( mn === "" || isNull(mn) && isNull(tok) || tok === "" )

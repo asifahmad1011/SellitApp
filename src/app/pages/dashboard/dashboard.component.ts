@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 
   matrik = localStorage.getItem("matrikel_number");
   
+  
   // dashboardform: FormGroup;
   //Div toggle
   isShow = false;
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
   constructor(private DashboardService: DashboardService, private formbuilder: FormBuilder ) { }
   selectedProduct:any =[];
   url="http://localhost:3000/product/changeProductStatus/";
+  
 
   ngOnInit() {
     var user = localStorage.getItem('matrikel_number');
@@ -39,10 +41,14 @@ export class DashboardComponent implements OnInit {
     this.DashboardService.getProductsUser().subscribe(
       data => {
         console.log("Kuch MIla", data);
+        
       this.selectedProduct= data;
     });
   }
 
+//  refresh() {
+//   location.reload();
+//  }
  
   Delete(resultd) {
     
@@ -82,5 +88,6 @@ export class DashboardComponent implements OnInit {
             this.DashboardService.changeStatus(jsonData).subscribe(data => {});
             location.reload();
           }
+          
     
 }

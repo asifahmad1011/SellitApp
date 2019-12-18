@@ -12,7 +12,7 @@
                         </div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-5" type="text" name="name" (click)="Category()" id="name" formControlName="name" [(ngModel)]="model.name">
+                                <input class="input--style-5" type="text" id="name" formControlName="name" [(ngModel)]="model.name">
                             </div>
                         </div>
                     </div>
@@ -115,18 +115,13 @@
 
                     <div class="form-row" ng-app="uploadPreview" ng-controller="Upload">
                         <div class="col-4">
-
-                            <img *ngFor='let url of urls' [src]="url" height="200px" width="200px"> <br/>
-
-                            <!-- <input type='file' (change)="onSelectFile($event)" formControlName="image" [(ngModel)]="model.image" multiple> -->
-
-                            <input  type="file" (change)="onFileSelected($event)" multiple>
+                            <input type="file" (change)="onFileSelected($event)" multiple name="image"/>    
+                            
                         </div>
+                        <i class="fa fa-upload fa-2x" (click)="onUpload()" aria-hidden="true"></i>
                     </div>
-
-
                     <div>
-                        <button class="btn btn--radius-2 btn--red" type="submit" (click)="onUpload()">Register</button>
+                        <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
                     </div>
                 </form>
             </div>

@@ -21,7 +21,6 @@ import { SettingComponent } from './header/widgets/settings/settings.component';
 import { LeftMenuComponent } from './header/widgets/left-menu/left-menu.component';
 import { FooterOneComponent } from './footer/footer-one/footer-one.component';
 import { InformationComponent } from './footer/widgets/information/information.component';
-import { WhyWeChooseComponent } from './footer/widgets/why-we-choose/why-we-choose.component';
 import { CopyrightComponent } from './footer/widgets/copyright/copyright.component';
 import { SocialComponent } from './footer/widgets/social/social.component';
 import { HeaderProfileComponent } from './header/header-profile/header-one.component';
@@ -56,7 +55,6 @@ import { TopbarProfileComponent } from './header/widgets/topbar/topbar-profile/t
     TopbarOneComponent,
     TopbarProfileComponent,
     InformationComponent,
-    WhyWeChooseComponent,
     CopyrightComponent,
     SocialComponent, 
   ],

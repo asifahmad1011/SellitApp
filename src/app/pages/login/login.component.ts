@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("token", data.token);  
           console.log("mat",this.model.matrikel_number);
           console.log(localStorage);
-        
-          
+
         }
         else{
           alert("Incorrect Username or Password!");

@@ -14,6 +14,7 @@ export class LoginService {
   Url :string;  
   token : string;  
   header : any;  
+  isRoutingFromSell: boolean = false;
   
 
   constructor(private http : HttpClient) {  

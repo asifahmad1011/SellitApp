@@ -51,11 +51,19 @@
                     <p class="card-text">{{result.description}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Status: {{result.status}}</li>
+                    <li class="list-group-item">
+                        Status: <b *ngIf="result.status === 1"> Approved</b> 
+                        <b *ngIf="result.status === 2"> Sold</b> 
+                        <b *ngIf="result.status === 3"> Under Review</b> 
+                        <b *ngIf="result.status === 4"> Inactive</b> 
+                        <b *ngIf="result.status === 5"> Deleted</b> 
+                    </li>
                 </ul>
                 <div class="card-body">
-                    <button class="btn btn-danger"  (click)="Delete(result.product_id)">Delete</button>
-                    <button class="btn btn-success"  (click)="Sold(result.product_id)">Mark as Sold</button>
+                    <button *ngIf="result.status === 1 || result.status === 3 || result.status === 4"
+                     class="btn btn-danger"  (click)="Delete(result.product_id)">Delete</button>
+                    <button *ngIf="result.status === 1"
+                    class="btn btn-success"  (click)="Sold(result.product_id)">Mark as Sold</button>
                 </div>
 
             </div>

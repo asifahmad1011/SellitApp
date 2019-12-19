@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../../../../classes/product';
-import { ProductsService } from '../../../../../shared/services/products.service';
-import { Observable, of } from 'rxjs';
-import { Router } from '@angular/router'; 
-import { MainComponent } from 'src/app/main/main.component';
+import { LoginService } from 'src/app/pages/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -12,11 +9,13 @@ import { MainComponent } from 'src/app/main/main.component';
 })
 export class TopbarOneComponent implements OnInit {
   
-  constructor(public productsService: ProductsService, private router: Router) { }
+  constructor(private loginservice: LoginService, private rt: Router) { }
 
   ngOnInit() { }
 
   checkuser() {
-       alert("Please, login first to post a product!") 
+       alert("Please, login first to post a product!") ;
+       this.loginservice.isRoutingFromSell = true;
+      this.rt.navigateByUrl("/pages/login");
       }
   }

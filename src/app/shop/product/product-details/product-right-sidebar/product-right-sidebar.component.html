@@ -60,7 +60,9 @@
 
 
                   <div class="product-buttons">
-                    <button class="btn btn-solid" *ngIf="isLoggedIn" (click)=toggleDisplay()>Chat with Seller</button>
+                    <button class="btn btn-solid" 
+                    *ngIf="isLoggedIn && loggedInUser != selectedProduct.products[0].seller_id" 
+                    (click)=toggleDisplay()>Chat with Seller</button>
                     <button class="btn btn-solid" >HELP!</button>
                   </div>
 

@@ -7,8 +7,8 @@
   <h3 class="collapse-block-title">Seller Info</h3>
   <div class="collection-collapse-block-content">
     <div class="collection-brand-filter" *ngFor="let result of product_data.products">
-      <img src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:90px">
-        <p><span>{{result.seller_id}}</span></p>
+      <img class="seller" src="https://ptetutorials.com/images/user-profile.png" alt="Avatar" style="width:90px">
+        <p><span>{{result.seller_info.first_name}} {{result.seller_info.last_name}}</span></p>
     </div>
   </div>
 </div>

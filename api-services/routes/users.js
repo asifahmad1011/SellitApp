@@ -43,12 +43,12 @@ router.post("/", function(req,res,next){
         modified_date : data.modified_date
   }, (result) => {
     if(result.isError){
-      return res.send({
+      return res.json({
         status : "failed",
         reason : result,
       })
     }else{
-     return res.send({
+     return res.json({
       status : "success",
     })
     }

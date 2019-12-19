@@ -67,7 +67,7 @@ router.get('/', function (req, res, next) {
       brand_id: data.brand_id,
       product_condition: data.product_condition,
     }, (rows) => {
-      if (!rows || rows.length==0) {
+      if (!rows) {
         res.json({
           "status": "failed",
           "user": null

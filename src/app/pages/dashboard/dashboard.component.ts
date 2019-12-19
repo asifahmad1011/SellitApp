@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private DashboardService: DashboardService, private formbuilder: FormBuilder ) { }
   selectedProduct:any =[];
-  url="http://localhost:3000/product/changeProductStatus/";
+  url="http://3.134.103.215:3000/product/changeProductStatus/";
   
 
   ngOnInit() {

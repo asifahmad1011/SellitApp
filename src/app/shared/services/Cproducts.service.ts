@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class CproductsService {
 
   //Accessing the server address+api/products(she)
-  private serverUrl = "http://localhost:3000/api/v1/product";
+  private serverUrl = "http://3.134.103.215:3000/api/v1/product";
   
   public currency : string = 'EUR';
   public catalogMode : boolean = false;

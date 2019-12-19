@@ -16,13 +16,13 @@ console.log("Local:",a);
 
 export class DashboardService {
   Url: string;
-  UrlStatus: String = "http://localhost:3000/api/v1/product/changeProductStatus";
+  UrlStatus: String = "http://3.134.103.215:3000/api/v1/product/changeProductStatus";
   token: string;
   header: any;
   data: any;
  
   constructor(private http: HttpClient) {
-    this.Url = "http://localhost:3000/api/v1/product/userproduct/"; 
+    this.Url = "http://3.134.103.215:3000/api/v1/product/userproduct/"; 
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);
   }

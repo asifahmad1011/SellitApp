@@ -25,9 +25,9 @@ export class ChatService {
  
   constructor(private http: HttpClient) {
 
-    this.Url = "http://localhost:3000/api/v1/chat/"; 
-    this.Url1 = "http://localhost:3000/api/v1/chat/sendMessage/";
-    this.serverUrl = "http://localhost:3000/api/v1/chat/getAllMessages/"; 
+    this.Url = "http://3.134.103.215:3000/api/v1/chat/"; 
+    this.Url1 = "http://3.134.103.215:3000/api/v1/chat/sendMessage/";
+    this.serverUrl = "http://3.134.103.215:3000/api/v1/chat/getAllMessages/"; 
 
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);

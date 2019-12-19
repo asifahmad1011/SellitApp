@@ -13,7 +13,7 @@ import { MainComponent } from 'src/app/main/main.component';
 export class LoginComponent implements OnInit {
 
   model : any={};   
-  public baseUrl = "http://localhost:3000/api/v1/"; 
+  public baseUrl = "http://3.134.103.215:3000/api/v1/"; 
     
   errorMessage:string;    
   constructor(private router:Router,private LoginService:LoginService,

@@ -217,16 +217,6 @@ function saveImage(data) {
         "status": "sucessfull"
       };
       return result;
-
-      res.json({
-        "status": "failed",
-        "user": null
-      })
-    } else {
-      res.json({
-        "status": "sucessfull"
-      })
-
     }
   })
 }

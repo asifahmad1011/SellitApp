@@ -52,6 +52,7 @@ router.get('/', function (req, res, next) {
                           var topSoldProduct = rows
                           Dash.totalMessage((rows) => {
                           var totalMessage = rows
+
                           res.render("admin/login.ejs",{
                             "totalProduct": totalProduct,
                             "totalSoldProduct": totalSoldProduct,
@@ -77,13 +78,10 @@ router.get('/', function (req, res, next) {
           })
         });
       })
-
-
-    }
   });
-
+}
 });
-
+});
 function getDashboardResult() {
   var totalProduct = Dash.totalProduct((rows) => { rows });
   console.log(totalProduct + "from getDashboardResult");

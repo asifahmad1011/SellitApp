@@ -21,6 +21,7 @@ export class ChatComponent implements OnInit {
 
   constructor(private ChatService: ChatService) { }
   selectedProduct;
+  public chat: any = [];
 
   ngOnInit() {
     var user = localStorage.getItem('matrikel_number');
@@ -50,13 +51,15 @@ export class ChatComponent implements OnInit {
     const jsonData = JSON.stringify(postData);
     console.log("All Messages:",jsonData);
     // location.reload();
-    this.ChatService.getallMessages(jsonData).map(this.extractData)
+    this.ChatService.getallMessages(jsonData).subscribe(data => {
+      this.chat=data;
+      console.log("in service",this.chat);
+      
+
+    });
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-          return body || {};
-      }
-
-
+  readLocalStorage(key) {
+    return localStorage.getItem(key);
+  }
 }

@@ -13,9 +13,9 @@ export class RegisterService {
   header: any;
   constructor(private http: HttpClient) {
 
-    this.Url = "http://localhost:3000/api/v1/";
+    this.Url = "http://3.134.103.215:3000/api/v1/";
 
-    this.Url = "/api/v1/";
+    // this.Url = "/api/v1/";
 
 
     const headerSettings: { [name: string]: string | string[] } = {};

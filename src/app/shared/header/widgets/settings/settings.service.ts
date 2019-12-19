@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class SettingsService {
 
-  public baseUrl = "http://localhost:3000/api/v1/product/";
+  public baseUrl = "http://3.134.103.215:3000/api/v1/product/";
   public searchResults: any;
 
   constructor(private httpClient: HttpClient) { }

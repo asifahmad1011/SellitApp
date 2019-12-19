@@ -15,7 +15,7 @@ export class ProductSidebarService {
   token: string;
   header: any;
   constructor(private http: HttpClient) {
-    this.Url = "http://localhost:3000/api/v1/chat/sendMessage/";
+    this.Url = "http://3.134.103.215:3000/api/v1/chat/sendMessage/";
 
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);

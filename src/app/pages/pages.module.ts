@@ -20,6 +20,16 @@ import { ChatComponent } from './Chat/chat.component';
 
 
 @NgModule({
+  exports: [AboutUsComponent,
+    LoginComponent,
+    RegisterComponent,
+    SearchComponent,
+    DashboardComponent,
+    SellComponent,
+    OrderSuccessComponent,
+    DashboardComponent,
+    ChatComponent,],
+
   imports: [
     CommonModule,
     PagesRoutingModule,

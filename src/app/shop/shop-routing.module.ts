@@ -29,10 +29,6 @@ const routes: Routes = [
     path: 'right-sidebar/product/:id',
     component: ProductRightSidebarComponent
   },
-  {
-    path: 'search',
-    component: SearchComponent
-  },
 ];
 
 @NgModule({

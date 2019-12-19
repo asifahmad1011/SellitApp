@@ -24,13 +24,27 @@ import { ProductRightSidebarComponent } from './product/product-details/product-
 import { SidebarComponent } from './product/product-details/sidebar/sidebar.component';
 import { CategoriesComponent } from './product/widgets/categories/categories.component';
 import { NewProductComponent } from './product/widgets/new-product/new-product.component';
-import { SearchComponent } from './product/search/search.component';
+// import { SearchComponent } from './product/search/search.component';
 
 import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  exports: [],
+  exports: [HomeNineComponent,
+    HomeBannerComponent,
+    CollectionBannerNineComponent,
+    ProductTabNineComponent,
+    ProfileComponent,
+    
+    // Product
+    ProductComponent,
+    CollectionRightSidebarComponent,
+    ProductRightSidebarComponent,
+    SidebarComponent,
+    CategoriesComponent,
+    NewProductComponent,],
+
+    
   imports: [
     CommonModule,
     FormsModule,
@@ -60,7 +74,6 @@ import { ProfileComponent } from './profile/profile.component';
     SidebarComponent,
     CategoriesComponent,
     NewProductComponent,
-    SearchComponent,
   ]
 })
 export class ShopModule { }

@@ -9,5 +9,4 @@ export interface Chat {
     receiver_id: bigint,
     sender_id: bigint
   }
-  
-  
+

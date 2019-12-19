@@ -115,7 +115,16 @@ export class SellComponent implements OnInit {
     const jsonData = JSON.stringify(userData);
     console.log("JSON", jsonData);
 
-    this.SellService.postAd(jsonData).subscribe(data => {});
+    this.SellService.postAd(jsonData).subscribe(data => {
+      if (localStorage.getItem('image') === null) {
+        alert("Please upload an image!");
+      }
+      else if(data.status = "sucessfull") {
+        alert("Success");
+        this.router.navigateByUrl('/pages/order-success');
+      } else {
+        alert("There came an error, please try again!");
+      }});
     return sessionStorage.getItem(this.model.matrikel_number);
   }
 
@@ -152,6 +161,7 @@ export class SellComponent implements OnInit {
 
           var a = (JSON.parse(JSON.stringify(event.body)).data);
           a = localStorage.setItem("image",a.url);
+          alert("Image Upload Successful, please post your product");
         }
         console.log(event);
       }))

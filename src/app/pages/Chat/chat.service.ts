@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
 import { from, Observable } from "rxjs";
-import { Chat } from "./chat";
+import { Chat} from "./chat";
+import { send } from "./send";
 import { UserMessages } from "./chat";
 import { map, filter, scan } from 'rxjs/operators';
 
@@ -16,6 +17,7 @@ console.log("Local:",a);
 
 export class ChatService {
   Url: string;
+  Url1: string;
   token: string;
   header: any;
   data: any;
@@ -23,8 +25,9 @@ export class ChatService {
  
   constructor(private http: HttpClient) {
 
-    this.Url = "http://localhost:3000/api/v1/chat/"; 
-    this.serverUrl = "http://localhost:3000/api/v1/chat/getAllMessages/"; 
+    this.Url = "http://3.134.103.215:3000/api/v1/chat/"; 
+    this.Url1 = "http://3.134.103.215:3000/api/v1/chat/sendMessage/";
+    this.serverUrl = "http://3.134.103.215:3000/api/v1/chat/getAllMessages/"; 
 
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);
@@ -40,4 +43,10 @@ export class ChatService {
       };
       return this.http.post<UserMessages[]>(`${this.serverUrl}`, UserMessages, httpOptions);
       }
-}
+
+      SendMsg(send) {
+        const httpOptions = {
+          headers: new HttpHeaders({ "Content-Type": "application/json" })
+        };
+        return this.http.post<send>(`${this.Url1}`, send, httpOptions); }
+} 

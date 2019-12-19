@@ -33,7 +33,7 @@ export const rootRouterConfig: Routes = [
       },
     ]
   },
-  {path: "", loadChildren: () => import("./pages/search/search.module").then(m => m.SearchModule)},
+  // {path: "", loadChildren: () => import("./pages/search/search.module").then(m => m.SearchModule)},
   {path: "", loadChildren: () => import("./shared/header/widgets/settings/setting.module").then(m => m.SettingModule)},
   {
     path: '**',

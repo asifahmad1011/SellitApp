@@ -15,9 +15,9 @@ export class SellService {
   token: string;
   header: any;
   constructor(private http: HttpClient) {
-    this.Url = "http://localhost:3000/api/v1/category/";
-    this.serverUrl = "http://localhost:3000/api/v1/product/";
-    this.brandUrl = "http://localhost:3000/api/v1/brand/";
+    this.Url = "http://3.134.103.215:3000/api/v1/category/";
+    this.serverUrl = "http://3.134.103.215:3000/api/v1/product/";
+    this.brandUrl = "http://3.134.103.215:3000/api/v1/brand/";
 
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);

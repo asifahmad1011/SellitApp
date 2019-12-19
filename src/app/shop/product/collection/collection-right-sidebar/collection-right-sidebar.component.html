@@ -5,27 +5,22 @@
     <div class="container">
 
                   <div class="top-banner-wrapper">
-                    <img src="assets/images/mega-menu/2.jpg" class="img-fluid" alt="">
+                    <!-- <img src="assets/images/mega-menu/2.jpg" class="img-fluid" alt=""> -->
                     <div class="top-banner-content small-section">    
                       <h5></h5>
                       <p></p>
                     </div>
                   </div>
 
-
-
-                    <div class="card-columns" *ngIf='isShow' width="200px">
-      
+                    <div class="card-columns" width="200px">
                         <div class="card" *ngFor="let result of selectedCategory.products">
                             <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
                             <div class="card-body">
                                 <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
                                 <p class="card-text">{{result.description}}</p>
+                                <p class="card-text"><i class="fa fa-euro" style="font-size:15px; color: black; padding: 2px;"></i>{{result.price}}</p>
                             </div>
-
-            
                         </div>   
-
                     </div>
                 </div>
 

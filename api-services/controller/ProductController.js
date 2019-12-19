@@ -3,9 +3,7 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 var Image = require("../model/ImageModel");
 var Enum = require("../model/Enumeration");
-
 var User = require("../model/UserModel");
-
 
 
 //TODO : Add Status = 1 to the Where Clause
@@ -57,7 +55,6 @@ module.exports.getProductById = function (product_id, callback) {
       product_id: product_id,
       // status: Enum.productStatus.Approved.value
     },
-
     include: [ {
       model: Image,
       as: "image"
@@ -67,12 +64,6 @@ module.exports.getProductById = function (product_id, callback) {
       as: "seller_info"
     }
   ],
-
-    include: {
-      model: Image,
-      as: "image"
-    }
-
   })
     .then(function (related) {
       callback(related);

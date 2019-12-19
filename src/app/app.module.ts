@@ -38,21 +38,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  exports: [  AppComponent,
-    MainComponent,
-    SearchComponent,
-    ProductTabNineComponent,
-    CollectionBannerNineComponent,
-    HomeBannerComponent, ],
+  exports: [   ],
 
 
   declarations: [
     AppComponent,
     MainComponent,
     SearchComponent,
-    ProductTabNineComponent,
-    CollectionBannerNineComponent,
-    HomeBannerComponent,
   ],
   imports: [
     FormsModule,

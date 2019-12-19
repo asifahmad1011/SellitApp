@@ -35,15 +35,9 @@ router.get('/', function (req, res, next) {
               Dash.totalDeletedProduct((rows) => {
                 totalDeletedProduct = rows;
                 Dash.totalProductAmount((rows) => {
-
                   totalProductAmount = !rows ? 0 : parseInt(rows);
                   Dash.totalSoldProductAmount((rows)=> {
                     totalSoldProductAmount = !rows ? 0 :  parseInt(rows);
-
-                  totalProductAmount = parseInt(rows);
-                  Dash.totalSoldProductAmount((rows)=> {
-                    totalSoldProductAmount = parseInt(rows);
-
                     Dash.totalUser((rows)=>{
                       totalUser = rows
                       Dash.getTopPendingProduct((rows)=>{
@@ -52,7 +46,6 @@ router.get('/', function (req, res, next) {
                           var topSoldProduct = rows
                           Dash.totalMessage((rows) => {
                           var totalMessage = rows
-
                           res.render("admin/login.ejs",{
                             "totalProduct": totalProduct,
                             "totalSoldProduct": totalSoldProduct,
@@ -78,10 +71,13 @@ router.get('/', function (req, res, next) {
           })
         });
       })
+
+
+    }
   });
-}
+
 });
-});
+
 function getDashboardResult() {
   var totalProduct = Dash.totalProduct((rows) => { rows });
   console.log(totalProduct + "from getDashboardResult");

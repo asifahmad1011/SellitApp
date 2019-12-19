@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 
 import { SettingRoutingModule } from './settings-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SettingComponent } from './settings.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -14,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
    NgxPaginationModule,
    FormsModule,
   ],
-  declarations: [SettingComponent]
+  declarations: []
 })
 export class SettingModule { }

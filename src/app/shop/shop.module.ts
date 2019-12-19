@@ -30,7 +30,21 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  exports: [],
+  exports: [HomeNineComponent,
+    HomeBannerComponent,
+    CollectionBannerNineComponent,
+    ProductTabNineComponent,
+    ProfileComponent,
+    
+    // Product
+    ProductComponent,
+    CollectionRightSidebarComponent,
+    ProductRightSidebarComponent,
+    SidebarComponent,
+    CategoriesComponent,
+    NewProductComponent,],
+
+    
   imports: [
     CommonModule,
     FormsModule,

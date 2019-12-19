@@ -25,6 +25,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 /* Feature Components */
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './shop/profile/profile.component';
+import { SettingComponent } from './shared/header/widgets/settings/settings.component';
+import { SearchComponent } from './shop/product/search/search.component';
+import { ProductTabNineComponent } from './shop/home-9/product-tab/product-tab.component';
+import { CollectionBannerNineComponent } from './shop/home-9/collection-banner/collection-banner.component';
+import { HomeBannerComponent } from './shop/home-9/home-banner/home-banner.component';
 
 
 // AoT requires an exported function for factories
@@ -33,9 +38,21 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
+  exports: [  AppComponent,
+    MainComponent,
+    SearchComponent,
+    ProductTabNineComponent,
+    CollectionBannerNineComponent,
+    HomeBannerComponent, ],
+
+
   declarations: [
     AppComponent,
     MainComponent,
+    SearchComponent,
+    ProductTabNineComponent,
+    CollectionBannerNineComponent,
+    HomeBannerComponent,
   ],
   imports: [
     FormsModule,
@@ -64,6 +81,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule.forRoot(rootRouterConfig, { useHash: false, anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, SettingComponent]
 })
 export class AppModule { }

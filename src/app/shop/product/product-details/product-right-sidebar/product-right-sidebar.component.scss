@@ -19,3 +19,20 @@
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 }
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left !important;
+    width: 33.33% !important;
+    padding: 5px !important;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "" !important;
+    clear: both !important;
+    display: table !important;
+  }

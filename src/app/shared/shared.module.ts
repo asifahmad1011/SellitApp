@@ -36,6 +36,18 @@ import { TopbarProfileComponent } from './header/widgets/topbar/topbar-profile/t
     FooterOneComponent,
     OrderByPipe,
     NgxPaginationModule,
+    HeaderOneComponent,
+    HeaderProfileComponent,
+    FooterOneComponent,
+    OrderByPipe,
+    NavbarComponent,
+    SettingComponent,
+    LeftMenuComponent,
+    TopbarOneComponent,
+    TopbarProfileComponent,
+    InformationComponent,
+    CopyrightComponent,
+    SocialComponent, 
     
   ],
   imports: [

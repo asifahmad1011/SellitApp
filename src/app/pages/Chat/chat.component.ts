@@ -8,6 +8,7 @@ import {
   Validators,
   FormControl
 } from "@angular/forms";
+
 import { Chat } from "./chat";
 import { ChatService } from "./chat.service";
 import { FormsModule } from "@angular/forms";
@@ -19,9 +20,10 @@ import { FormsModule } from "@angular/forms";
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private ChatService: ChatService) { }
+  constructor(private ChatService: ChatService, private formbulider: FormBuilder) { }
   selectedProduct;
   public chat: any = [];
+  chatform: FormGroup;
 
   ngOnInit() {
     var user = localStorage.getItem('matrikel_number');
@@ -32,7 +34,41 @@ export class ChatComponent implements OnInit {
         // console.log(data);
       this.selectedProduct= data;
     });
+
+    this.chatform = this.formbulider.group({
+      message: ["", [Validators.required]],
+      product_id: ["", [Validators.required]],
+      sender_id: ["", [Validators.required]],
+      receiver_id: ["", [Validators.required]]
+    })
+
   }
+
+  ChatMsg(prod, receiver) {
+    const userdata = this.chatform.value;
+    console.log("Result:", prod);
+        const DBForm = { userdata };
+        this.chatform.reset();
+
+        const pdata = {
+          message: DBForm.userdata.message,
+          product_id: prod,
+          sender_id: localStorage.getItem("matrikel_number"),
+          receiver_id: receiver,
+        };
+        console.log("Post Data:",pdata);
+
+        this.SendMsg(pdata);
+      }
+
+      SendMsg(userData) {
+        const jsonData = JSON.stringify(userData);
+        console.log("Send Message:",jsonData);
+        this.ChatService.SendMsg(jsonData).subscribe(data => {});
+     }
+
+
+  
 
   getAllMessages(receiverid, senderid) {
     console.log("ReceiverID:",receiverid);

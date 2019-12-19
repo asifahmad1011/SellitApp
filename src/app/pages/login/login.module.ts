@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {CommonModule} from "@angular/common";
 
 import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+// import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -13,6 +13,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
    CommonModule,
    NgxPaginationModule
   ],
-  declarations: [LoginComponent]
+  declarations: []
 })
 export class LoginModule { }

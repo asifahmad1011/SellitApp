@@ -119,6 +119,8 @@ export class SellComponent implements OnInit {
       if(data.status = "sucessfull") {
         alert("Success");
         this.router.navigateByUrl('/pages/order-success');
+      } else {
+        alert("There came an error, please try again!");
       }});
     return sessionStorage.getItem(this.model.matrikel_number);
   }
@@ -156,6 +158,7 @@ export class SellComponent implements OnInit {
 
           var a = (JSON.parse(JSON.stringify(event.body)).data);
           a = localStorage.setItem("image",a.url);
+          alert("Image Upload Successful, please post your product now!");
         }
         console.log(event);
       }))

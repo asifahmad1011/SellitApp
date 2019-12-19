@@ -4,4 +4,10 @@ export interface Chat {
     last_name: string,
     product_name: string,    
   }
+
+  export interface UserMessages {
+    receiver_id: bigint,
+    sender_id: bigint
+  }
+  
   

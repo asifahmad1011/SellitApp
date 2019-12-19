@@ -32,4 +32,11 @@ export class ChatComponent implements OnInit {
       this.selectedProduct= data;
     });
   }
+
+  getAllMessages(receiverid, senderid) {
+    console.log("ReceiverID:",receiverid);
+    console.log("senderID", senderid);
+  }
+
+
 }

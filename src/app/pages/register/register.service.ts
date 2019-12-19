@@ -31,6 +31,6 @@ export class RegisterService {
     const httpOptions = {
       headers: new HttpHeaders({ "Content-Type": "application/json" })
     };
-    return this.http.post<Register>(`${this.Url}users/`, register, httpOptions);
+    return this.http.post<any>(`${this.Url}users/`, register, httpOptions);
   }
 }

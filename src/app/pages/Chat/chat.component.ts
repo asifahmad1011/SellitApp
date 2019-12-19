@@ -54,8 +54,6 @@ export class ChatComponent implements OnInit {
     this.ChatService.getallMessages(jsonData).subscribe(data => {
       this.chat=data;
       console.log("in service",this.chat);
-      
-
     });
   }
 

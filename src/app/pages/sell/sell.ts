@@ -6,7 +6,7 @@ export interface Sell {
   price: bigint;
   seller_id: bigint;
   more_details: string;
-  status: bigint;
+  status: string;
   category_id: bigint;
   brand_id: number;
   product_condition: bigint;

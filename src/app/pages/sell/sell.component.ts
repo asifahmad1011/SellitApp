@@ -115,7 +115,11 @@ export class SellComponent implements OnInit {
     const jsonData = JSON.stringify(userData);
     console.log("JSON", jsonData);
 
-    this.SellService.postAd(jsonData).subscribe(data => {});
+    this.SellService.postAd(jsonData).subscribe(data => {
+      if(data.status = "sucessfull") {
+        alert("Success");
+        this.router.navigateByUrl('/pages/order-success');
+      }});
     return sessionStorage.getItem(this.model.matrikel_number);
   }
 

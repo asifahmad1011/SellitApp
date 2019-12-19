@@ -36,7 +36,27 @@ export class ChatComponent implements OnInit {
   getAllMessages(receiverid, senderid) {
     console.log("ReceiverID:",receiverid);
     console.log("senderID", senderid);
+    const postdata = {
+      receiver_id: receiverid,
+      sender_id: senderid
+    }
+    // console.log("Get All Chat Messages!",postdata);
+    this.getallMessages(postdata);
   }
+
+ 
+
+  getallMessages(postData) {
+    const jsonData = JSON.stringify(postData);
+    console.log("All Messages:",jsonData);
+    // location.reload();
+    this.ChatService.getallMessages(jsonData).map(this.extractData)
+  }
+
+  private extractData(res: Response) {
+    let body = res.json();
+          return body || {};
+      }
 
 
 }

@@ -25,7 +25,7 @@
                 <div class="card-body" >
                     <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <h6 class="card-title">{{result.first_name}}</h6>
-                  <p class="card-text" (click)="getAllMessages((localstorage.getItem('matrikel_number')),result.matrikel_number)">{{result.product_name}}</p>
+                  <p class="card-text" (click)="getAllMessages(result.receiver_id, result.matrikel_number)">{{result.product_name}}</p>
                 </div>
               </div>
            

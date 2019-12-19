@@ -19,14 +19,24 @@ router.post('/', function(req, res, next) {
 			})
 		} else {
      var data = JSON.parse(JSON.stringify(rows));
+     console.log(data[0]);
      var encrptedPassword = data[0].password;
      var decryptyPassword = cryptr.cryptr.decrypt(encrptedPassword)
      if(decryptyPassword == password){
-			res.json({
-				token,
-        "status": "sucessfull",
-        "user_id": data[0].matrikel_number
-			})
+       if(data[0].role_id == 1){
+        res.json({
+          "status": "This is an Admin Login. Please go to the admin page",
+          "user_id": data[0].matrikel_number
+        })
+       }else{
+        res.json({
+          token,
+          "status": "sucessfull",
+          "user_id": data[0].matrikel_number,
+          "username": data[0].username,
+          "user_info" : data[0]
+        })
+       }
      }else{
       res.json({
         "status": "Username or Password does not match",

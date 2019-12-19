@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RegisterRoutingModule } from "./register-routing.module";
+import { Router} from '@angular/router';
+
 import { Observable } from "rxjs";
 import {
   NgForm,
@@ -19,17 +21,17 @@ import { FormsModule } from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
-  public user = [];
+  public users = [];
 
   data = false;
   registerForm: FormGroup;
+  submitted = false;
   massage: string;
-  address: string;
   pdata: any = {};
-
   constructor(
     private formbulider: FormBuilder,
-    private RegisterService: RegisterService
+    private RegisterService: RegisterService,
+    public router:Router
   ) {}
 
   ngOnInit() {
@@ -88,8 +90,21 @@ export class RegisterComponent implements OnInit {
     this.pdata.username = userdata.username;
     this.pdata.password = userdata.password;
     console.log(this.pdata);
-    this.postNewUser(this.pdata);
-   /* const userdata = this.registerForm.value;
+    if(this.registerForm.invalid){
+      alert("Registration Not Complete");
+    }else{
+      const jsonData = JSON.stringify(this.pdata);
+      this.RegisterService.postUser(jsonData).subscribe(data => {
+        console.log(data);
+        if(data.status == "success"){
+          this.router.navigate(['/pages/login'])
+        }
+      });
+    }
+  }
+
+  /*Register() {
+    const userdata = this.registerForm.value;
     //console.log(userdata.matrikel_number);
     this.RegisterService.StudentRecordByID(userdata.matrikel_number).subscribe(
       data => {
@@ -117,17 +132,49 @@ export class RegisterComponent implements OnInit {
           modified_date: dbData[0].modified_date
         };
 
+        //this.userDBData(dbData);
+        this.users= dbData;
+        console.log("DBdata in regFunc",this.users);
+        console.log(pdata);
+        if(userdata.username && userdata.password){
+          this.postNewUser(pdata);
+          this.router.navigate(['/pages/login'])
+        }
+
+
         console.log(pdata);
         this.postNewUser(pdata);
-      }
-    );*/
-  }
 
-  postNewUser(userData) {
+      }
+    );
+  }*/
+
+  /*postNewUser(userData) {
     const jsonData = JSON.stringify(userData);
     console.log(jsonData);
-    this.RegisterService.postUser(jsonData).subscribe(data => {});
-  }
 
+    this.RegisterService.postUser(jsonData).subscribe(data => {});
+  }*/
+
+  /*postNewUser(userData) {
+    const jsonData = JSON.stringify(userData);
+    this.RegisterService.postUser(jsonData).subscribe(data => {
+      console.log(data);
+    });
+  }*/
+
+  /*get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+
+
+    // alert("Registration Successful...")
+}*/
 
 }

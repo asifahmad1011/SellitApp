@@ -20,18 +20,22 @@ export class ProductsService {
   //Accessing the server address+api/products(she)
   private serverUrl = "http://localhost:3000/api/v1/product";
 
+
+  //public currency : string = 'EUR';
+  //public catalogMode : boolean = false;
+
   url = "http://localhost:3000/api/v1/category";
   product: any;
   public currency: string = "EUR";
   public catalogMode: boolean = false;
   header: any;
-  
+
   //Initializing the httpClient she
   constructor(
     private httpclient: HttpClient,
     private http: Http,
     private toastrService: ToastrService
-    
+
   ) {
     const headerSettings: { [name: string]: string | string[] } = {};
     this.header = new HttpHeaders(headerSettings);
@@ -59,7 +63,7 @@ export class ProductsService {
     return this.httpclient.get<Products[]>(`${this.serverUrl}`);
   }
 
-  
+
   // Get Category
   public Category() {
     return this.httpclient.get<Category[]>(`${this.url}`);

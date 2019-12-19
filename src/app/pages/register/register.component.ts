@@ -112,6 +112,7 @@ export class RegisterComponent implements OnInit {
 
         console.log(dbData);
 
+
         const DBForm = { dbData, userdata, role_id: 0 };
         this.registerForm.reset();
 
@@ -139,6 +140,10 @@ export class RegisterComponent implements OnInit {
           this.postNewUser(pdata);
           this.router.navigate(['/pages/login'])
         }
+
+
+        console.log(pdata);
+        this.postNewUser(pdata);
 
       }
     );

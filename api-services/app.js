@@ -11,10 +11,10 @@ var publicDir = path.join(__dirname,'/public');
 
 const swaggerDocument = require('./swagger.json');
 
-var users = require('./routes/Users');
-var products = require("./routes/Product");
-var studentRecords = require("./routes/Studentrecord");
-var auths = require("./routes/Authentications");
+var users = require('./routes/users');
+var products = require("./routes/product");
+var studentRecords = require("./routes/studentrecord");
+var auths = require("./routes/authentications");
 var chat = require("./routes/Chat");
 var category = require("./routes/Category");
 var brand = require("./routes/Brands");

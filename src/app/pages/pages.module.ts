@@ -16,6 +16,7 @@ import { HttpModule } from '@angular/http';
 import { SellComponent } from './sell/sell.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ChatComponent } from './Chat/chat.component';
+import { UpdateProfileComponent } from './update-profile/update-profile/update-profile.component';
 /* Shared Service */
 
 
@@ -49,6 +50,7 @@ import { ChatComponent } from './Chat/chat.component';
     OrderSuccessComponent,
     DashboardComponent,
     ChatComponent,
+    UpdateProfileComponent,
   ],
 })
 export class PagesModule { }

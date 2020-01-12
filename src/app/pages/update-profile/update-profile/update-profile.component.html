@@ -1,0 +1,57 @@
+<!-- section start -->
+<section class="register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>create account</h3>
+                <div class="theme-card">
+                    <form [formGroup]="registerForm" (keydown.enter)="$event.preventDefault()" class="theme-form" (ngSubmit)="Register()">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">Matrikulation Number</label>
+                                <input type="text" formControlName="matrikel_number" class="form-control" name="matrikel_number" id="matrikNumber" [(ngModel)]="model.matrikel_number" placeholder="Matrikulation Number" required="" (keyup)="$event.keyCode == 13 && FetchData()" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">First Name</label>
+                                <input type="text" class="form-control" formControlName="firstname" name="firstname" [(ngModel)]="model.firstname" id="firstname" placeholder="First Name" disabled required="" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">Last Name</label>
+                                <input type="text" formControlName="lastname" class="form-control" name="dob" id="lastname" [(ngModel)]="model.lastname" placeholder="Last Name" disabled required="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Address</label>
+                                <input type="text" class="form-control" formControlName="address" name="address" [(ngModel)]="model.address" id="address" placeholder="Address" disabled required="" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="review">Phone Number</label>
+                                <input type="text" class="form-control" formControlName="phoneno" name="phoneno" [(ngModel)]="model.phoneno" id="review" placeholder="Phoneno" disabled required="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">User Name</label>
+                                <input type="text" class="form-control" formControlName="username" name="username" [(ngModel)]="model.username" id="review" placeholder="Enter Username" required="" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="review">Password</label>
+                                <input type="password" class="form-control" formControlName="password" name="password" [(ngModel)]="model.password" id="review" placeholder="Enter password" required="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" [(ngModel)]="model.confirmPassword" id="review" placeholder="Confirm password" required="" />
+                            </div>
+                            <button type="submit" class="btn btn-solid">create Account</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->

@@ -17,6 +17,10 @@
                     <div class="block-content">
                         <ul>
                             <li><a [routerLink]="" (click)=toggleDisplay()>My Ads</a></li>
+                            <li><a [routerLink]="" (click)=isApproved()>Approved</a></li>
+                            <li><a [routerLink]="" (click)=isUnderReview()>Under Review</a></li>
+                            <li><a [routerLink]="" (click)=isSoldP()>Sold</a></li>
+                            <li><a [routerLink]="" (click)=isDeleted()>Deleted</a></li>
                             <li><a [routerLink]="" (click)='profileDisplay() && getProfileData()'>Update Profile</a></li>
                         </ul>
                     </div>
@@ -46,8 +50,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h3>Update Profile</h3>
-                    <div class="theme-card">
-                        <form [formGroup]="updateForm"  class="theme-form" (ngSubmit)='updateUser()' >
+                    <div class="col-lg-12">
+                        <form [formGroup]="updateForm" class="theme-form" (ngSubmit)='updateUser()'>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <label for="email">Matrikulation Number</label>
@@ -56,14 +60,14 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <label for="review">First Name</label>                                    
-                                    <input type="text" class="form-control" formControlName="firstname" name="firstname" [(ngModel)]="model.firstname" id="firstname" placeholder="First Name" disabled required="" />                                    
+                                    <label for="review">First Name</label>
+                                    <input type="text" class="form-control" formControlName="firstname" name="firstname" [(ngModel)]="model.firstname" id="firstname" placeholder="First Name" required="" />
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <label for="email">Last Name</label>
-                                    <input type="text" formControlName="lastname" class="form-control" name="dob" id="lastname" [(ngModel)]="model.lastname" placeholder="Last Name" disabled required="" />
+                                    <input type="text" formControlName="lastname" class="form-control" name="dob" id="lastname" [(ngModel)]="model.lastname" placeholder="Last Name" required="" />
                                 </div>
                             </div>
                             <div class="form-row">
@@ -101,6 +105,129 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container">
+
+        <!-- approved -->
+
+        <div class="card-columns" *ngIf='Approved' width="200px">
+            <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
+            <div class="card" *ngFor="let result of selectedProduct.products">
+                <div *ngIf="result.status === 1">
+                    <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                        <p class="card-text">{{result.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <b *ngIf="result.status === 1" style="color: blueviolet"> Approved</b>
+                            <b *ngIf="result.status === 2" style="color: #28a745"> Sold</b>
+                            <b *ngIf="result.status === 3" style="color: #FFBF00"> Under Review</b>
+                            <b *ngIf="result.status === 4" style="color: black"> Inactive</b>
+                            <b *ngIf="result.status === 5" style="color: red"> Deleted</b>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <button *ngIf="result.status === 1 || result.status === 3 || result.status === 4" class="btn btn-danger" (click)="Delete(result.product_id)">Delete</button>
+                        <button *ngIf="result.status === 1" class="btn btn-success" (click)="Sold(result.product_id)">Mark as Sold</button>
+                    </div>
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+        <!-- --- -->
+
+        <!-- under review -->
+
+        <div class="card-columns" *ngIf='UnderReview' width="200px">
+            <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
+            <div class="card" *ngFor="let result of selectedProduct.products">
+                <div *ngIf="result.status === 3">
+                    <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                        <p class="card-text">{{result.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <b *ngIf="result.status === 1" style="color: blueviolet"> Approved</b>
+                            <b *ngIf="result.status === 2" style="color: #28a745"> Sold</b>
+                            <b *ngIf="result.status === 3" style="color: #FFBF00"> Under Review</b>
+                            <b *ngIf="result.status === 4" style="color: black"> Inactive</b>
+                            <b *ngIf="result.status === 5" style="color: red"> Deleted</b>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <button *ngIf="result.status === 1 || result.status === 3 || result.status === 4" class="btn btn-danger" (click)="Delete(result.product_id)">Delete</button>
+                        <button *ngIf="result.status === 1" class="btn btn-success" (click)="Sold(result.product_id)">Mark as Sold</button>
+                    </div>
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+        <!-- --- -->
+
+        <!-- sold -->
+
+        <div class="card-columns" *ngIf='Sold1' width="200px">
+            <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
+            <div class="card" *ngFor="let result of selectedProduct.products">
+                <div *ngIf="result.status === 2">
+                    <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                        <p class="card-text">{{result.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <b *ngIf="result.status === 1" style="color: blueviolet"> Approved</b>
+                            <b *ngIf="result.status === 2" style="color: #28a745"> Sold</b>
+                            <b *ngIf="result.status === 3" style="color: #FFBF00"> Under Review</b>
+                            <b *ngIf="result.status === 4" style="color: black"> Inactive</b>
+                            <b *ngIf="result.status === 5" style="color: red"> Deleted</b>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <button *ngIf="result.status === 1 || result.status === 3 || result.status === 4" class="btn btn-danger" (click)="Delete(result.product_id)">Delete</button>
+                        <button *ngIf="result.status === 1" class="btn btn-success" (click)="Sold(result.product_id)">Mark as Sold</button>
+                    </div>
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+        <!-- --- -->
+
+        <!-- deleted -->
+
+        <div class="card-columns" *ngIf='Deleted' width="200px">
+            <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
+            <div class="card" *ngFor="let result of selectedProduct.products">
+                <div *ngIf="result.status === 5">
+                    <img class="card-img-top" src="{{result.image[0].url}}" alt="Card image cap" height="180px" width="180px">
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="/home/right-sidebar/product/{{result.product_id}}">{{result.name}}</a></h3>
+                        <p class="card-text">{{result.description}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <b *ngIf="result.status === 1" style="color: blueviolet"> Approved</b>
+                            <b *ngIf="result.status === 2" style="color: #28a745"> Sold</b>
+                            <b *ngIf="result.status === 3" style="color: #FFBF00"> Under Review</b>
+                            <b *ngIf="result.status === 4" style="color: black"> Inactive</b>
+                            <b *ngIf="result.status === 5" style="color: red"> Deleted</b>
+                        </li>
+                    </ul>
+                    <div class="card-body">
+                        <button *ngIf="result.status === 1 || result.status === 3 || result.status === 4" class="btn btn-danger" (click)="Delete(result.product_id)">Delete</button>
+                        <button *ngIf="result.status === 1" class="btn btn-success" (click)="Sold(result.product_id)">Mark as Sold</button>
+                    </div>
+                </div>
+            </div>
+            <!-- </form> -->
+        </div>
+        <!-- --- -->
+
         <div class="card-columns" *ngIf='isShow' width="200px">
             <!-- <form [formGroup]="statusUpdate" (ngSubmit)="getProdId()"> -->
             <div class="card" *ngFor="let result of selectedProduct.products">
@@ -126,5 +253,8 @@
             </div>
             <!-- </form> -->
         </div>
+
+
+
     </div>
 </section>

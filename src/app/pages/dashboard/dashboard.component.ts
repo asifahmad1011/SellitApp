@@ -32,14 +32,73 @@ export class DashboardComponent implements OnInit {
 
   isShow = false;
   showProfile = false;
-  toggleDisplay() {
-    this.isShow = !this.isShow;
+  Approved = false;
+  UnderReview = false;
+  Sold1 = false;
+  Deleted = false;
+
+changeView(){
+  this.isShow = false;
     this.showProfile = false;
+    this.Approved=false;
+    this.UnderReview = false;
+    this.Sold1 = false;
+    this.Deleted = false;
+}  
+
+  toggleDisplay() {
+    this.changeView();
+    this.isShow = true;
+    this.showProfile = false;
+    this.Approved=false;
+    this.UnderReview = false;
+    this.Sold1 = false;
+    this.Deleted = false;
+
   }
 
+  isApproved() {
+    this.changeView();
+    this.isShow = false;
+    this.showProfile = false;
+    this.Approved= true;
+    this.UnderReview = false;
+    this.Sold1 = false;
+    this.Deleted = false;
+  }
+  isUnderReview() {
+    this.isShow = false;
+    this.showProfile = false;
+    this.Approved= false;
+    this.UnderReview = true;
+    this.Sold1 = false;
+    this.Deleted = false;
+  }
+
+  isSoldP() {
+    this.Sold1 = true;
+    this.isShow = false;
+    this.showProfile = false;
+    this.Approved= false;
+    this.UnderReview = false;    
+    this.Deleted = false;
+  }
+
+  isDeleted() {
+    this.isShow = false;
+    this.showProfile = false;
+    this.Approved= false;
+    this.UnderReview = false;
+    this.Sold1 = false;
+    this.Deleted = true;
+  }
   profileDisplay(){
     this.showProfile = true;
     this.isShow = false;
+    this.Approved= false;
+    this.UnderReview = false;
+    this.Sold1 = false;
+    this.Deleted = false;
 
     var user1 = localStorage.getItem('matrikel_number');
     console.log("data",user1);
@@ -129,7 +188,7 @@ export class DashboardComponent implements OnInit {
     const userdata = this.updateForm.value;
     var user1 = localStorage.getItem('matrikel_number');
     console.log(userdata);
-    //console.log(user1,"id");
+    // console.log(user1,"id");
     this.userData.address = userdata.address;
     this.userData.phone_number = userdata.phoneno;
     this.userData.username = userdata.username;

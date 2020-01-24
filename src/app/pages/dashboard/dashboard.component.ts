@@ -37,17 +37,8 @@ export class DashboardComponent implements OnInit {
   Sold1 = false;
   Deleted = false;
 
-changeView(){
-  this.isShow = false;
-    this.showProfile = false;
-    this.Approved=false;
-    this.UnderReview = false;
-    this.Sold1 = false;
-    this.Deleted = false;
-}  
 
   toggleDisplay() {
-    this.changeView();
     this.isShow = true;
     this.showProfile = false;
     this.Approved=false;
@@ -58,7 +49,6 @@ changeView(){
   }
 
   isApproved() {
-    this.changeView();
     this.isShow = false;
     this.showProfile = false;
     this.Approved= true;
